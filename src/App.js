@@ -53,7 +53,7 @@ function App() {
       <Leg modCount={legModCount} setModCount={setLegModCount}/>
       <Class modCount={classModCount} setModCount={setClassModCount} armorCharge={armorCharge}/>
       <ArmorCharge armorCharge={armorCharge} setArmorCharge={setArmorChage}/>
-      <Breakdown helmetMods={helmetModCount} legMods={legModCount} armMods={armModCount} armorCharge={armorCharge}/>
+      <Breakdown helmetMods={helmetModCount} legMods={legModCount} armMods={armModCount} classMods={classModCount} armorCharge={armorCharge}/>
     </div>
   );
 }

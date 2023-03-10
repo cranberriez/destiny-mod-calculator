@@ -36,7 +36,7 @@ function Orb(props) {
 }
 
 function Breakdown(props) {
-    const { helmetMods, legMods, armMods, armorCharge } = props;
+    const { helmetMods, legMods, armMods, classMods, armorCharge } = props;
 
     const [breakdown, setBreakdown] = useState({
         grenade: {
@@ -96,7 +96,8 @@ function Breakdown(props) {
         checkData(helmetMods, armorCharge)
         checkData(legMods, armorCharge)
         checkData(armMods, armorCharge)
-    }, [helmetMods, legMods, armMods, armorCharge])
+        checkData(classMods, armorCharge)
+    }, [helmetMods, legMods, armMods, classMods, armorCharge])
 
     return (
         <div className='Breakdown'>
