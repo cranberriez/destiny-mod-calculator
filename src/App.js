@@ -12,9 +12,12 @@ function App() {
     totalMods: 0,
   });
 
-  const [legModCount, setlegModCount] = useState({
-    handsOn: { count: 0, stacks: [0.0075, 0.025, 0.029, 0.029] },
-    ashesToAssets: { count: 0, stacks: [0.0075, 0.048, 0.052, 0.048] },
+  const [legModCount, setLegModCount] = useState({
+    invigoration: { count: 0, stacks: [0, 0.10, 0.13, 0.15], type: "orb-pickup", generates: "melee"},
+    innervation: { count: 0, stacks: [0, 0.10, 0.13, 0.15], type: "orb-pickup", generates: "grenade"},
+    insulation: { count: 0, stacks: [0, 0.04, 0.056, 0.056], type: "orb-pickup", generates: "class"},
+    absolution: { count: 0, stacks: [0, 0.05, 0.075, 0.10], type: "orb-pickup", generates: "all"},
+    orbsOfRestoration: { count: 0, stacks: [0, 0.05, 0.125, 0.15], type: "orb-pickup", generates: "least-charged"},
     totalMods: 0,
   });
 
@@ -25,9 +28,9 @@ function App() {
   return (
     <div className="App">
       <Helmet modCount={helmetModCount} setModCount={setHelmetModCount}/>
-      <Leg/>
+      <Leg modCount={legModCount} setModCount={setLegModCount}/>
       <ArmorCharge armorCharge={armorCharge} setArmorCharge={setArmorChage}/>
-      <Breakdown helmetMods={helmetModCount}/>
+      <Breakdown helmetMods={helmetModCount} legMods={legModCount}/>
     </div>
   );
 }

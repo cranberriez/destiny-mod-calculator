@@ -21,11 +21,22 @@ function Ability(props) {
 }
 
 function Orb(props) {
+    const {data} = props;
 
+    return (
+        <div className="AbilityBreakdown">
+            <h4>On Orb Pickup</h4>
+            {Object.keys(data.pickup).map(subkey => (
+            <div key={subkey}>
+                <p>{subkey}: %{(data.pickup[subkey] * 100).toFixed(2)}</p>
+            </div>
+            ))}
+        </div>
+    )
 }
 
 function Breakdown(props) {
-    const { helmetMods } = props;
+    const { helmetMods, legMods } = props;
 
     const [breakdown, setBreakdown] = useState({
         grenade: {
@@ -65,7 +76,6 @@ function Breakdown(props) {
             return
         }
 
-
         setBreakdown(prevBreakdown => {
             const updatedBreakdown = { ...prevBreakdown }
             // const existingValue = updatedBreakdown[ability][type][generates] ?? 0
@@ -77,14 +87,15 @@ function Breakdown(props) {
 
     useEffect(() => {
         checkData(helmetMods)
-        console.log(breakdown)
-    }, [helmetMods])
+        checkData(legMods)
+    }, [helmetMods, legMods])
 
     return (
         <div className='Breakdown'>
             <Ability data={breakdown.grenade} type="Grenade"/>
             <Ability data={breakdown.melee} type="Melee"/>
             <Ability data={breakdown.class} type="Class Ability"/>
+            <Orb data={breakdown.orb}/>
         </div>
     )
 }
