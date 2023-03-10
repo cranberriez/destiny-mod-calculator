@@ -19,7 +19,7 @@ function Helmet(props) {
 
   
     return (
-        <div className="Helmet">
+        <div className="Helmet Armor">
             <ul>
 
             </ul>

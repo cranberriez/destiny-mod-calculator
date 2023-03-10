@@ -24,7 +24,7 @@ function Orb(props) {
     const {data} = props;
 
     return (
-        <div className="AbilityBreakdown">
+        <div className="OrbBreakdown">
             <h4>On Orb Pickup</h4>
             {Object.keys(data.pickup).map(subkey => (
             <div key={subkey}>
@@ -36,7 +36,7 @@ function Orb(props) {
 }
 
 function Breakdown(props) {
-    const { helmetMods, legMods } = props;
+    const { helmetMods, legMods, armMods, armorCharge } = props;
 
     const [breakdown, setBreakdown] = useState({
         grenade: {
@@ -57,7 +57,7 @@ function Breakdown(props) {
         }
     })
 
-    const checkData = (data) => {
+    const checkData = (data, armorCharge) => {
         for (const key in data) {
             if (typeof data[key] === "object") {
                 addToBreakdown(data[key])
@@ -69,6 +69,7 @@ function Breakdown(props) {
         const count = data.count
         const stacks = data.stacks
         const [ability, type] = data.type.split('-')
+        const kickstart = data.kickstart ?? false
         const generates = data.generates
 
         if (count === undefined || count < 0 || count >= stacks.length) {
@@ -80,15 +81,22 @@ function Breakdown(props) {
             const updatedBreakdown = { ...prevBreakdown }
             // const existingValue = updatedBreakdown[ability][type][generates] ?? 0
             // updatedBreakdown[ability][type][generates] = Number(existingValue) + stacks[count]
-            updatedBreakdown[ability][type][generates] = stacks[count]
+            if (kickstart && stacks[count] > 0) {
+                updatedBreakdown[ability][type][generates] = stacks[count + armorCharge.charge]
+            }
+            else {
+                updatedBreakdown[ability][type][generates] = stacks[count]
+            }
+            
             return updatedBreakdown
         })
     }
 
     useEffect(() => {
-        checkData(helmetMods)
-        checkData(legMods)
-    }, [helmetMods, legMods])
+        checkData(helmetMods, armorCharge)
+        checkData(legMods, armorCharge)
+        checkData(armMods, armorCharge)
+    }, [helmetMods, legMods, armMods, armorCharge])
 
     return (
         <div className='Breakdown'>

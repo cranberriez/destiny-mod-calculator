@@ -7,6 +7,17 @@ function ChargeBox(props) {
 
     // Using a for loop to create an array of JSX elements
     var itemsList = [];
+    itemsList.push(
+        <li
+            key={7}
+            onClick={() => {
+                setArmorCharge(0)
+            }}
+            className={"box remove"}
+        >
+            x
+        </li>
+    );
     for (let i = 0; i < 6; i++) {
         itemsList.push(
             <li

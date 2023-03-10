@@ -37,7 +37,7 @@ function Leg(props) {
 
   
     return (
-        <div className="Leg">
+        <div className="Leg Armor">
             <ul>
 
             </ul>

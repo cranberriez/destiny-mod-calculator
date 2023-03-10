@@ -1,3 +1,7 @@
+.Breakdown {
+    background-color: #252525;
+}
+
 .AbilityBreakdown {
     margin-bottom: 15px;
 }
@@ -10,4 +14,29 @@
 .ModButtons p {
     font-size: 24px;
     margin-left: 12px;
+}
+
+.AbilityBreakdown, .OrbBreakdown {
+    font-size: 32px;
+    padding: 10px;
+}
+
+.AbilityBreakdown div, .OrbBreakdown div {
+    font-size: 28px;
+    margin-left: 20px;
+}
+
+.AbilityBreakdown:first-child {
+    background-color: rgba(230, 126, 34, 0.2);
+    color: white;
+}
+
+.AbilityBreakdown:nth-child(2){
+    background-color: rgba(52, 152, 219, 0.2);
+    color: white;
+}
+
+.AbilityBreakdown:nth-child(3){
+    background-color: rgba(155, 89, 182, 0.2);
+    color: white;
 }

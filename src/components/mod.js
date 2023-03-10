@@ -2,10 +2,10 @@ import React from 'react';
 import './css/mod.css';
 
 function Mod(props) {
-    const { data, modName, modCount, setData } = props;
+    const { data, modName, modCount, setData, armorCharge } = props;
 
     const addMod = () => {
-        if (modCount.totalMods >= 3) return;
+        if (modCount.totalMods >= 3 || modCount[modName].count >= modCount[modName].stacks.length - 1) return;
         const newCount = modCount[modName].count + 1;
         setData((prevState) => ({
             ...prevState,
@@ -24,8 +24,11 @@ function Mod(props) {
         }));
     };
 
+    
+    let charge = 0;
+    if (armorCharge && modCount[modName].count > 0) charge = armorCharge.charge
     const stacks = data.stacks.map((stack, index) => (
-        <li key={index}>{index}: %{(stack * 100).toFixed(2)}</li>
+        <li key={index} className={index == (modCount[modName].count + charge) ? 'current': ''}>{index}: %{(stack * 100).toFixed(2)}</li>
     ));
 
 
@@ -38,8 +41,8 @@ function Mod(props) {
                 {stacks}
             </ul>
             <div className="ModButtons">
-                <button onClick={addMod}>+ Add</button>
-                <button onClick={removeMod}>- Remove</button>
+                <button onClick={addMod}>+</button>
+                <button onClick={removeMod}>-</button>
                 <p>{modCount[modName].count}</p>
             </div>
         </div>
