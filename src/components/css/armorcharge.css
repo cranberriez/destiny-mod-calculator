@@ -1,0 +1,21 @@
+.ChargeBoxes {
+    display: flex;
+    list-style: none;
+}
+
+.ChargeBoxes .box {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border: 2px solid gray;
+    cursor: pointer;
+}
+
+.ChargeBoxes .box.active {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.ChargeBoxes .box.inactive {
+    background-color: none;
+}

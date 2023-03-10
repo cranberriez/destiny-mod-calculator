@@ -1,0 +1,31 @@
+.App {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    'helmet armor-charge'
+    'arms breakdown'
+    'legs breakdown'
+    'class breakdown';
+}
+
+.Breakdown {
+    grid-area: breakdown;
+}
+
+.ArmorCharge {
+    grid-area: armor-charge;
+}
+
+.Helmet {
+    grid-area: helmet;
+}
+
+.Leg {
+    grid-area: legs;
+}
+
+.Mod {
+    margin-right: 10px;
+}

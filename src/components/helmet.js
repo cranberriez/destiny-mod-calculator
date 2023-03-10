@@ -9,9 +9,9 @@ function Mod(props) {
         if (modCount.totalMods >= 3) return;
         const newCount = modCount[modName].count + 1;
         setData((prevState) => ({
-          ...prevState,
-          [modName]: { ...prevState[modName], count: newCount },
-          totalMods: prevState.totalMods + 1,
+            ...prevState,
+            [modName]: { ...prevState[modName], count: newCount },
+            totalMods: prevState.totalMods + 1,
         }));
     };
 
@@ -29,8 +29,8 @@ function Mod(props) {
         <div className="Mod">
           <h2>{data.name}</h2>
           <p>{data.description}</p>
-          <button onClick={addMod}>Add Mod +</button>
-          <button onClick={removeMod}>Remove Mod -</button>
+          <button onClick={addMod}>+ Add Mod</button>
+          <button onClick={removeMod}>- Remove Mod</button>
           <p>{modCount[modName].count}</p>
         </div>
     );
@@ -42,17 +42,11 @@ function Helmet(props) {
     const handsOn = {
         name: "Hands On",
         description: "Gain bonus Super energy on melee kills.",
-        type: "melee-kill",
-        gain: "super",
-        count: 0,
       };
     
     const ashesToAssets = {
         name: "Ashes To Assets",
         description: "Gain bonus Super energy on grenade kills.",
-        type: "grenade-kill",
-        gain: "super",
-        count: 0,
     };
 
   
@@ -60,7 +54,7 @@ function Helmet(props) {
       <div className="Helmet">
         <Mod data={handsOn} modName={'handsOn'} modCount={modCount} setData={setModCount}/>
         <Mod data={ashesToAssets} modName={'ashesToAssets'} modCount={modCount} setData={setModCount}/>
-        <p>Total Mods: {modCount.totalMods}</p>
+        {/* <p>Total Mods: {modCount.totalMods}</p> */}
       </div>
     );
 }
