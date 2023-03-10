@@ -25,12 +25,14 @@ function Orb(props) {
 
     return (
         <div className="OrbBreakdown">
-            <h4>On Orb Pickup</h4>
-            {Object.keys(data.pickup).map(subkey => (
-            <div key={subkey}>
-                <p>{subkey}: %{(data.pickup[subkey] * 100).toFixed(2)}</p>
+            <div>
+                <h4>On Orb Pickup</h4>
+                {Object.keys(data.pickup).map(subkey => (
+                <div key={subkey}>
+                    <p>{subkey}: %{(data.pickup[subkey] * 100).toFixed(2)}</p>
+                </div>
+                ))}
             </div>
-            ))}
         </div>
     )
 }
