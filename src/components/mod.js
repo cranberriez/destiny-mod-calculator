@@ -28,7 +28,7 @@ function Mod(props) {
     let charge = 0;
     if (armorCharge && modCount[modName].count > 0) charge = armorCharge.charge
     const stacks = data.stacks.map((stack, index) => (
-        <li key={index} className={index == (modCount[modName].count + charge) ? 'current': ''}>{index}: %{(stack * 100).toFixed(2)}</li>
+        <li key={index} className={index === (modCount[modName].count + charge) ? 'current': ''}>{index}: %{(stack * 100).toFixed(2)}</li>
     ));
 
 
