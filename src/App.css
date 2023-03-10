@@ -22,10 +22,19 @@
     grid-area: helmet;
 }
 
+.Arm {
+    grid-area: arms;
+}
+
 .Leg {
     grid-area: legs;
 }
 
 .Mod {
     margin-right: 10px;
+}
+
+body {
+    background-color: #222;
+    color: white;
 }

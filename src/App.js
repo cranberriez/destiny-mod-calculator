@@ -6,10 +6,9 @@ import Breakdown from './components/breakdown.js'
 import './App.css';
 
 function App() {
-
   const [helmetModCount, setHelmetModCount] = useState({
-    handsOn: { count: 0, stacks: [0.0075, 0.025, 0.029, 0.029] },
-    ashesToAssets: { count: 0, stacks: [0.0075, 0.048, 0.052, 0.048] },
+    handsOn: { count: 0, stacks: [0.0075, 0.025, 0.029, 0.029], type: "melee-kill", generates: "super" },
+    ashesToAssets: { count: 0, stacks: [0.0075, 0.048, 0.052, 0.048], type: "grenade-kill", generates: "super" },
     totalMods: 0,
   });
 

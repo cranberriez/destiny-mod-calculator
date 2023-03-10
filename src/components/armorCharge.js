@@ -30,23 +30,23 @@ function ChargeBox(props) {
 function ArmorCharge(props) {
     const {armorCharge, setArmorCharge} = props;
 
-    const addCharge = () => {
-        if (armorCharge.charge >= 6) return
-        const newCharge = armorCharge.charge + 1
-        setArmorCharge((prevState) => ({
-            ...prevState, 
-            charge: newCharge}
-        ))
-    }
+    // const addCharge = () => {
+    //     if (armorCharge.charge >= 6) return
+    //     const newCharge = armorCharge.charge + 1
+    //     setArmorCharge((prevState) => ({
+    //         ...prevState, 
+    //         charge: newCharge}
+    //     ))
+    // }
     
-    const removeCharge = () => {
-        if (armorCharge.charge <= 0) return
-        const newCharge = armorCharge.charge - 1
-        setArmorCharge((prevState) => ({
-            ...prevState, 
-            charge: newCharge}
-        ))
-    }
+    // const removeCharge = () => {
+    //     if (armorCharge.charge <= 0) return
+    //     const newCharge = armorCharge.charge - 1
+    //     setArmorCharge((prevState) => ({
+    //         ...prevState, 
+    //         charge: newCharge}
+    //     ))
+    // }
 
     const setCharge = (newCharge) => {
         if (armorCharge.charge < 0 || armorCharge.charge > 6) return

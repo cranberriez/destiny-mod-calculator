@@ -1,38 +1,90 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import './css/breakdown.css';
+
+function Ability(props) {
+    const { data, type } = props;
+
+    return (
+        <div className="AbilityBreakdown">
+            {Object.keys(data).map(key => (
+            <div key={key}>
+                <h4>On {type} {key}</h4>
+                {Object.keys(data[key]).map(subkey => (
+                <div key={subkey}>
+                    <p>{subkey}: %{(data[key][subkey] * 100).toFixed(2)}</p>
+                </div>
+                ))}
+            </div>
+            ))}
+        </div>
+    )
+}
+
+function Orb(props) {
+
+}
 
 function Breakdown(props) {
     const { helmetMods } = props;
-    let superEnergy = {
+
+    const [breakdown, setBreakdown] = useState({
         grenade: {
-            description: "On Grenade Kill",
-            energy: (helmetMods.ashesToAssets.stacks[helmetMods.ashesToAssets.count] * 100)
+            kill: {},
+            hit: {},
+            use: {},
         },
         melee: {
-            description: "On Melee Kill",
-            energy: (helmetMods.handsOn.stacks[helmetMods.handsOn.count] * 100)
+            kill: {},
+            hit: {},
+            use: {},
+        },
+        class: {
+            use: {},
+        },
+        orb: {
+            pickup: {}
+        }
+    })
+
+    const checkData = (data) => {
+        for (const key in data) {
+            if (typeof data[key] === "object") {
+                addToBreakdown(data[key])
+            }
         }
     }
 
+    const addToBreakdown = (data) => {
+        const count = data.count
+        const stacks = data.stacks
+        const [ability, type] = data.type.split('-')
+        const generates = data.generates
+
+        if (count === undefined || count < 0 || count >= stacks.length) {
+            console.log('Invalid count:', count)
+            return
+        }
+
+
+        setBreakdown(prevBreakdown => {
+            const updatedBreakdown = { ...prevBreakdown }
+            // const existingValue = updatedBreakdown[ability][type][generates] ?? 0
+            // updatedBreakdown[ability][type][generates] = Number(existingValue) + stacks[count]
+            updatedBreakdown[ability][type][generates] = stacks[count]
+            return updatedBreakdown
+        })
+    }
+
+    useEffect(() => {
+        checkData(helmetMods)
+        console.log(breakdown)
+    }, [helmetMods])
+
     return (
         <div className='Breakdown'>
-            <div>
-                <h4>Super Energy</h4>
-                {Object.keys(superEnergy).map(key => (
-                    <p key={key}>
-                        {superEnergy[key].description}: {superEnergy[key].energy}
-                    </p>
-                ))}
-            </div>
-            <div>
-                <h4>Grenade Energy</h4>
-            </div>
-            <div>
-                <h4>Melee Energy</h4>
-            </div>
-            <div>
-                <h4>Class Energy</h4>
-            </div>
+            <Ability data={breakdown.grenade} type="Grenade"/>
+            <Ability data={breakdown.melee} type="Melee"/>
+            <Ability data={breakdown.class} type="Class Ability"/>
         </div>
     )
 }
