@@ -17,15 +17,19 @@ function Helmet(props) {
         stacks: [0.0075, 0.048, 0.052, 0.048],
     };
 
+    const dynamo = {
+        name: "Dynamo",
+        description: "Gain bonus Super energy when using your class ability near enemies. (NO DATA)",
+        stacks: [0,0,0,0],
+    };
+
+
   
     return (
         <div className="Helmet Armor">
-            <ul>
-
-            </ul>
             <Mod data={handsOn} modName={'handsOn'} modCount={modCount} setData={setModCount}/>
             <Mod data={ashesToAssets} modName={'ashesToAssets'} modCount={modCount} setData={setModCount}/>
-            {/* <p>Total Mods: {modCount.totalMods}</p> */}
+            <Mod data={dynamo} modName={'dynamo'} modCount={modCount} setData={setModCount}/>
         </div>
     );
 }

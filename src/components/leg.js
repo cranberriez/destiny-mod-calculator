@@ -38,15 +38,11 @@ function Leg(props) {
   
     return (
         <div className="Leg Armor">
-            <ul>
-
-            </ul>
             <Mod data={invigoration} modName={'invigoration'} modCount={modCount} setData={setModCount}/>
             <Mod data={innervation} modName={'innervation'} modCount={modCount} setData={setModCount}/>
             <Mod data={insulation} modName={'insulation'} modCount={modCount} setData={setModCount}/>
             <Mod data={absolution} modName={'absolution'} modCount={modCount} setData={setModCount}/>
             <Mod data={orbsOfRestoration} modName={'orbsOfRestoration'} modCount={modCount} setData={setModCount}/>
-            {/* <p>Total Mods: {modCount.totalMods}</p> */}
         </div>
     );
 }

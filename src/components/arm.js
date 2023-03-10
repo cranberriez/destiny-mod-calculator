@@ -44,9 +44,6 @@ function Arm(props) {
   
     return (
         <div className="Arm Armor">
-            <ul>
-
-            </ul>
             <Mod data={gk} modName={'gk'} modCount={modCount} setData={setModCount} armorCharge={armorCharge}/>
             <Mod data={mk} modName={'mk'} modCount={modCount} setData={setModCount} armorCharge={armorCharge}/>
             <Mod data={mt} modName={'mt'} modCount={modCount} setData={setModCount}/>

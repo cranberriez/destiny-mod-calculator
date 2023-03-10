@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Helmet from './components/helmet.js'
 import Arm from'./components/arm.js'
 import Leg from './components/leg.js'
+import Class from'./components/class.js'
 import ArmorCharge from './components/armorCharge.js';
 import Breakdown from './components/breakdown.js'
 import './App.css';
@@ -10,6 +11,7 @@ function App() {
   const [helmetModCount, setHelmetModCount] = useState({
     handsOn: { count: 0, stacks: [0.0075, 0.025, 0.029, 0.029], type: "melee-kill", generates: "super" },
     ashesToAssets: { count: 0, stacks: [0.0075, 0.048, 0.052, 0.048], type: "grenade-kill", generates: "super" },
+    dynamo: { count: 0, stacks: [0,0,0,0], type: "class-use", generates: "super" },
     totalMods: 0,
   });
 
@@ -32,6 +34,14 @@ function App() {
     totalMods: 0,
   });
 
+  const [classModCount, setClassModCount] = useState({
+    uk: { count: 0, stacks: [0, 0.127, 0.17, 0.232, 0.308, 0.375, 0.422, 0.454, 0.478, 0.496], type: "class-use", generates: "class", kickstart: true},
+    o: { count: 0, stacks: [0, 0.12, 0.15, 0.15], type: "class-use", generates: "melee"},
+    b: { count: 0, stacks: [0, 0.12, 0.15, 0.15], type: "class-use", generates: "grenade"},
+    d: { count: 0, stacks: [0, 0.4, 0.7, 0.7], type: "class-use", generates: "all"},
+    totalMods: 0,
+  });
+
   const [armorCharge, setArmorChage] = useState({
     charge: 0,
   })
@@ -41,6 +51,7 @@ function App() {
       <Helmet modCount={helmetModCount} setModCount={setHelmetModCount}/>
       <Arm modCount={armModCount} setModCount={setArmModCount} armorCharge={armorCharge}/>
       <Leg modCount={legModCount} setModCount={setLegModCount}/>
+      <Class modCount={classModCount} setModCount={setClassModCount} armorCharge={armorCharge}/>
       <ArmorCharge armorCharge={armorCharge} setArmorCharge={setArmorChage}/>
       <Breakdown helmetMods={helmetModCount} legMods={legModCount} armMods={armModCount} armorCharge={armorCharge}/>
     </div>
