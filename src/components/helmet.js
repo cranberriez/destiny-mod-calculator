@@ -7,7 +7,7 @@ function Helmet(props) {
 
     const handsOn = {
         name: "Hands On",
-        description: "Gain bonus Super energy on melee kills.",
+        description: "Gain bonus Super energy on melee kills.", 
         stacks: [0.0075, 0.025, 0.029, 0.029]
     };
     
