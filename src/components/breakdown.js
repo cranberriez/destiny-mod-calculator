@@ -59,46 +59,46 @@ function Breakdown(props) {
         }
     })
 
-    const checkData = (data, armorCharge) => {
-        for (const key in data) {
-            if (typeof data[key] === "object") {
-                addToBreakdown(data[key])
-            }
-        }
-    }
-
-    const addToBreakdown = (data) => {
-        const count = data.count
-        const stacks = data.stacks
-        const [ability, type] = data.type.split('-')
-        const kickstart = data.kickstart ?? false
-        const generates = data.generates
-
-        if (count === undefined || count < 0 || count >= stacks.length) {
-            console.log('Invalid count:', count)
-            return
-        }
-
-        setBreakdown(prevBreakdown => {
-            const updatedBreakdown = { ...prevBreakdown }
-            // const existingValue = updatedBreakdown[ability][type][generates] ?? 0
-            // updatedBreakdown[ability][type][generates] = Number(existingValue) + stacks[count]
-            if (kickstart && stacks[count] > 0) {
-                updatedBreakdown[ability][type][generates] = stacks[count + armorCharge.charge]
-            }
-            else {
-                updatedBreakdown[ability][type][generates] = stacks[count]
-            }
-            
-            return updatedBreakdown
-        })
-    }
-
     useEffect(() => {
-        checkData(helmetMods, armorCharge)
-        checkData(legMods, armorCharge)
-        checkData(armMods, armorCharge)
-        checkData(classMods, armorCharge)
+        const checkData = (data) => {
+            for (const key in data) {
+                if (typeof data[key] === "object") {
+                    addToBreakdown(data[key])
+                }
+            }
+        }
+
+        const addToBreakdown = (data) => {
+            const count = data.count
+            const stacks = data.stacks
+            const [ability, type] = data.type.split('-')
+            const kickstart = data.kickstart ?? false
+            const generates = data.generates
+    
+            if (count === undefined || count < 0 || count >= stacks.length) {
+                console.log('Invalid count:', count)
+                return
+            }
+    
+            setBreakdown(prevBreakdown => {
+                const updatedBreakdown = { ...prevBreakdown }
+                // const existingValue = updatedBreakdown[ability][type][generates] ?? 0
+                // updatedBreakdown[ability][type][generates] = Number(existingValue) + stacks[count]
+                if (kickstart && stacks[count] > 0) {
+                    updatedBreakdown[ability][type][generates] = stacks[count + armorCharge.charge]
+                }
+                else {
+                    updatedBreakdown[ability][type][generates] = stacks[count]
+                }
+                
+                return updatedBreakdown
+            })
+        }
+
+        checkData(helmetMods)
+        checkData(legMods)
+        checkData(armMods)
+        checkData(classMods)
     }, [helmetMods, legMods, armMods, classMods, armorCharge])
 
     return (
