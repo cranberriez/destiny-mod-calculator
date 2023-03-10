@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.7a14cde4.css",
-    "main.js": "/static/js/main.be359af2.js",
-    "index.html": "/index.html",
-    "main.7a14cde4.css.map": "/static/css/main.7a14cde4.css.map",
-    "main.be359af2.js.map": "/static/js/main.be359af2.js.map"
+    "main.css": "/destiny-mod-calculator/static/css/main.7a14cde4.css",
+    "main.js": "/destiny-mod-calculator/static/js/main.be359af2.js",
+    "index.html": "/destiny-mod-calculator/index.html",
+    "main.7a14cde4.css.map": "/destiny-mod-calculator/static/css/main.7a14cde4.css.map",
+    "main.be359af2.js.map": "/destiny-mod-calculator/static/js/main.be359af2.js.map"
   },
   "entrypoints": [
     "static/css/main.7a14cde4.css",
