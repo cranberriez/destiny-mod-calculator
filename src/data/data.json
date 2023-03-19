@@ -1,0 +1,264 @@
+{
+	"helmet": {
+		"ho": {
+			"name": "Hands On",
+			"description": "Gain bonus Super energy on melee kills.",
+			"count": 0,
+			"stacks": [
+				0.0075,
+				0.025,
+				0.029,
+				0.029
+			],
+			"type": "melee-kill",
+			"generates": "super"
+		},
+		"aa": {
+			"name": "Ashes To Assets",
+			"description": "Gain bonus Super energy on grenade kills.",
+			"count": 0,
+			"stacks": [
+				0.0075,
+				0.048,
+				0.052,
+				0.048
+			],
+			"type": "grenade-kill",
+			"generates": "super"
+		},
+		"dy": {
+			"name": "Dynamo",
+			"description": "Gain bonus Super energy when using your class ability near enemies. (NO DATA)",
+			"stacks": [
+				0,
+				0,
+				0,
+				0
+			],
+			"type": "class-use",
+			"generates": "super"
+		}
+	},
+	"arm": {
+		"gk": {
+			"name": "Grenade Kickstart",
+			"description": "Grenade-Kickstart refunds cooldown whenever your grenade energy is fully depleted. (Works with multiple charges)",
+			"count": 0,
+			"stacks": [
+				0,
+				0.127,
+				0.17,
+				0.232,
+				0.308,
+				0.375,
+				0.422,
+				0.454,
+				0.478,
+				0.496
+			],
+			"type": "grenade-use",
+			"generates": "grenade",
+			"kickstart": true
+		},
+		"mk": {
+			"name": "Melee Kickstart",
+			"description": "Melee-Kickstart refunds cooldown whenever your melee energy is fully depleted. (DOESN'T works with multiple charges)",
+			"count": 0,
+			"stacks": [
+				0,
+				0.127,
+				0.17,
+				0.232,
+				0.308,
+				0.375,
+				0.422,
+				0.454,
+				0.478,
+				0.496
+			],
+			"type": "melee-use",
+			"generates": "melee",
+			"kickstart": true
+		},
+		"mt": {
+			"name": "Momentum Transfer",
+			"description": "Causing damage with a grenade reduces your melee cooldown. (7 Second Cooldown)",
+			"count": 0,
+			"stacks": [
+				0,
+				0.2,
+				0.25,
+				0.25
+			],
+			"type": "grenade-hit",
+			"generates": "melee"
+		},
+		"ii": {
+			"name": "Impact Induction",
+			"description": "Causing damage with a melee attack reduces your grenade cooldown. (7 Second Cooldown)",
+			"count": 0,
+			"stacks": [
+				0,
+				0.2,
+				0.25,
+				0.25
+			],
+			"type": "melee-hit",
+			"generates": "grenade"
+		},
+		"fs": {
+			"name": "Focusing Strike",
+			"description": "Grants class ability energy when you cause damage with a melee attack. (7 Second Cooldown)",
+			"count": 0,
+			"stacks": [
+				0,
+				0.2,
+				0.25,
+				0.25
+			],
+			"type": "melee-hit",
+			"generates": "class"
+		},
+		"bd": {
+			"name": "Bolstering Detonation",
+			"description": "Grants class ability energy when you cause damage with a grenade. (7 Second Cooldown)",
+			"count": 0,
+			"stacks": [
+				0,
+				0.2,
+				0.25,
+				0.25
+			],
+			"type": "grenade-hit",
+			"generates": "class"
+		}
+	},
+	"leg": {
+		"iv": {
+			"name": "Invigoration",
+			"description": "Reduces melee cooldown each time you pick up an Orb of Power.",
+			"count": 0,
+			"stacks": [
+				0,
+				0.1,
+				0.13,
+				0.15
+			],
+			"type": "orb-pickup",
+			"generates": "melee"
+		},
+		"in": {
+			"name": "Innervation",
+			"description": "Reduces grenade cooldown each time you pick up an Orb of Power.",
+			"count": 0,
+			"stacks": [
+				0,
+				0.1,
+				0.13,
+				0.15
+			],
+			"type": "orb-pickup",
+			"generates": "grenade"
+		},
+		"is": {
+			"name": "Insulation",
+			"description": "Reduces class ability cooldown each time you pick up an Orb of Power.",
+			"count": 0,
+			"stacks": [
+				0,
+				0.04,
+				0.056,
+				0.056
+			],
+			"type": "orb-pickup",
+			"generates": "class"
+		},
+		"ab": {
+			"name": "Absolution",
+			"description": "Reduces all ability cooldowns each time you pick up an Orb of Power.",
+			"count": 0,
+			"stacks": [
+				0,
+				0.05,
+				0.075,
+				0.1
+			],
+			"type": "orb-pickup",
+			"generates": "all"
+		},
+		"of": {
+			"name": "Orbs Of Restoration",
+			"description": "Picking up an Orb of Power grants a small amount of energy to your ability with the least energy.",
+			"count": 0,
+			"stacks": [
+				0,
+				0.05,
+				0.125,
+				0.15
+			],
+			"type": "orb-pickup",
+			"generates": "least-charged"
+		}
+	},
+	"class": {
+		"uk": {
+			"name": "Utility Kickstart",
+			"description": "When your class ability energy is fully expended, you gain class ability energy.",
+			"count": 0,
+			"stacks": [
+				0,
+				0.127,
+				0.17,
+				0.232,
+				0.308,
+				0.375,
+				0.422,
+				0.454,
+				0.478,
+				0.496
+			],
+			"type": "class-use",
+			"generates": "class",
+			"kickstart": true
+		},
+		"or": {
+			"name": "Outreach",
+			"description": "Reduces melee cooldown when using your class ability.",
+			"count": 0,
+			"stacks": [
+				0,
+				0.12,
+				0.15,
+				0.15
+			],
+			"type": "class-use",
+			"generates": "melee"
+		},
+		"bo": {
+			"name": "Bomber",
+			"description": "Reduces grenade cooldown when using your class ability.",
+			"count": 0,
+			"stacks": [
+				0,
+				0.12,
+				0.15,
+				0.15
+			],
+			"type": "class-use",
+			"generates": "grenade"
+		},
+		"ds": {
+			"name": "Distribution",
+			"description": "Reduces all cooldown when using your class ability near targets.",
+			"count": 0,
+			"stacks": [
+				0,
+				0.4,
+				0.7,
+				0.7
+			],
+			"type": "class-use",
+			"generates": "all"
+		}
+	}
+}
