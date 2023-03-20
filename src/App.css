@@ -3,7 +3,7 @@
     height: 100%;
     
     display: grid;
-    grid-template-columns   : repeat(12, 1fr);
+    grid-template-columns: repeat(12, 1fr);
 }
 
 nav {
@@ -12,34 +12,6 @@ nav {
 
 main {
     grid-column: 3 / 11;
-}
-
-nav {
-    display: flex;
-    flex-direction: column;
-    
-    padding-top: 10vh;
-
-    background-color: #222;
-}
-
-nav a {
-    width: 100%;
-    min-height: min-content;
-    height: 10vh;
-    margin-bottom: 3vh;
-
-    display: flex;
-    color: white;
-}
-
-nav a:hover {
-    background-color: #333;
-}
-
-nav a.active {
-    background-color: white;
-    color: black;
 }
 
 .breakdown {

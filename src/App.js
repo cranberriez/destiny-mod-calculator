@@ -3,25 +3,36 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import Armor from './components/armor.js'
 import ArmorCharge from './components/armorCharge.js';
 import Breakdown from './components/breakdown.js'
+import Navbar from './components/navbar.js'
 import './App.css';
 import data from './data/data.json'
 
 function App() {
-  const [helmetMods, setHelmetMods] = useState(data.helmet);
-  const [armMods, setArmMods] = useState(data.arm);
-  const [legMods, setLegMods] = useState(data.leg);
-  const [classMods, setClassMods] = useState(data.class);
-  const [armorCharge, setArmorCharge] = useState({ charge: 0 })
+    const [helmetMods, setHelmetMods] = useState(data.helmet);
+    const [armMods, setArmMods] = useState(data.arm);
+    const [legMods, setLegMods] = useState(data.leg);
+    const [classMods, setClassMods] = useState(data.class);
+    const [armorCharge, setArmorCharge] = useState({ charge: 0 })
+
+    const [modTotals, sethelmetTotal] = useState({ 
+        helmet: {
+            total: 1,
+        },
+        arm: {
+            total: 2,
+        },
+        leg: {
+            total: 3,
+        },
+        class: {
+            total: 1,
+        }
+    })
 
   return (
     <div className="App">
-        <Router >
-            <nav>
-                <NavLink to="/helmet">Helmet</NavLink>
-                <NavLink to="/arm">Arm</NavLink>
-                <NavLink to="/leg">Leg</NavLink>
-                <NavLink to="/class">Class</NavLink>
-            </nav>
+        <Router>
+            <Navbar modTotals={modTotals} />
 
             <main>
                 <Routes>
