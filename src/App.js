@@ -30,57 +30,57 @@ function App() {
     })
 
   return (
-    <div className="App">
-        <Router>
-            <Navbar modTotals={modTotals} />
+        <div className="App">
+            <Router>
+                <Navbar modTotals={modTotals} />
 
-            <main>
-                <Routes>
-                    <Route path='/helmet' element={
-                        <Armor
-                            modCount={helmetMods}
-                            setModCount={setHelmetMods}
-                        />
-                    }/>
+                <main>
+                    <Routes>
+                        <Route path='/helmet' element={
+                            <Armor
+                                modCount={helmetMods}
+                                setModCount={setHelmetMods}
+                            />
+                        }/>
 
-                    <Route path='/arm' element={
-                        <Armor
-                            modCount={armMods}
-                            setModCount={setArmMods}
-                            armorCharge={armorCharge}
-                        />
-                    }/>
-                    <Route path='/leg' element={
-                        <Armor
-                            modCount={legMods}
-                            setModCount={setLegMods}
-                        />
-                    }/>
-                    <Route path='/class' element={
-                        <Armor
-                            modCount={classMods}
-                            setModCount={setClassMods}
-                            armor Charge={armorCharge}
-                        />
-                    }/>
-                </Routes>
-            </main>
-        
-            <div className="breakdown">
-                {/* <ArmorCharge
-                    armorCharge={armorCharge}
-                    setArmorCharge={setArmorCharge}
-                />
-                <Breakdown
-                    helmetMods={helmetMods}
-                    armMods={armMods}
-                    legMods={legMods}
-                    classMods={classMods}
-                    armorCharge={armorCharge}
-                /> */}
-            </div>
-        </Router>
-    </div>
+                        <Route path='/arm' element={
+                            <Armor
+                                modCount={armMods}
+                                setModCount={setArmMods}
+                                armorCharge={armorCharge}
+                            />
+                        }/>
+                        <Route path='/leg' element={
+                            <Armor
+                                modCount={legMods}
+                                setModCount={setLegMods}
+                            />
+                        }/>
+                        <Route path='/class' element={
+                            <Armor
+                                modCount={classMods}
+                                setModCount={setClassMods}
+                                armor Charge={armorCharge}
+                            />
+                        }/>
+                    </Routes>
+                </main>
+            
+                <div className="breakdown">
+                    {/* <ArmorCharge
+                        armorCharge={armorCharge}
+                        setArmorCharge={setArmorCharge}
+                    />
+                    <Breakdown
+                        helmetMods={helmetMods}
+                        armMods={armMods}
+                        legMods={legMods}
+                        classMods={classMods}
+                        armorCharge={armorCharge}
+                    /> */}
+                </div>
+            </Router>
+        </div>
   );
 }
 

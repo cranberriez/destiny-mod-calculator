@@ -117,7 +117,7 @@ nav a.active .nav-mod-count div {
     width: 8px;
 }
 
-nav a.active .nav-mod-count div div {}
+/* nav a.active .nav-mod-count div div {} */
 
 nav a.active .nav-mod-count div.active div {
     background: #E3E3E3;

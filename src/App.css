@@ -3,7 +3,8 @@
     height: 100%;
     
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: minmax(120px, 0.9fr) repeat(10, 1fr) 0.5fr;
+    grid-column-gap: 1vw;
 }
 
 nav {
@@ -11,7 +12,8 @@ nav {
 }
 
 main {
-    grid-column: 3 / 11;
+    grid-column: 2 / 10;
+    border: 1px solid red;
 }
 
 .breakdown {
