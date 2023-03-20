@@ -13,9 +13,20 @@ nav {
 
 main {
     grid-column: 2 / 10;
-    border: 1px solid red;
 }
 
 .breakdown {
     grid-column: 11 / 13;
+}
+
+h1 {
+    color: #d0d0d0;
+    margin-top: 50px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }

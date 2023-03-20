@@ -14,29 +14,47 @@ function App() {
     const [classMods, setClassMods] = useState(data.class);
     const [armorCharge, setArmorCharge] = useState({ charge: 0 })
 
-    const [modTotals, sethelmetTotal] = useState({ 
-        helmet: {
-            total: 1,
-        },
-        arm: {
-            total: 2,
-        },
-        leg: {
-            total: 3,
-        },
-        class: {
-            total: 1,
-        }
+    const [modTotals, setModTotal] = useState({ 
+        helmet: 1,
+        arm: 2,
+        leg: 3,
+        class: 1,
     })
 
-  return (
+    function increaseModTotal(key) {
+        if (modTotals[key] >= 3) return
+        setModTotal((prevState) => ({
+            ...prevState,
+            [key]: modTotals[key] + 1,
+        }));
+    }
+
+    function decreaseModTotal(key) {
+        if (modTotals[key] <= 0) return
+        setModTotal((prevState) => ({
+            ...prevState,
+            [key]: modTotals[key] - 1,
+        }));
+    }
+
+    return (
         <div className="App">
             <Router>
                 <Navbar modTotals={modTotals} />
 
                 <main>
                     <Routes>
-                        <Route path='/helmet' element={
+                        {Object.keys(modTotals).map(key => (
+                            <Route path={'/' + key} key={key + '-route'} element={
+                                <div>
+                                    <h1>{key.charAt(0).toUpperCase() + key.slice(1)}</h1>
+                                    <button onClick={() => increaseModTotal(key)}>Increase</button>
+                                    <button onClick={() => decreaseModTotal(key)}>Decrease</button>
+                                </div>
+                            }/>
+                        ))}
+
+                        {/* <Route path='/helmet' element={
                             <Armor
                                 modCount={helmetMods}
                                 setModCount={setHelmetMods}
@@ -62,7 +80,7 @@ function App() {
                                 setModCount={setClassMods}
                                 armor Charge={armorCharge}
                             />
-                        }/>
+                        }/> */}
                     </Routes>
                 </main>
             
@@ -81,7 +99,7 @@ function App() {
                 </div>
             </Router>
         </div>
-  );
+    );
 }
 
 export default App;

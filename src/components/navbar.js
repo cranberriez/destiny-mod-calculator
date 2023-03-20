@@ -20,7 +20,7 @@ function Navbar(props) {
     return (
         <nav>
             {Object.keys(modTotals).map(key => (
-                <NavLink to={'/' + key} className=''  id={key} key={key}>
+                <NavLink to={'/' + key} className=''  id={key + '-link'} key={key + '-link'}>
                     <div className='nav-label'>
                         <div className='nav-icon'>
                             {React.createElement(icons[key])}
@@ -30,9 +30,9 @@ function Navbar(props) {
                         </p>
                     </div>
                     <div className='nav-mod-count'>
-                        <div id={modTotals[key] + '-mod-1'} className={modTotals[key].total >= 1 ? "active" : ""}><div></div></div>
-                        <div id={modTotals[key] + '-mod-2'} className={modTotals[key].total >= 2 ? "active" : ""}><div></div></div>
-                        <div id={modTotals[key] + '-mod-3'} className={modTotals[key].total >= 3 ? "active" : ""}><div></div></div>
+                        <div id={key + '-mod-1'} className={modTotals[key] >= 1 ? "active" : ""}><div></div></div>
+                        <div id={key + '-mod-2'} className={modTotals[key] >= 2 ? "active" : ""}><div></div></div>
+                        <div id={key + '-mod-3'} className={modTotals[key] >= 3 ? "active" : ""}><div></div></div>
                     </div>
                 </NavLink>
             ))}
