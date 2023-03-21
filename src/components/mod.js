@@ -35,7 +35,7 @@ function ModButton(props) {
                 onClick={() => setModCount(i - 1)}
                 className={slotStatus}
             >
-                <img src={imageUrl} alt='Mod Image'></img>
+                <img src={imageUrl} alt='Mod'></img>
                 {<FontAwesomeIcon icon={faPlus} />}
             </button>
         )
@@ -84,7 +84,7 @@ function Mod(props) {
     return (
         <div className={"Mod " + kickstart}>
             <div className='mod-header'>
-                <img className='mod-img' src={modData.url} alt='Mod Image'></img>
+                <img className='mod-img' src={modData.url} alt='Mod'></img>
                 <div className='mod-heading'>
                     <h1>{modData.name}</h1>
                     {/* Outputs sentence as: Regains (generates) on (ability) (activation) */}
