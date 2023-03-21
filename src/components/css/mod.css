@@ -1,0 +1,165 @@
+.Mod {
+    background: rgba(47, 47, 47, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+
+    padding: 20px;
+}
+
+.mod-header {
+    display: flex;
+    margin-bottom: 24px;
+}
+
+.mod-img {
+    width: 60px;
+    height: 60px;
+}
+
+.mod-heading {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+}
+
+.mod-heading h1 {
+    margin: 0;
+    font-size: 24px;
+    padding: 2px 0;
+}
+
+.mod-heading p {
+    font-size: 14px;
+    color: #d0d0d0;
+}
+
+span {font-weight: bold;}
+span.super { color: #2ECC71; }
+span.melee { color: #3498db; }
+span.grenade { color: #e67e22; }
+span.class { color: #9b59b6; }
+span.orb { color: #1abc9c; }
+
+
+
+.mod-stacks-cont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #d0d0d0;
+}
+
+.mod-stacks {
+    width: 100%;
+    list-style: none;
+    display: flex;
+
+    background: rgba(63, 63, 63, 0.3);
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.mod-stacks li {
+    color: #C0C0C0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-size: 12px;
+
+    flex-grow: 1;
+    padding: 8px 0;
+
+    width: 70px;
+}
+
+.mod-stacks li.active {
+    background: #3F3F3F;
+    font-weight: bold;
+    color: #fff;
+}
+
+.mod-stacks p:first-child {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.mod-stacks li span {
+    font-size: 12px;
+}
+
+.mod-stacks-cont > p {
+    margin-left: 13px;
+    margin-bottom: 24px;
+}
+
+
+
+.mod-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mod-buttons button {
+    width: 69px;
+    height: 69px;
+    border: 3px solid #555;
+    background: 0;
+
+    font-size: 24px;
+    color: #888;
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    position: relative;
+}
+
+.mod-buttons button svg {
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.mod-buttons button img {
+    position: absolute;
+
+    height: 63px;
+    height: 63px;
+    left: 0;
+    top: 0;
+
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.mod-buttons button.slotted:hover img {
+    opacity: 0.5;
+}
+
+.mod-buttons button.open:hover {
+    color: #d0d0d0;
+    border-color: #888;
+}
+
+.mod-buttons button.slotted svg {
+    color: transparent;
+    transform: rotate(-45deg);
+}
+
+.mod-buttons button.slotted:hover {
+    border-color: #E74C3C;
+}
+
+.mod-buttons button.slotted:hover svg {
+    color: #E74C3C;
+}
+
+.mod-buttons button.disabled {
+    border: 3px solid #333;
+    background: #333;
+    color: #777;
+    
+    cursor: default;
+}
+
+.mod-buttons button.disabled svg {
+    transform: rotate(-45deg);
+}

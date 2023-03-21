@@ -14,73 +14,99 @@ function App() {
     const [classMods, setClassMods] = useState(data.class);
     const [armorCharge, setArmorCharge] = useState({ charge: 0 })
 
-    const [modTotals, setModTotal] = useState({ 
-        helmet: 1,
-        arm: 2,
-        leg: 3,
-        class: 1,
+    const [modCounts, setModCounts] = useState({ 
+        helmet: 0,
+        arm: 0,
+        leg: 0,
+        class: 0,
     })
 
     function increaseModTotal(key) {
-        if (modTotals[key] >= 3) return
-        setModTotal((prevState) => ({
+        if (modCounts[key] >= 3) return
+        setModCounts((prevState) => ({
             ...prevState,
-            [key]: modTotals[key] + 1,
+            [key]: modCounts[key] + 1,
         }));
     }
 
     function decreaseModTotal(key) {
-        if (modTotals[key] <= 0) return
-        setModTotal((prevState) => ({
+        if (modCounts[key] <= 0) return
+        setModCounts((prevState) => ({
             ...prevState,
-            [key]: modTotals[key] - 1,
+            [key]: modCounts[key] - 1,
         }));
     }
 
     return (
         <div className="App">
             <Router>
-                <Navbar modTotals={modTotals} />
+                <Navbar modTotals={modCounts} />
 
                 <main>
                     <Routes>
-                        {Object.keys(modTotals).map(key => (
-                            <Route path={'/' + key} key={key + '-route'} element={
-                                <div>
-                                    <h1>{key.charAt(0).toUpperCase() + key.slice(1)}</h1>
-                                    <button onClick={() => increaseModTotal(key)}>Increase</button>
-                                    <button onClick={() => decreaseModTotal(key)}>Decrease</button>
-                                </div>
-                            }/>
-                        ))}
-
-                        {/* <Route path='/helmet' element={
-                            <Armor
-                                modCount={helmetMods}
-                                setModCount={setHelmetMods}
-                            />
+                        <Route path={'/helmet'} element={
+                            <div>
+                                <h1>Helmet</h1>
+                                <button onClick={() => increaseModTotal('helmet')}>Increase</button>
+                                <button onClick={() => decreaseModTotal('helmet')}>Decrease</button>
+                                <Armor 
+                                    armorName={'helmet'}
+                                    modData={helmetMods}
+                                    setModData={setHelmetMods}
+                                    totalCount={modCounts.helmet}
+                                    setModCounts={setModCounts}
+                                    armorCharge={armorCharge.charge}
+                                />
+                            </div>
                         }/>
 
-                        <Route path='/arm' element={
-                            <Armor
-                                modCount={armMods}
-                                setModCount={setArmMods}
-                                armorCharge={armorCharge}
-                            />
+                        <Route path={'/arm'} element={
+                            <div>
+                                <h1>Arm</h1>
+                                <button onClick={() => increaseModTotal('arm')}>Increase</button>
+                                <button onClick={() => decreaseModTotal('arm')}>Decrease</button>
+                                <Armor 
+                                    armorName={'leg'}
+                                    modData={armMods}
+                                    setModData={setArmMods}
+                                    totalCount={modCounts.arm}
+                                    setModCounts={setModCounts}
+                                    armorCharge={armorCharge.charge}
+                                />
+                            </div>
                         }/>
-                        <Route path='/leg' element={
-                            <Armor
-                                modCount={legMods}
-                                setModCount={setLegMods}
-                            />
+
+                        <Route path={'/leg'} element={
+                            <div>
+                                <h1>Arm</h1>
+                                <button onClick={() => increaseModTotal('leg')}>Increase</button>
+                                <button onClick={() => decreaseModTotal('leg')}>Decrease</button>
+                                <Armor 
+                                    armorName={'leg'}
+                                    modData={legMods}
+                                    setModData={setLegMods}
+                                    totalCount={modCounts.leg}
+                                    setModCounts={setModCounts}
+                                    armorCharge={armorCharge.charge}
+                                />
+                            </div>
                         }/>
-                        <Route path='/class' element={
-                            <Armor
-                                modCount={classMods}
-                                setModCount={setClassMods}
-                                armor Charge={armorCharge}
-                            />
-                        }/> */}
+
+                        <Route path={'/class'} element={
+                            <div>
+                                <h1>Arm</h1>
+                                <button onClick={() => increaseModTotal('class')}>Increase</button>
+                                <button onClick={() => decreaseModTotal('class')}>Decrease</button>
+                                <Armor 
+                                    armorName={'class'}
+                                    modData={classMods}
+                                    setModData={setClassMods}
+                                    totalCount={modCounts.class}
+                                    setModCounts={setModCounts}
+                                    armorCharge={armorCharge.charge}
+                                />
+                            </div>
+                        }/>
                     </Routes>
                 </main>
             

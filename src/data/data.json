@@ -11,7 +11,8 @@
 				0.029
 			],
 			"type": "melee-kill",
-			"generates": "super"
+			"generates": "super",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/f47540dc70a9aad624a8936c7e82fcbd.png"
 		},
 		"aa": {
 			"name": "Ashes To Assets",
@@ -29,6 +30,7 @@
 		"dy": {
 			"name": "Dynamo",
 			"description": "Gain bonus Super energy when using your class ability near enemies. (NO DATA)",
+            "count": 0,
 			"stacks": [
 				0,
 				0,
