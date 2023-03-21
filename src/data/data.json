@@ -25,7 +25,8 @@
 				0.048
 			],
 			"type": "grenade-kill",
-			"generates": "super"
+			"generates": "super",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/ba29cbcb4fa6f32b18fc1c9a27593f8b.png"
 		},
 		"dy": {
 			"name": "Dynamo",
@@ -38,7 +39,8 @@
 				0
 			],
 			"type": "class-use",
-			"generates": "super"
+			"generates": "super",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/8f2bffcbe752a6c8c39cfebe38db6ad1.png"
 		}
 	},
 	"arm": {
@@ -60,7 +62,8 @@
 			],
 			"type": "grenade-use",
 			"generates": "grenade",
-			"kickstart": true
+			"kickstart": true,
+            "url": "https://www.bungie.net/common/destiny2_content/icons/172aec971d8f1de939453cc428288c88.png"
 		},
 		"mk": {
 			"name": "Melee Kickstart",
@@ -80,7 +83,8 @@
 			],
 			"type": "melee-use",
 			"generates": "melee",
-			"kickstart": true
+			"kickstart": true,
+            "url": "https://www.bungie.net/common/destiny2_content/icons/f0cb5ce01930086ab623fc7854641669.png"
 		},
 		"mt": {
 			"name": "Momentum Transfer",
@@ -93,7 +97,8 @@
 				0.25
 			],
 			"type": "grenade-hit",
-			"generates": "melee"
+			"generates": "melee",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/496016b33c0c21d64e75a53d0358a7eb.png"
 		},
 		"ii": {
 			"name": "Impact Induction",
@@ -106,7 +111,8 @@
 				0.25
 			],
 			"type": "melee-hit",
-			"generates": "grenade"
+			"generates": "grenade",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/e00ae3014d71f672690e493cb814e9bf.png"
 		},
 		"fs": {
 			"name": "Focusing Strike",
@@ -119,7 +125,8 @@
 				0.25
 			],
 			"type": "melee-hit",
-			"generates": "class"
+			"generates": "class",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/314d87945335ccf56c5e128e72a497a4.png"
 		},
 		"bd": {
 			"name": "Bolstering Detonation",
@@ -132,7 +139,8 @@
 				0.25
 			],
 			"type": "grenade-hit",
-			"generates": "class"
+			"generates": "class",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/4799aa0b650494b79dc8c3d8941cdc03.png"
 		}
 	},
 	"leg": {
@@ -147,7 +155,8 @@
 				0.15
 			],
 			"type": "orb-pickup",
-			"generates": "melee"
+			"generates": "melee",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/fbd50803fc86f3b60c62fa9a37760186.png"
 		},
 		"in": {
 			"name": "Innervation",
@@ -160,7 +169,8 @@
 				0.15
 			],
 			"type": "orb-pickup",
-			"generates": "grenade"
+			"generates": "grenade",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/8d4ff6be1e86ffb1af2a61c987c027b5.png"
 		},
 		"is": {
 			"name": "Insulation",
@@ -173,7 +183,8 @@
 				0.056
 			],
 			"type": "orb-pickup",
-			"generates": "class"
+			"generates": "class",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/bf91aa03df6599cb3fd7eac78ecf778f.png"
 		},
 		"ab": {
 			"name": "Absolution",
@@ -186,7 +197,8 @@
 				0.1
 			],
 			"type": "orb-pickup",
-			"generates": "all"
+			"generates": "all",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/a3cd4b61619a426bd5787a9aa5e8e4b4.png"
 		},
 		"of": {
 			"name": "Orbs Of Restoration",
@@ -199,7 +211,8 @@
 				0.15
 			],
 			"type": "orb-pickup",
-			"generates": "least-charged"
+			"generates": "least-charged",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/3da4a26eca77c94bfcb0907fe12d8b6a.png"
 		}
 	},
 	"class": {
@@ -221,7 +234,8 @@
 			],
 			"type": "class-use",
 			"generates": "class",
-			"kickstart": true
+			"kickstart": true,
+            "url": "https://www.bungie.net/common/destiny2_content/icons/4a90f8bea82933593483bd469975249a.png"
 		},
 		"or": {
 			"name": "Outreach",
@@ -234,7 +248,8 @@
 				0.15
 			],
 			"type": "class-use",
-			"generates": "melee"
+			"generates": "melee",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/9af796ceac99cec4ee91044fe727d596.png"
 		},
 		"bo": {
 			"name": "Bomber",
@@ -247,7 +262,8 @@
 				0.15
 			],
 			"type": "class-use",
-			"generates": "grenade"
+			"generates": "grenade",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/25c877c27b991ac3980891f1ecc2e385.png"
 		},
 		"ds": {
 			"name": "Distribution",
@@ -260,7 +276,8 @@
 				0.7
 			],
 			"type": "class-use",
-			"generates": "all"
+			"generates": "all",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/a116725dc6ebe6a35866ecc7c681cef4.png"
 		}
 	}
 }
