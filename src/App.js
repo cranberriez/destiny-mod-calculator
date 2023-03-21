@@ -1,61 +1,119 @@
 import React, { useState } from 'react';
-import Helmet from './components/helmet.js'
-import Arm from'./components/arm.js'
-import Leg from './components/leg.js'
-import Class from'./components/class.js'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Armor from './components/armor.js'
 import ArmorCharge from './components/armorCharge.js';
 import Breakdown from './components/breakdown.js'
+import Navbar from './components/navbar.js'
 import './App.css';
+import data from './data/data.json'
 
 function App() {
-  const [helmetModCount, setHelmetModCount] = useState({
-    handsOn: { count: 0, stacks: [0.0075, 0.025, 0.029, 0.029], type: "melee-kill", generates: "super" },
-    ashesToAssets: { count: 0, stacks: [0.0075, 0.048, 0.052, 0.048], type: "grenade-kill", generates: "super" },
-    dynamo: { count: 0, stacks: [0,0,0,0], type: "class-use", generates: "super" },
-    totalMods: 0,
-  });
+    const [helmetMods, setHelmetMods] = useState(data.helmet);
+    const [armMods, setArmMods] = useState(data.arm);
+    const [legMods, setLegMods] = useState(data.leg);
+    const [classMods, setClassMods] = useState(data.class);
+    const [armorCharge, setArmorCharge] = useState({ charge: 0 })
 
-  const [legModCount, setLegModCount] = useState({
-    invigoration: { count: 0, stacks: [0, 0.10, 0.13, 0.15], type: "orb-pickup", generates: "melee"},
-    innervation: { count: 0, stacks: [0, 0.10, 0.13, 0.15], type: "orb-pickup", generates: "grenade"},
-    insulation: { count: 0, stacks: [0, 0.04, 0.056, 0.056], type: "orb-pickup", generates: "class"},
-    absolution: { count: 0, stacks: [0, 0.05, 0.075, 0.10], type: "orb-pickup", generates: "all"},
-    orbsOfRestoration: { count: 0, stacks: [0, 0.05, 0.125, 0.15], type: "orb-pickup", generates: "least-charged"},
-    totalMods: 0,
-  });
+    const [modCounts, setModCounts] = useState({ 
+        helmet: 0,
+        arm: 0,
+        leg: 0,
+        class: 0,
+    })
 
-  const [armModCount, setArmModCount] = useState({
-    gk: { count: 0, stacks: [0, 0.127, 0.17, 0.232, 0.308, 0.375, 0.422, 0.454, 0.478, 0.496], type: "grenade-use", generates: "grenade", kickstart: true},
-    mk: { count: 0, stacks: [0, 0.127, 0.17, 0.232, 0.308, 0.375, 0.422, 0.454, 0.478, 0.496], type: "melee-use", generates: "melee", kickstart: true},
-    mt: { count: 0, stacks: [0, 0.20, 0.25, 0.25], type: "grenade-hit", generates: "melee"},
-    ii: { count: 0, stacks: [0, 0.20, 0.25, 0.25], type: "melee-hit", generates: "grenade"},
-    fs: { count: 0, stacks: [0, 0.20, 0.25, 0.25], type: "melee-hit", generates: "class"},
-    bd: { count: 0, stacks: [0, 0.20, 0.25, 0.25], type: "grenade-hit", generates: "class"},
-    totalMods: 0,
-  });
+    function increaseModTotal(key) {
+        if (modCounts[key] >= 3) return
+        setModCounts((prevState) => ({
+            ...prevState,
+            [key]: modCounts[key] + 1,
+        }));
+    }
 
-  const [classModCount, setClassModCount] = useState({
-    uk: { count: 0, stacks: [0, 0.127, 0.17, 0.232, 0.308, 0.375, 0.422, 0.454, 0.478, 0.496], type: "class-use", generates: "class", kickstart: true},
-    o: { count: 0, stacks: [0, 0.12, 0.15, 0.15], type: "class-use", generates: "melee"},
-    b: { count: 0, stacks: [0, 0.12, 0.15, 0.15], type: "class-use", generates: "grenade"},
-    d: { count: 0, stacks: [0, 0.4, 0.7, 0.7], type: "class-use", generates: "all"},
-    totalMods: 0,
-  });
+    function decreaseModTotal(key) {
+        if (modCounts[key] <= 0) return
+        setModCounts((prevState) => ({
+            ...prevState,
+            [key]: modCounts[key] - 1,
+        }));
+    }
 
-  const [armorCharge, setArmorChage] = useState({
-    charge: 0,
-  })
+    return (
+        <div className="App">
+            <Router>
+                <Navbar modTotals={modCounts} />
 
-  return (
-    <div className="App">
-      <Helmet modCount={helmetModCount} setModCount={setHelmetModCount}/>
-      <Arm modCount={armModCount} setModCount={setArmModCount} armorCharge={armorCharge}/>
-      <Leg modCount={legModCount} setModCount={setLegModCount}/>
-      <Class modCount={classModCount} setModCount={setClassModCount} armorCharge={armorCharge}/>
-      <ArmorCharge armorCharge={armorCharge} setArmorCharge={setArmorChage}/>
-      <Breakdown helmetMods={helmetModCount} legMods={legModCount} armMods={armModCount} classMods={classModCount} armorCharge={armorCharge}/>
-    </div>
-  );
+                <main>
+                    <Routes>
+                        <Route path={'/helmet'} element={
+                            <div>
+                                <Armor 
+                                    armorName={'helmet'}
+                                    modData={helmetMods}
+                                    setModData={setHelmetMods}
+                                    totalCount={modCounts.helmet}
+                                    setModCounts={setModCounts}
+                                    armorCharge={armorCharge.charge}
+                                />
+                            </div>
+                        }/>
+
+                        <Route path={'/arm'} element={
+                            <div>
+                                <Armor 
+                                    armorName={'arm'}
+                                    modData={armMods}
+                                    setModData={setArmMods}
+                                    totalCount={modCounts.arm}
+                                    setModCounts={setModCounts}
+                                    armorCharge={armorCharge.charge}
+                                />
+                            </div>
+                        }/>
+
+                        <Route path={'/leg'} element={
+                            <div>
+                                <Armor 
+                                    armorName={'leg'}
+                                    modData={legMods}
+                                    setModData={setLegMods}
+                                    totalCount={modCounts.leg}
+                                    setModCounts={setModCounts}
+                                    armorCharge={armorCharge.charge}
+                                />
+                            </div>
+                        }/>
+
+                        <Route path={'/class'} element={
+                            <div>
+                                <Armor 
+                                    armorName={'class'}
+                                    modData={classMods}
+                                    setModData={setClassMods}
+                                    totalCount={modCounts.class}
+                                    setModCounts={setModCounts}
+                                    armorCharge={armorCharge.charge}
+                                />
+                            </div>
+                        }/>
+                    </Routes>
+                </main>
+            
+                <div className="breakdown">
+                    {/* <ArmorCharge
+                        armorCharge={armorCharge}
+                        setArmorCharge={setArmorCharge}
+                    />
+                    <Breakdown
+                        helmetMods={helmetMods}
+                        armMods={armMods}
+                        legMods={legMods}
+                        classMods={classMods}
+                        armorCharge={armorCharge}
+                    /> */}
+                </div>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
