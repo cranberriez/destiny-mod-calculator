@@ -28,7 +28,7 @@ function App() {
 
                 <main>
                     <Routes>
-                        <Route path={'/helmet'} element={
+                        <Route path={'/destiny-mod-calculator/helmet'} element={
                             <div>
                                 <Armor 
                                     armorName={'helmet'}
@@ -41,7 +41,7 @@ function App() {
                             </div>
                         }/>
 
-                        <Route path={'/arm'} element={
+                        <Route path={'/destiny-mod-calculator/arm'} element={
                             <div>
                                 <Armor 
                                     armorName={'arm'}
@@ -54,7 +54,7 @@ function App() {
                             </div>
                         }/>
 
-                        <Route path={'/leg'} element={
+                        <Route path={'/destiny-mod-calculator/leg'} element={
                             <div>
                                 <Armor 
                                     armorName={'leg'}
@@ -67,7 +67,7 @@ function App() {
                             </div>
                         }/>
 
-                        <Route path={'/class'} element={
+                        <Route path={'/destiny-mod-calculator/class'} element={
                             <div>
                                 <Armor 
                                     armorName={'class'}

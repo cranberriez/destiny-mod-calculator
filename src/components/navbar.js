@@ -20,7 +20,7 @@ function Navbar(props) {
     return (
         <nav>
             {Object.keys(modTotals).map(key => (
-                <NavLink to={'/' + key} className=''  id={key + '-link'} key={key + '-link'}>
+                <NavLink to={'/destiny-mod-calculator/' + key} className=''  id={key + '-link'} key={key + '-link'}>
 
                     <div className='nav-label'>
                         <div className='nav-icon'>
