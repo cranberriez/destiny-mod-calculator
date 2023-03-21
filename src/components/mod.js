@@ -100,7 +100,7 @@ function Mod(props) {
                     stacks={modData.stacks}
                     count={modData.count}
                 />
-                <p>Mods Allocated (Stacks)</p>
+                {/* <p>Mods Allocated (Stacks)</p> */}
             </div>
             <div className='mod-buttons'>
                 <ModButton 
