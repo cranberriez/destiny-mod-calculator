@@ -46,9 +46,6 @@ function App() {
                     <Routes>
                         <Route path={'/helmet'} element={
                             <div>
-                                <h1>Helmet</h1>
-                                <button onClick={() => increaseModTotal('helmet')}>Increase</button>
-                                <button onClick={() => decreaseModTotal('helmet')}>Decrease</button>
                                 <Armor 
                                     armorName={'helmet'}
                                     modData={helmetMods}
@@ -62,11 +59,8 @@ function App() {
 
                         <Route path={'/arm'} element={
                             <div>
-                                <h1>Arm</h1>
-                                <button onClick={() => increaseModTotal('arm')}>Increase</button>
-                                <button onClick={() => decreaseModTotal('arm')}>Decrease</button>
                                 <Armor 
-                                    armorName={'leg'}
+                                    armorName={'arm'}
                                     modData={armMods}
                                     setModData={setArmMods}
                                     totalCount={modCounts.arm}
@@ -78,9 +72,6 @@ function App() {
 
                         <Route path={'/leg'} element={
                             <div>
-                                <h1>Arm</h1>
-                                <button onClick={() => increaseModTotal('leg')}>Increase</button>
-                                <button onClick={() => decreaseModTotal('leg')}>Decrease</button>
                                 <Armor 
                                     armorName={'leg'}
                                     modData={legMods}
@@ -94,9 +85,6 @@ function App() {
 
                         <Route path={'/class'} element={
                             <div>
-                                <h1>Arm</h1>
-                                <button onClick={() => increaseModTotal('class')}>Increase</button>
-                                <button onClick={() => decreaseModTotal('class')}>Decrease</button>
                                 <Armor 
                                     armorName={'class'}
                                     modData={classMods}

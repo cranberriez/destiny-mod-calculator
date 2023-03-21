@@ -57,8 +57,8 @@ function Stacks(props) {
 
     for (let i = 0; i < stacks.length; i++) {
         listItems.push(
-            <li key={modName + '-' + i}>
-                <p className={(i === count ? 'active' : '')}><span>%</span>{(stacks[i] * 100).toFixed(2)}</p>
+            <li  className={(i === count ? 'active' : '')} key={modName + '-' + i}>
+                <p><span>%</span>{(stacks[i] * 100).toFixed(1)}</p>
                 <p>{i}</p>
             </li>
         )
@@ -78,15 +78,18 @@ function Mod(props) {
         handleModCountChange(modID, count)
     }
 
+    var kickstart = ''
+    if (modData.kickstart) {kickstart = 'kickstart'}
+
     return (
-        <div className="Mod">
+        <div className={"Mod" + " " + kickstart}>
             <div className='mod-header'>
                 <img className='mod-img' src={modData.url}></img>
                 <div className='mod-heading'>
                     <h1>{modData.name}</h1>
                     {/* Outputs sentence as: Regains (generates) on (ability) (activation) */}
-                    <p>
-                        <span className={generates}> {capFirst(generates)}</span> energy on
+                    <p> %
+                        <span className={generates}>{capFirst(generates)}</span> energy on
                         <span className={ability}> {capFirst(ability)} {capFirst(activation)}</span>
                     </p>
                 </div>
@@ -121,6 +124,12 @@ function Mod(props) {
                     setModCount={setModCount}
                     totalCount={totalCount}
                 />
+
+                {modData.kickstart &&
+                    <p className='kickstart-info'>
+                        Mod Count is added to total amount of Armor Charges to determine 'stacks' when using this ability.
+                    </p>
+                }
             </div>
         </div>
     );

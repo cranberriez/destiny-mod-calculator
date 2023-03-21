@@ -6,6 +6,8 @@ nav {
     background: rgba(17, 17, 17, 0.5);
     box-shadow: 4px 0px 16px rgba(0, 0, 0, 0.25);
     padding-top: 80px;
+
+    position: fixed;
 }
 
 nav a  {

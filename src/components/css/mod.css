@@ -5,6 +5,13 @@
     border-radius: 6px;
 
     padding: 20px;
+    margin: 0 40px 30px;
+
+    min-width: 360px;
+}
+
+.Mod.kickstart {
+    min-width: 580px;
 }
 
 .mod-header {
@@ -57,7 +64,7 @@ span.orb { color: #1abc9c; }
 
     background: rgba(63, 63, 63, 0.3);
     border-radius: 10px;
-    padding: 6px;
+    padding: 6px 8px;
 }
 
 .mod-stacks li {
@@ -72,6 +79,15 @@ span.orb { color: #1abc9c; }
     padding: 8px 0;
 
     width: 70px;
+    border-radius: 5px;
+}
+
+.kickstart .mod-stacks li {
+    width: 40px;
+}
+
+.kickstart .mod-stacks li p:first-child span {
+    font-size: 8px;
 }
 
 .mod-stacks li.active {
@@ -90,8 +106,7 @@ span.orb { color: #1abc9c; }
 }
 
 .mod-stacks-cont > p {
-    margin-left: 13px;
-    margin-bottom: 24px;
+    margin: 5px 0 24px 13px;
 }
 
 
@@ -130,8 +145,12 @@ span.orb { color: #1abc9c; }
     transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.mod-buttons button.slotted:hover img {
-    opacity: 0.5;
+.mod-buttons button.slotted {
+    background: #3f3f3f;
+}
+
+.mod-buttons button.slotted:hover img, .mod-buttons button.slotted:hover ~ button img {
+    opacity: 0.2;
 }
 
 .mod-buttons button.open:hover {
@@ -144,11 +163,11 @@ span.orb { color: #1abc9c; }
     transform: rotate(-45deg);
 }
 
-.mod-buttons button.slotted:hover {
+.mod-buttons button.slotted:hover, .mod-buttons button.slotted:hover ~ button.slotted {
     border-color: #E74C3C;
 }
 
-.mod-buttons button.slotted:hover svg {
+.mod-buttons button.slotted:hover svg, .mod-buttons button.slotted:hover ~ button.slotted svg {
     color: #E74C3C;
 }
 
@@ -162,4 +181,17 @@ span.orb { color: #1abc9c; }
 
 .mod-buttons button.disabled svg {
     transform: rotate(-45deg);
+}
+
+.kickstart-info {
+    align-self: center;
+
+    height: 100%;
+    width: 220px;
+
+    font-size: 12px;
+    color: #d0d0d0;
+    line-height: 22px;
+
+    overflow-wrap: break-word;
 }
