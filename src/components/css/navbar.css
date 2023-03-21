@@ -8,9 +8,12 @@ nav {
     padding-top: 80px;
 
     position: fixed;
+
+    display: flex;
+    flex-direction: column;
 }
 
-nav a  {
+nav a:not(.small)  {
     position: relative;
     display: flex;
     align-items: center;
@@ -26,7 +29,7 @@ nav a  {
     border: 1px solid transparent;
 }
 
-nav a:hover {
+nav a:not(.small):hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -129,4 +132,24 @@ nav a.active .nav-mod-count div:not(.active) div {
     background: 0;
     left: -12px;
     width: 1px;
+}
+
+.small-cont:first-of-type {
+    margin-top: auto;
+}
+
+.small-cont {
+    width: 100%;
+    margin-bottom: 40px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.small-cont a {
+    color: #d0d0d0;
+}
+
+.small-cont a:hover {
+    color: #fff;
 }

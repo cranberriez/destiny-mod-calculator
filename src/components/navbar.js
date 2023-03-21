@@ -21,6 +21,7 @@ function Navbar(props) {
         <nav>
             {Object.keys(modTotals).map(key => (
                 <NavLink to={'/' + key} className=''  id={key + '-link'} key={key + '-link'}>
+
                     <div className='nav-label'>
                         <div className='nav-icon'>
                             {React.createElement(icons[key])}
@@ -36,6 +37,24 @@ function Navbar(props) {
                     </div>
                 </NavLink>
             ))}
+
+            <div className='small-cont'> 
+                <a  className='small'
+                    target="_blank"
+                    rel="noreferrer"
+                    href='https://www.reddit.com/r/DestinyTheGame/comments/11m05tz/full_breakdown_of_all_ability_related_armormods/'>
+                        Source
+                </a>
+            </div>
+            <div className='small-cont'> 
+                <a  className='small'
+                    target="_blank"
+                    rel="noreferrer"
+                    href='https://github.com/cranberriez/destiny-mod-calculator'>
+                        Github
+                </a>
+            </div>
+
         </nav>
     )
 }
