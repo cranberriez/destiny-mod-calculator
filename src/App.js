@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Armor from './components/armor.js'
-import ArmorCharge from './components/armorCharge.js';
-import Breakdown from './components/breakdown.js'
+// import ArmorCharge from './components/armorCharge.js';
+// import Breakdown from './components/breakdown.js'
 import Navbar from './components/navbar.js'
 import './App.css';
 import data from './data/data.json'
@@ -20,22 +20,6 @@ function App() {
         leg: 0,
         class: 0,
     })
-
-    function increaseModTotal(key) {
-        if (modCounts[key] >= 3) return
-        setModCounts((prevState) => ({
-            ...prevState,
-            [key]: modCounts[key] + 1,
-        }));
-    }
-
-    function decreaseModTotal(key) {
-        if (modCounts[key] <= 0) return
-        setModCounts((prevState) => ({
-            ...prevState,
-            [key]: modCounts[key] - 1,
-        }));
-    }
 
     return (
         <div className="App">
