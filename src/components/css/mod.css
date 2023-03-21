@@ -42,11 +42,11 @@
 }
 
 span {font-weight: bold;}
-span.super { color: #2ECC71; }
-span.melee { color: #3498db; }
-span.grenade { color: #e67e22; }
-span.class { color: #9b59b6; }
-span.orb { color: #1abc9c; }
+.super { color: #2ECC71; border-color: #2ECC71 !important;}
+.melee { color: #3498db; border-color: #3498db !important;}
+.grenade { color: #e67e22; border-color: #e67e22 !important;}
+.class { color: #9b59b6; border-color: #9b59b6 !important;}
+.orb { color: #1abc9c; border-color: #1abc9c !important;}
 
 
 
