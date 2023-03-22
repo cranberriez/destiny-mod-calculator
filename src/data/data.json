@@ -65,6 +65,20 @@
 			"kickstart": true,
             "url": "https://www.bungie.net/common/destiny2_content/icons/172aec971d8f1de939453cc428288c88.png"
 		},
+        "ii": {
+			"name": "Impact Induction",
+			"description": "Causing damage with a melee attack reduces your grenade cooldown. (7 Second Cooldown)",
+			"count": 0,
+			"stacks": [
+				0,
+				0.2,
+				0.25,
+				0.25
+			],
+			"type": "melee-hit",
+			"generates": "grenade",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/e00ae3014d71f672690e493cb814e9bf.png"
+		},
 		"mk": {
 			"name": "Melee Kickstart",
 			"description": "Melee-Kickstart refunds cooldown whenever your melee energy is fully depleted. (DOESN'T works with multiple charges)",
@@ -99,20 +113,6 @@
 			"type": "grenade-hit",
 			"generates": "melee",
             "url": "https://www.bungie.net/common/destiny2_content/icons/496016b33c0c21d64e75a53d0358a7eb.png"
-		},
-		"ii": {
-			"name": "Impact Induction",
-			"description": "Causing damage with a melee attack reduces your grenade cooldown. (7 Second Cooldown)",
-			"count": 0,
-			"stacks": [
-				0,
-				0.2,
-				0.25,
-				0.25
-			],
-			"type": "melee-hit",
-			"generates": "grenade",
-            "url": "https://www.bungie.net/common/destiny2_content/icons/e00ae3014d71f672690e493cb814e9bf.png"
 		},
 		"fs": {
 			"name": "Focusing Strike",

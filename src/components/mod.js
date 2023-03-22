@@ -9,7 +9,7 @@ function capFirst(word) {
 }
 
 function ModButton(props) {
-    const { i, imageUrl, ability, count, setModCount, totalCount} = props;
+    const { i, imageUrl, generates, count, setModCount, totalCount} = props;
 
     var slotStatus = 'open'
 
@@ -33,7 +33,7 @@ function ModButton(props) {
         return (
             <button
                 onClick={() => setModCount(i - 1)}
-                className={slotStatus + ' ' + ability}
+                className={slotStatus + ' ' + generates}
             >
                 <img src={imageUrl} alt='Mod'></img>
                 {<FontAwesomeIcon icon={faPlus} />}
@@ -106,7 +106,7 @@ function Mod(props) {
                 <ModButton 
                     i={1}
                     imageUrl={modData.url}
-                    ability={ability}
+                    generates={generates}
                     count={modData.count}
                     setModCount={setModCount}
                     totalCount={totalCount}
@@ -114,7 +114,7 @@ function Mod(props) {
                 <ModButton 
                     i={2}
                     imageUrl={modData.url}
-                    ability={ability}
+                    generates={generates}
                     count={modData.count}
                     setModCount={setModCount}
                     totalCount={totalCount}
@@ -122,7 +122,7 @@ function Mod(props) {
                 <ModButton 
                     i={3}
                     imageUrl={modData.url}
-                    ability={ability}
+                    generates={generates}
                     count={modData.count}
                     setModCount={setModCount}
                     totalCount={totalCount}
