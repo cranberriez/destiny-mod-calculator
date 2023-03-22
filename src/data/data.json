@@ -79,6 +79,20 @@
 			"generates": "grenade",
             "url": "https://www.bungie.net/common/destiny2_content/icons/e00ae3014d71f672690e493cb814e9bf.png"
 		},
+		"bd": {
+			"name": "Bolstering Detonation",
+			"description": "Grants class ability energy when you cause damage with a grenade. (7 Second Cooldown)",
+			"count": 0,
+			"stacks": [
+				0,
+				0.2,
+				0.25,
+				0.25
+			],
+			"type": "grenade-hit",
+			"generates": "class",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/4799aa0b650494b79dc8c3d8941cdc03.png"
+		},
 		"mk": {
 			"name": "Melee Kickstart",
 			"description": "Melee-Kickstart refunds cooldown whenever your melee energy is fully depleted. (DOESN'T works with multiple charges)",
@@ -127,20 +141,6 @@
 			"type": "melee-hit",
 			"generates": "class",
             "url": "https://www.bungie.net/common/destiny2_content/icons/314d87945335ccf56c5e128e72a497a4.png"
-		},
-		"bd": {
-			"name": "Bolstering Detonation",
-			"description": "Grants class ability energy when you cause damage with a grenade. (7 Second Cooldown)",
-			"count": 0,
-			"stacks": [
-				0,
-				0.2,
-				0.25,
-				0.25
-			],
-			"type": "grenade-hit",
-			"generates": "class",
-            "url": "https://www.bungie.net/common/destiny2_content/icons/4799aa0b650494b79dc8c3d8941cdc03.png"
 		}
 	},
 	"leg": {
