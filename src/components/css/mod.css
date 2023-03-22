@@ -1,6 +1,8 @@
 .Mod {
     background: rgba(47, 47, 47, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.25);
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
 
@@ -42,13 +44,6 @@
 }
 
 span {font-weight: bold;}
-.super { color: #2ECC71; border-color: #2ECC71 !important;}
-.melee { color: #3498db; border-color: #3498db !important;}
-.grenade { color: #e67e22; border-color: #e67e22 !important;}
-.class { color: #9b59b6; border-color: #9b59b6 !important;}
-.orb { color: #1abc9c; border-color: #1abc9c !important;}
-
-
 
 .mod-stacks-cont {
     width: 100%;
@@ -120,7 +115,9 @@ span {font-weight: bold;}
 .mod-buttons button {
     width: 69px;
     height: 69px;
-    border: 3px solid #555;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #555;
     background: 0;
 
     font-size: 24px;
@@ -164,7 +161,7 @@ span {font-weight: bold;}
 }
 
 .mod-buttons button.slotted:hover, .mod-buttons button.slotted:hover ~ button.slotted {
-    border-color: #E74C3C;
+    border-color: #E74C3C !important;
 }
 
 .mod-buttons button.slotted:hover svg, .mod-buttons button.slotted:hover ~ button.slotted svg {
@@ -172,7 +169,9 @@ span {font-weight: bold;}
 }
 
 .mod-buttons button.disabled {
-    border: 3px solid #333;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #333;
     background: #333;
     color: #777;
     
@@ -195,3 +194,9 @@ span {font-weight: bold;}
 
     overflow-wrap: break-word;
 }
+
+.super { color: #2ECC71; border-color: #2ECC71 !important;}
+.melee { color: #3498db; border-color: #3498db !important;}
+.grenade { color: #e67e22; border-color: #e67e22 !important;}
+.class { color: #9b59b6; border-color: #9b59b6 !important;}
+.orb { color: #1abc9c; border-color: #1abc9c !important;}
