@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './css/armorcharge.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faMinus } from '@fortawesome/free-solid-svg-icons'
 
-function ChargeBox(props) {
+function ChargeBoxes(props) {
+    const {armorCharge, setCharge, hoveredButtonIndex, setHoveredButtonIndex} = props;
     const boxList = []
 
     for (let i = 0; i < 6; i++) {
-        boxList.push(
-            <div key={`charge-box-${i}`} className='charge-box'>
+        let buttonState = (
+            i < armorCharge || i < hoveredButtonIndex ?
+            (
+              hoveredButtonIndex != null && i > hoveredButtonIndex ?
+              'remove' :
+              'active'
+            ) :
+            ''
+        );
 
-            </div>
+        boxList.push(
+            <button 
+                key={`charge-box-${i}`} 
+                className={
+                    `charge-box 
+                    ${buttonState}`
+                }
+                onClick={() => setCharge(i + 1)}
+                onMouseOver={() => setHoveredButtonIndex(i)}
+                onMouseOut={() => setHoveredButtonIndex(null)}>
+                    <div>
+                        {buttonState === 'active' ? (
+                        <FontAwesomeIcon icon={faPlus} />
+                        ) : buttonState === 'remove' ? (
+                        <FontAwesomeIcon icon={faMinus} />
+                        ) : (
+                        <FontAwesomeIcon icon={faPlus} />
+                        )}
+                    </div>
+            </button>
         )
     }
 
@@ -18,6 +48,7 @@ function ChargeBox(props) {
 
 function ArmorCharge(props) {
     const {armorCharge, setArmorCharge} = props;
+    const [hoveredButtonIndex, setHoveredButtonIndex] = useState(null);
 
     const setCharge = (newCharge) => {
         if (armorCharge.charge < 0 || armorCharge.charge > 6) return
@@ -35,12 +66,22 @@ function ArmorCharge(props) {
         <div className="ArmorCharge">
             <div className='armor-charge-header'>
                 <h2>Armor Charge</h2>
-                <button className='armor-charge-clear' onClick={(clearCharge)}>
+                <button 
+                    className={`armor-charge-clear 
+                                ${armorCharge.charge <= 0 ? 'inactive' : ''}`} 
+                    onClick={(clearCharge)}
+                    onMouseOver={() => setHoveredButtonIndex(-1)}
+                    onMouseOut={() => setHoveredButtonIndex(null)}>
                     Clear
                 </button>
             </div>
             <div className='charge-box-cont'>
-                <ChargeBox charge={armorCharge.charge} setArmorCharge={setCharge}/>
+                <ChargeBoxes 
+                    armorCharge={armorCharge.charge} 
+                    setCharge={setCharge}
+                    hoveredButtonIndex={hoveredButtonIndex}
+                    setHoveredButtonIndex={setHoveredButtonIndex}
+                />
             </div>
         </div>
     )
