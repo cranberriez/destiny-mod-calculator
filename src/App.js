@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Armor from './components/armor.js'
 import ArmorCharge from './components/armorCharge.js';
-// import Breakdown from './components/breakdown.js'
+import Breakdown from './components/breakdown.js'
 import Navbar from './components/navbar.js'
 import './App.css';
 import data from './data/data.json'
@@ -60,16 +60,16 @@ function App() {
                 </main>
             </Router>
             <div className="breakdown">
-                    {/* <Breakdown
+                    <ArmorCharge
+                        armorCharge={armorCharge}
+                        setArmorCharge={setArmorCharge}
+                    />
+                    <Breakdown
                         helmetMods={helmetMods}
                         armMods={armMods}
                         legMods={legMods}
                         classMods={classMods}
                         armorCharge={armorCharge}
-                    /> */}
-                    <ArmorCharge
-                        armorCharge={armorCharge}
-                        setArmorCharge={setArmorCharge}
                     />
             </div>
         </div>

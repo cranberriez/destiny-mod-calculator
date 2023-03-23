@@ -82,8 +82,7 @@ function Breakdown(props) {
     
             setBreakdown(prevBreakdown => {
                 const updatedBreakdown = { ...prevBreakdown }
-                // const existingValue = updatedBreakdown[ability][type][generates] ?? 0
-                // updatedBreakdown[ability][type][generates] = Number(existingValue) + stacks[count]
+
                 if (kickstart && stacks[count] > 0) {
                     updatedBreakdown[ability][type][generates] = stacks[count + armorCharge.charge]
                 }

@@ -1,0 +1,15 @@
+.Breakdown {
+    margin-top: 2vh;
+    border-left: 1px solid rgba(255,255,255,0.25);
+    padding-left: 3vw;
+
+    color: #d0d0d0;
+
+    position: relative;
+}
+
+.Breakdown::before {
+    content: 'Work in Progress';
+    font-weight: bold;
+    color: yellow;
+}

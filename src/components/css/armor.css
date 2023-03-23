@@ -11,4 +11,28 @@
     overflow-x: hidden;
 
     max-height: 100vh;
+    position: relative;
+}
+
+.mod-clear-button {
+    position: absolute;
+    color: #E74C3C;
+    background-color: transparent;
+    border: 1px solid #E74C3C;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 16px;
+    top: 18px;
+    left: 1vw;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.mod-clear-button:hover {
+    background-color: #E74C3C;
+    color: #d0d0d0;
+}
+
+.mod-clear-button.hidden {
+    display: none;
 }
