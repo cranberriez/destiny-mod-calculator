@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Armor from './components/armor.js'
 import ArmorCharge from './components/armorCharge.js';
 import Breakdown from './components/breakdown.js'
@@ -42,7 +42,7 @@ function App() {
                         }></Route >
 
                         {Object.entries(armorPages).map(([name, data]) => (
-                            <Route path={`/destiny-mod-calculator/${name}`} key={`${name}-route`} element={
+                            <Route path={`${name}`} key={`${name}-route`} element={
                                 <div>
                                     <Armor
                                         key={`${name}-armor`}
