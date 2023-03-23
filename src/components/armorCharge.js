@@ -3,39 +3,17 @@ import './css/armorcharge.css';
 
 
 function ChargeBox(props) {
-    const {charge, setArmorCharge} = props;
+    const boxList = []
 
-    // Using a for loop to create an array of JSX elements
-    var itemsList = [];
-    itemsList.push(
-        <li
-            key={7}
-            onClick={() => {
-                setArmorCharge(0)
-            }}
-            className={"box remove"}
-        >
-            x
-        </li>
-    );
     for (let i = 0; i < 6; i++) {
-        itemsList.push(
-            <li
-                key={i}
-                onClick={() => {
-                    setArmorCharge(i + 1)
-                }}
-                className={"box " + (i < charge ? "active" : "inactive")}
-            >
-            </li>
-        );
+        boxList.push(
+            <div key={`charge-box-${i}`} className='charge-box'>
+
+            </div>
+        )
     }
 
-    return (
-        <ul className="ChargeBoxes">
-            {itemsList}
-        </ul>
-    )
+    return boxList
 }
 
 function ArmorCharge(props) {
@@ -49,18 +27,21 @@ function ArmorCharge(props) {
         ))
     }
 
+    const clearCharge = () => {
+        setCharge(0)
+    }
+
     return (
         <div className="ArmorCharge">
-            <h2>Armor Charge</h2>
-            {/* <button onClick={addCharge}>
-                Add Charge
-            </button>
-            <button onClick={removeCharge}>
-                Remove Charge
-            </button>
-            <p>Charges: {armorCharge.charge}</p> */}
-            <ChargeBox charge={armorCharge.charge} setArmorCharge={setCharge}/>
-            
+            <div className='armor-charge-header'>
+                <h2>Armor Charge</h2>
+                <button className='armor-charge-clear' onClick={(clearCharge)}>
+                    Clear
+                </button>
+            </div>
+            <div className='charge-box-cont'>
+                <ChargeBox charge={armorCharge.charge} setArmorCharge={setCharge}/>
+            </div>
         </div>
     )
 }

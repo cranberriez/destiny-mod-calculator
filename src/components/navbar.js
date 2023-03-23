@@ -12,14 +12,22 @@ const icons = {
     'arm': ArmIcon,
     'leg': LegIcon,
     'class': ClassIcon
-  };
+};
+
+function getSlottedCount(slottedStates) {
+    let count = 0;
+    slottedStates.forEach(element => {
+        if (element !== '') count++;        
+    });
+    return count;
+}
 
 function Navbar(props) {
-    const { modTotals } = props;
+    const { slottedStates } = props;
 
     return (
         <nav>
-            {Object.keys(modTotals).map(key => (
+            {Object.keys(slottedStates).map(key => (
                 <NavLink to={'/destiny-mod-calculator/' + key} className=''  id={key + '-link'} key={key + '-link'}>
 
                     <div className='nav-label'>
@@ -31,9 +39,9 @@ function Navbar(props) {
                         </p>
                     </div>
                     <div className='nav-mod-count'>
-                        <div id={key + '-mod-1'} className={modTotals[key] >= 1 ? "active" : ""}><div></div></div>
-                        <div id={key + '-mod-2'} className={modTotals[key] >= 2 ? "active" : ""}><div></div></div>
-                        <div id={key + '-mod-3'} className={modTotals[key] >= 3 ? "active" : ""}><div></div></div>
+                        <div id={key + '-mod-1'} className={getSlottedCount(slottedStates[key]) >= 3 ? "active" : ""}><div></div></div>
+                        <div id={key + '-mod-2'} className={getSlottedCount(slottedStates[key]) >= 2  ? "active" : ""}><div></div></div>
+                        <div id={key + '-mod-3'} className={getSlottedCount(slottedStates[key]) >= 1  ? "active" : ""}><div></div></div>
                     </div>
                 </NavLink>
             ))}

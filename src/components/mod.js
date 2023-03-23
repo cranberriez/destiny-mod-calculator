@@ -13,6 +13,8 @@ function Stacks(props) {
     const listItems = [];
 
     for (let i = 0; i < stacks.length; i++) {
+        if (stacks[i] === 0) continue
+
         listItems.push(
             <li  className={(i === count ? 'active' : '')} key={modName + '-' + i}>
                 <p><span>%</span>{(stacks[i] * 100).toFixed(1)}</p>
@@ -41,7 +43,6 @@ function ModButton(props) {
 
 
     let slotStatus;
-    console.log(slotted)
     if (slotted[i] === '') slotStatus = 'open'
     else if (slotted[i] === modID) slotStatus = 'slotted'
     else slotStatus = 'disabled'

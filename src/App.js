@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Armor from './components/armor.js'
-// import ArmorCharge from './components/armorCharge.js';
+import ArmorCharge from './components/armorCharge.js';
 // import Breakdown from './components/breakdown.js'
 import Navbar from './components/navbar.js'
 import './App.css';
@@ -13,13 +13,6 @@ function App() {
     const [legMods, setLegMods] = useState(data.leg);
     const [classMods, setClassMods] = useState(data.class);
     const [armorCharge, setArmorCharge] = useState({ charge: 0 })
-
-    const [modCounts, setModCounts] = useState({ 
-        'helmet': 0,
-        'arm': 0,
-        'leg': 0,
-        'class': 0,
-    })
 
     const [slottedStates, setSlottedStates] = useState({
         'helmet': ['','',''],
@@ -38,10 +31,16 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <Navbar modTotals={modCounts} />
+                <Navbar slottedStates={slottedStates} />
 
                 <main>
                     <Routes>
+                        <Route path='/'element={ 
+                            <div>
+
+                            </div>
+                        }></Route >
+
                         {Object.entries(armorPages).map(([name, data]) => (
                             <Route path={`/destiny-mod-calculator/${name}`} key={`${name}-route`} element={
                                 <div>
@@ -50,8 +49,6 @@ function App() {
                                         armorName={name}
                                         modData={data[0]}
                                         setModData={data[1]}
-                                        totalCount={modCounts[name]}
-                                        setModCounts={setModCounts}
                                         armorCharge={armorCharge.charge}
                                         slotted={slottedStates[name]}
                                         setSlotted={(newSlotted) => setSlottedStates({...slottedStates, [name]: newSlotted})}
@@ -59,24 +56,22 @@ function App() {
                                 </div>
                             }/>
                         ))}
-                        
                     </Routes>
                 </main>
-            
-                <div className="breakdown">
-                    {/* <ArmorCharge
-                        armorCharge={armorCharge}
-                        setArmorCharge={setArmorCharge}
-                    />
-                    <Breakdown
+            </Router>
+            <div className="breakdown">
+                    {/* <Breakdown
                         helmetMods={helmetMods}
                         armMods={armMods}
                         legMods={legMods}
                         classMods={classMods}
                         armorCharge={armorCharge}
                     /> */}
-                </div>
-            </Router>
+                    <ArmorCharge
+                        armorCharge={armorCharge}
+                        setArmorCharge={setArmorCharge}
+                    />
+            </div>
         </div>
     );
 }

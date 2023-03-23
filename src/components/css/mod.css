@@ -10,6 +10,7 @@
     grid-column: span 2;
 
     max-width: 480px;
+    color: #d0d0d0;
 }
 
 .Mod.kickstart {
@@ -120,12 +121,14 @@ span {font-weight: bold;}
     border-width: 3px;
     border-style: solid;
     border-color: #555;
+    border-radius: 5px;
     background: 0;
 
     font-size: 24px;
     color: #888;
+    cursor: pointer;
     transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
-
+    
     position: relative;
 }
 
