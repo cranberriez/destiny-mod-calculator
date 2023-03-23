@@ -8,21 +8,48 @@ function capFirst(word) {
     return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
+function Stacks(props) {
+    const { modName, stacks, count } = props;
+    const listItems = [];
+
+    for (let i = 0; i < stacks.length; i++) {
+        listItems.push(
+            <li  className={(i === count ? 'active' : '')} key={modName + '-' + i}>
+                <p><span>%</span>{(stacks[i] * 100).toFixed(1)}</p>
+                <p>{i}</p>
+            </li>
+        )
+    }
+
+    return <ul className='mod-stacks'>{listItems}</ul>
+}
+
 function ModButton(props) {
-    const { i, imageUrl, generates, count, setModCount, totalCount} = props;
+    const { i, slotted, setSlotted, setModCount, url, generates, modID} = props;
 
-    var slotStatus = 'open'
+    function placeMod(countChange) {
+        setModCount(countChange);
+        const newSlotted = [...slotted]; // Create a new copy of the array
+        if (countChange > 0) {
+            newSlotted[i] = modID;
+        } else {
+            newSlotted[i] = '';
+        }
+        setSlotted(newSlotted);
 
-    // Disable slot
-    if (i >= (4 - (totalCount - count))) slotStatus = 'disabled'
+    }
 
-    // Set slot to Modname
-    else if (i <= count) slotStatus = 'slotted'
+
+    let slotStatus;
+    console.log(slotted)
+    if (slotted[i] === '') slotStatus = 'open'
+    else if (slotted[i] === modID) slotStatus = 'slotted'
+    else slotStatus = 'disabled'
 
     if (slotStatus === 'open') {
         return (
             <button
-                onClick={() => setModCount(i)}
+                onClick={() => placeMod(1)}
                 className={slotStatus}
             >
                 {<FontAwesomeIcon icon={faPlus} />}
@@ -32,10 +59,10 @@ function ModButton(props) {
     else if (slotStatus === 'slotted') {
         return (
             <button
-                onClick={() => setModCount(i - 1)}
+                onClick={() => placeMod(-1)}
                 className={slotStatus + ' ' + generates}
             >
-                <img src={imageUrl} alt='Mod'></img>
+                <img src={url} alt='Mod'></img>
                 {<FontAwesomeIcon icon={faPlus} />}
             </button>
         )
@@ -51,35 +78,33 @@ function ModButton(props) {
     }
 }
 
-function Stacks(props) {
-    const { modName, stacks, count } = props;
-    const listItems = []
-
-    for (let i = 0; i < stacks.length; i++) {
-        listItems.push(
-            <li  className={(i === count ? 'active' : '')} key={modName + '-' + i}>
-                <p><span>%</span>{(stacks[i] * 100).toFixed(1)}</p>
-                <p>{i}</p>
-            </li>
-        )
-    }
-
-    return <ul className='mod-stacks'>{listItems}</ul>
-}
-
 function Mod(props) {
-    const { modID, modData, handleModCountChange, totalCount, armorCharge } = props;
-
+    const { modID, modData, handleModCountChange, slotted, setSlotted, armorCharge } = props;
     const [ability, activation] = modData.type.split('-')
     const generates = modData.generates;
 
-    const setModCount = (count) => {
-        console.log("Mod I: " + count)
-        handleModCountChange(modID, count)
+    const setModCount = (change) => {
+        handleModCountChange(modID, modData.count + change)
     }
 
-    var kickstart = ""
+    let kickstart = ""
     if (modData.kickstart) {kickstart = 'kickstart'}
+
+    const buttonList = Array(3)
+        .fill()
+        .map((_, i) => (
+            <ModButton
+                key={modID + "" + i}
+                i={i}
+                slotted={slotted}
+                setSlotted={setSlotted}
+                setModCount={setModCount}
+                count={modData[modID]}
+                url={modData.url}
+                generates={generates}
+                modID={modID}
+            />
+        ));
 
     return (
         <div className={"Mod " + kickstart}>
@@ -103,31 +128,7 @@ function Mod(props) {
                 {/* <p>Mods Allocated (Stacks)</p> */}
             </div>
             <div className='mod-buttons'>
-                <ModButton 
-                    i={1}
-                    imageUrl={modData.url}
-                    generates={generates}
-                    count={modData.count}
-                    setModCount={setModCount}
-                    totalCount={totalCount}
-                />
-                <ModButton 
-                    i={2}
-                    imageUrl={modData.url}
-                    generates={generates}
-                    count={modData.count}
-                    setModCount={setModCount}
-                    totalCount={totalCount}
-                />
-                <ModButton 
-                    i={3}
-                    imageUrl={modData.url}
-                    generates={generates}
-                    count={modData.count}
-                    setModCount={setModCount}
-                    totalCount={totalCount}
-                />
-
+                { buttonList }
                 {modData.kickstart &&
                     <p className='kickstart-info'>
                         Mod Count is added to total amount of Armor Charges to determine 'stacks' when using this ability.

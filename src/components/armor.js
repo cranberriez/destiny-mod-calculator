@@ -1,25 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Mod from './mod.js'
 import './css/armor.css';
 
 function Armor(props) {
-    const { armorName, modData, setModData, totalCount, setModCounts, armorCharge } = props;
+    const { armorName, modData, setModData, slotted, setSlotted, totalCount, setModCounts, armorCharge } = props;
 
     function setModTotalCount(key, countChange) {
-        console.log(countChange)
-
         setModCounts((prevState) => ({
             ...prevState,
-            [key]: totalCount + countChange,
+            [key]: prevState[key] + countChange,
         }));
     }
 
     const setModCount = (modID, count) => {
-        setModData(prevMods => ({
+        setModData((prevMods) => ({
           ...prevMods,
           [modID]: {
             ...prevMods[modID],
-            count: count
+            count: count,
           }
         }));
     }
@@ -32,14 +30,15 @@ function Armor(props) {
 
     return (
         <div className={armorName + " Armor"}>
-            {Object.keys(modData).map(mod => (
+            {Object.entries(modData).map(([mod, modData]) => (
                  <Mod
                     key={mod}
                     modID={mod}
-                    modData={modData[mod]}
+                    modData={modData}
                     handleModCountChange={handleModCountChange}
-                    totalCount={totalCount}
                     armorCharge={armorCharge}
+                    slotted={slotted}
+                    setSlotted={setSlotted}
                  />
             ))}
         </div>

@@ -51,6 +51,7 @@ span {font-weight: bold;}
     display: flex;
     flex-direction: column;
     color: #d0d0d0;
+    margin-bottom: 1vh;
 }
 
 .mod-stacks {
@@ -147,7 +148,7 @@ span {font-weight: bold;}
     background: #3f3f3f;
 }
 
-.mod-buttons button.slotted:hover img, .mod-buttons button.slotted:hover ~ button img {
+.mod-buttons button.slotted:hover img {
     opacity: 0.2;
 }
 
@@ -161,11 +162,11 @@ span {font-weight: bold;}
     transform: rotate(-45deg);
 }
 
-.mod-buttons button.slotted:hover, .mod-buttons button.slotted:hover ~ button.slotted {
+.mod-buttons button.slotted:hover {
     border-color: #E74C3C !important;
 }
 
-.mod-buttons button.slotted:hover svg, .mod-buttons button.slotted:hover ~ button.slotted svg {
+.mod-buttons button.slotted:hover svg {
     color: #E74C3C;
 }
 

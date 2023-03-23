@@ -21,6 +21,13 @@ function App() {
         class: 0,
     })
 
+    const [slottedStates, setSlottedStates] = useState({
+        helmet: ['','',''],
+        arm: ['','',''],
+        leg: ['','',''],
+        class: ['','',''],
+    });
+
     return (
         <div className="App">
             <Router>
@@ -30,52 +37,64 @@ function App() {
                     <Routes>
                         <Route path={'/destiny-mod-calculator/helmet'} element={
                             <div>
-                                <Armor 
+                                <Armor
+                                    key={'helmet'}
                                     armorName={'helmet'}
                                     modData={helmetMods}
                                     setModData={setHelmetMods}
                                     totalCount={modCounts.helmet}
                                     setModCounts={setModCounts}
                                     armorCharge={armorCharge.charge}
+                                    slotted={slottedStates.helmet}
+                                    setSlotted={(newSlotted) => setSlottedStates({...slottedStates, helmet: newSlotted})}
                                 />
                             </div>
                         }/>
 
                         <Route path={'/destiny-mod-calculator/arm'} element={
                             <div>
-                                <Armor 
+                                <Armor
+                                    key={'arm'}
                                     armorName={'arm'}
                                     modData={armMods}
                                     setModData={setArmMods}
                                     totalCount={modCounts.arm}
                                     setModCounts={setModCounts}
                                     armorCharge={armorCharge.charge}
+                                    slotted={slottedStates.arm}
+                                    setSlotted={(newSlotted) => setSlottedStates({...slottedStates, arm: newSlotted})}
                                 />
                             </div>
                         }/>
 
                         <Route path={'/destiny-mod-calculator/leg'} element={
                             <div>
-                                <Armor 
+                                <Armor
+                                    key={'leg'}
                                     armorName={'leg'}
                                     modData={legMods}
                                     setModData={setLegMods}
                                     totalCount={modCounts.leg}
                                     setModCounts={setModCounts}
                                     armorCharge={armorCharge.charge}
+                                    slotted={slottedStates.leg}
+                                    setSlotted={(newSlotted) => setSlottedStates({...slottedStates, leg: newSlotted})}
                                 />
                             </div>
                         }/>
 
                         <Route path={'/destiny-mod-calculator/class'} element={
                             <div>
-                                <Armor 
+                                <Armor
+                                    key={'class'} 
                                     armorName={'class'}
                                     modData={classMods}
                                     setModData={setClassMods}
                                     totalCount={modCounts.class}
                                     setModCounts={setModCounts}
                                     armorCharge={armorCharge.charge}
+                                    slotted={slottedStates.class}
+                                    setSlotted={(newSlotted) => setSlottedStates({...slottedStates, class: newSlotted})}
                                 />
                             </div>
                         }/>
