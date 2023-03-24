@@ -13,3 +13,19 @@
     font-weight: bold;
     color: yellow;
 }
+
+.AbilityBreakdown {
+    margin-top: 25px;
+}
+
+.AbilityBreakdown h4 {
+    margin-top: 10px;
+}
+
+.OrbBreakdown {
+    margin-top: 25px;
+}
+
+.OrbBreakdown h4 {
+    margin-top: 10px;
+}
