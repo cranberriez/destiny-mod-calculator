@@ -18,3 +18,8 @@ main {
 .breakdown {
     grid-column: 3;
 }
+
+.dashboard-header {
+    color: #d0d0d0;
+    margin-top: 5vh;
+}

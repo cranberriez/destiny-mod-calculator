@@ -27,8 +27,12 @@ function Navbar(props) {
 
     return (
         <nav>
+            <NavLink to='/' className='basic-nav'>
+                <p>Home</p>
+            </NavLink>
+
             {Object.keys(slottedStates).map(key => (
-                <NavLink to={key} className=''  id={key + '-link'} key={key + '-link'}>
+                <NavLink to={key} className='armor-nav'  id={key + '-link'} key={key + '-link'}>
 
                     <div className='nav-label'>
                         <div className='nav-icon'>
@@ -45,6 +49,10 @@ function Navbar(props) {
                     </div>
                 </NavLink>
             ))}
+
+            <NavLink to='/settings' className='basic-nav'>
+                <p>Settings</p>
+            </NavLink>
 
             <div className='small-cont'> 
                 <a  className='small'

@@ -1,83 +1,10 @@
 import React from 'react';
 import './css/mod.css';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import Stacks from './modules/stacks.js';
+import ModButton from './modules/modButton.js';
 
 function capFirst(word) {
     return word.charAt(0).toUpperCase() + word.slice(1)
-}
-
-function Stacks(props) {
-    const { modName, stacks, count, armorCharge, kickstart } = props;
-    const listItems = [];
-    const charge = count && kickstart ? armorCharge : 0
-
-    for (let i = 0; i < stacks.length; i++) {
-        if (stacks[i] === 0) continue
-
-        listItems.push(
-            <li  className={(i === count + charge ? 'active' : '')} key={modName + '-' + i}>
-                <p><span>%</span>{(stacks[i] * 100).toFixed(1)}</p>
-                <p>{i}</p>
-            </li>
-        )
-    }
-
-    return <ul className='mod-stacks'>{listItems}</ul>
-}
-
-function ModButton(props) {
-    const { i, slotted, setSlotted, setModCount, url, generates, modID} = props;
-
-    function placeMod(countChange) {
-        setModCount(countChange);
-        const newSlotted = [...slotted]; // Create a new copy of the array
-        if (countChange > 0) {
-            newSlotted[i] = modID;
-        } else {
-            newSlotted[i] = '';
-        }
-        setSlotted(newSlotted);
-
-    }
-
-
-    let slotStatus;
-    if (slotted[i] === '') slotStatus = 'open'
-    else if (slotted[i] === modID) slotStatus = 'slotted'
-    else slotStatus = 'disabled'
-
-    if (slotStatus === 'open') {
-        return (
-            <button
-                onClick={() => placeMod(1)}
-                className={slotStatus}
-            >
-                {<FontAwesomeIcon icon={faPlus} />}
-            </button>
-        )
-    }
-    else if (slotStatus === 'slotted') {
-        return (
-            <button
-                onClick={() => placeMod(-1)}
-                className={slotStatus + ' ' + generates}
-            >
-                <img src={url} alt='Mod'></img>
-                {<FontAwesomeIcon icon={faPlus} />}
-            </button>
-        )
-    }
-    else {
-        return (
-            <button
-                className={slotStatus}
-            >
-                {<FontAwesomeIcon icon={faPlus} />}
-            </button>
-        )
-    }
 }
 
 function Mod(props) {

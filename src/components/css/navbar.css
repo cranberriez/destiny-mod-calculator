@@ -13,7 +13,7 @@ nav {
     flex-direction: column;
 }
 
-nav a:not(.small)  {
+nav a.armor-nav  {
     position: relative;
     display: flex;
     align-items: center;
@@ -29,11 +29,15 @@ nav a:not(.small)  {
     border: 1px solid transparent;
 }
 
-nav a:not(.small):hover {
+nav a.armor-nav:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-nav a.active {
+nav a:not(.armor-nav) {
+    justify-content: center;
+}
+
+nav a.armor-nav.active {
     border: 1px solid white;
     justify-content: center;
     padding-right: 4px;
@@ -132,6 +136,23 @@ nav a.active .nav-mod-count div:not(.active) div {
     background: 0;
     left: -12px;
     width: 1px;
+}
+
+.basic-nav {
+    color: #d0d0d0;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid transparent;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.basic-nav:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.basic-nav.active {
+    border: 1px solid #d0d0d0;
 }
 
 .small-cont:first-of-type {

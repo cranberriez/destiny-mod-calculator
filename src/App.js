@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+// USING HASHROUTER instead of BrowserRouter so app works with github pages static host
 import Armor from './components/armor.js'
 import ArmorCharge from './components/armorCharge.js';
 import Breakdown from './components/breakdown.js'
@@ -36,8 +37,9 @@ function App() {
                 <main>
                     <Routes>
                         <Route path='/'element={ 
-                            <div>
-
+                            <div className='dashboard-header'>
+                                Dashboard not available yet!
+                                Select an Armor Piece to Continue
                             </div>
                         }></Route >
 

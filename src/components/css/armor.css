@@ -36,3 +36,16 @@
 .mod-clear-button.hidden {
     display: none;
 }
+
+.mod-clear-button:hover ~ .Mod .mod-buttons button.slotted {
+    border-color: #E74C3C !important;
+}
+
+
+.mod-clear-button:hover ~ .Mod .mod-buttons button.slotted img {
+    opacity: 0.2;
+}
+
+.mod-clear-button:hover ~ .Mod .mod-buttons button.slotted svg {
+    color: #E74C3C;
+}
