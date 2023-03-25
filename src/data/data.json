@@ -77,7 +77,8 @@
 			],
 			"type": "melee-hit",
 			"generates": "grenade",
-            "url": "https://www.bungie.net/common/destiny2_content/icons/e00ae3014d71f672690e493cb814e9bf.png"
+            "url": "https://www.bungie.net/common/destiny2_content/icons/e00ae3014d71f672690e493cb814e9bf.png",
+            "cooldown": "7 sec"
 		},
 		"bd": {
 			"name": "Bolstering Detonation",
@@ -91,7 +92,8 @@
 			],
 			"type": "grenade-hit",
 			"generates": "class",
-            "url": "https://www.bungie.net/common/destiny2_content/icons/4799aa0b650494b79dc8c3d8941cdc03.png"
+            "url": "https://www.bungie.net/common/destiny2_content/icons/4799aa0b650494b79dc8c3d8941cdc03.png",
+            "cooldown": "7 sec"
 		},
 		"mk": {
 			"name": "Melee Kickstart",
@@ -126,7 +128,8 @@
 			],
 			"type": "grenade-hit",
 			"generates": "melee",
-            "url": "https://www.bungie.net/common/destiny2_content/icons/496016b33c0c21d64e75a53d0358a7eb.png"
+            "url": "https://www.bungie.net/common/destiny2_content/icons/496016b33c0c21d64e75a53d0358a7eb.png",
+            "cooldown": "7 sec"
 		},
 		"fs": {
 			"name": "Focusing Strike",
@@ -140,7 +143,8 @@
 			],
 			"type": "melee-hit",
 			"generates": "class",
-            "url": "https://www.bungie.net/common/destiny2_content/icons/314d87945335ccf56c5e128e72a497a4.png"
+            "url": "https://www.bungie.net/common/destiny2_content/icons/314d87945335ccf56c5e128e72a497a4.png",
+            "cooldown": "7 sec"
 		}
 	},
 	"leg": {

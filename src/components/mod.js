@@ -11,6 +11,7 @@ function Mod(props) {
     const { modID, modData, handleModCountChange, slotted, setSlotted, armorCharge } = props;
     const [ability, activation] = modData.type.split('-')
     const generates = modData.generates;
+    const cooldown = modData.cooldown || null
 
     const setModCount = (change) => {
         handleModCountChange(modID, modData.count + change)
@@ -44,7 +45,8 @@ function Mod(props) {
                     {/* Outputs sentence as: Regains (generates) on (ability) (activation) */}
                     <p> %
                         <span className={generates}>{capFirst(generates)}</span> energy on
-                        <span className={ability}> {capFirst(ability)} {capFirst(activation)}</span>
+                        <span className={ability}> {capFirst(ability)} {capFirst(activation)} </span>
+                        {cooldown ? `${cooldown} cooldown` : ''}
                     </p>
                 </div>
             </div>
