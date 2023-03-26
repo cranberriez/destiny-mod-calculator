@@ -38,8 +38,9 @@ function App() {
                     <Routes>
                         <Route path='/'element={ 
                             <div className='dashboard-header'>
-                                Dashboard not available yet!
-                                Select an Armor Piece to Continue
+                                <h3>Dashboard not available yet!</h3>
+                                <h2>{'<--'} Select an Armor Piece to Continue.</h2>
+                                <p>For PVP, Generally the values are halved.</p>
                             </div>
                         }></Route >
 

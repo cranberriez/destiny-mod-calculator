@@ -3,7 +3,7 @@
   }
 
 .ArmorCharge {
-    padding: 2.2vh 1.5vw;
+    padding: 2vh 1vw;
     border: 1px solid rgba(255,255,255,0.25);
     border-radius: 5px;
     
@@ -19,7 +19,7 @@
 
 .armor-charge-header h2 {
     color: #D0D0D0;
-    font-size: 24px;
+    font-size: min(max(12px, calc(2vw)), 24px);
 }
 
 .armor-charge-header button {

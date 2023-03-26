@@ -49,3 +49,33 @@
 .mod-clear-button:hover ~ .Mod .mod-buttons button.slotted svg {
     color: #E74C3C;
 }
+
+
+
+
+
+/* Hide the scrollbar initially */
+.Armor::-webkit-scrollbar {
+    display: none;
+  }
+  
+/* Show the scrollbar while scrolling */
+.Armor:hover::-webkit-scrollbar {
+    display: block;
+    transition: all 0.5s;
+}
+
+/* Hide the scrollbar again after a few seconds */
+.Armor:hover::-webkit-scrollbar {
+    display: block; 
+}
+
+.Armor::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.Armor:hover::-webkit-scrollbar-thumb {
+    background-color: #333;
+}

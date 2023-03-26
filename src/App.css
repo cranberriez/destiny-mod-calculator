@@ -23,3 +23,30 @@ main {
     color: #d0d0d0;
     margin-top: 5vh;
 }
+
+
+@media screen and (max-width: 800px) {
+    .App {
+        grid-template-columns: 120px 1fr;
+    }
+    .Armor {
+        padding-right: 20px;
+    }
+    .breakdown {
+      display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .App {
+        grid-template-columns: 1fr;
+    }
+
+    .Armor {
+        padding: 60px 15px 80px 10px;
+    }
+
+    main {
+        grid-column: auto;
+    }
+}

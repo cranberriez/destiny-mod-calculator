@@ -147,6 +147,16 @@ nav a.active .nav-mod-count div:not(.active) div {
     padding: 10px 0;
 }
 
+.basic-nav .nav-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.basic-nav .nav-label p {
+    width: min-content;
+}
+
 .basic-nav:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
@@ -154,6 +164,16 @@ nav a.active .nav-mod-count div:not(.active) div {
 .basic-nav.active {
     border: 1px solid #d0d0d0;
 }
+
+.basic-nav .nav-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* .basic-nav svg {
+    fill: rgba(208, 208, 208, 0.1);
+    stroke: rgba(208, 208, 208, 0.75);
+} */
 
 .small-cont:first-of-type {
     margin-top: auto;
@@ -173,4 +193,63 @@ nav a.active .nav-mod-count div:not(.active) div {
 
 .small-cont a:hover {
     color: #fff;
+}
+
+@media (max-width: 600px) {
+    .Armor {
+        padding-bottom: 100px;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        padding: 0;
+
+        width: 100%;
+        height: 60px;
+
+        bottom: 0;
+        left: 0;
+
+        z-index: 999;
+
+        background-color: #111;
+    }
+
+    nav a.armor-nav, nav a.basic-nav {
+        height: 100%;
+        padding: 4px;
+    }
+
+    nav .nav-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 50px;
+        height: 50px;
+    }
+
+    nav .nav-label {
+        height: 100%;
+    }
+
+    nav .nav-label p {
+        display: none ;
+    }
+
+    nav .nav-mod-count {
+        display: none;
+    }
+
+    nav .basic-nav .nav-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    nav .small-cont {
+        display: none;
+    }
 }

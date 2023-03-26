@@ -6,6 +6,7 @@ import { ReactComponent as HelmetIcon } from './svgs/helmet.svg';
 import { ReactComponent as ArmIcon } from './svgs/arm.svg';
 import { ReactComponent as LegIcon } from './svgs/leg.svg';
 import { ReactComponent as ClassIcon } from './svgs/class.svg';
+import { ReactComponent as SettingsIcon } from './svgs/settings.svg';
 
 const icons = {
     'helmet': HelmetIcon,
@@ -27,9 +28,9 @@ function Navbar(props) {
 
     return (
         <nav>
-            <NavLink to='/' className='basic-nav'>
+            {/* <NavLink to='/' className='basic-nav'>
                 <p>Home</p>
-            </NavLink>
+            </NavLink> */}
 
             {Object.keys(slottedStates).map(key => (
                 <NavLink to={key} className='armor-nav'  id={key + '-link'} key={key + '-link'}>
@@ -51,7 +52,12 @@ function Navbar(props) {
             ))}
 
             <NavLink to='/settings' className='basic-nav'>
-                <p>Settings</p>
+                <div className='nav-label'>
+                    <div className='nav-icon'>
+                        {React.createElement(SettingsIcon)}
+                    </div>
+                    <p>Settings</p>
+                </div>
             </NavLink>
 
             <div className='small-cont'> 
