@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 // USING HASHROUTER instead of BrowserRouter so app works with github pages static host
 import Armor from './components/armor.js'
 import ArmorCharge from './components/armorCharge.js';
@@ -35,7 +35,7 @@ function App() {
 
             <main>
                 <Routes>
-                    <Route path='/'element={ 
+                    <Route path='/destiny-mod-calculator'element={ 
                         <div className='dashboard-header'>
                             <h3>Dashboard not available yet!</h3>
                             <h2>{'<--'} Select an Armor Piece to Continue.</h2>
