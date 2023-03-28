@@ -1,6 +1,8 @@
 .Armor {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
+
+    height: 100vh;
 }
 
 .armor-mod-cont {
@@ -12,7 +14,7 @@
     overflow-y: auto;
     overflow-x: hidden;
 
-    position: relative;
+    padding-bottom: 60px;
 }
 
 .armor-chips-bar {
@@ -49,27 +51,27 @@
 }
 
 /* Hide the scrollbar initially */
-.Armor::-webkit-scrollbar {
+.armor-mod-cont::-webkit-scrollbar {
     display: none;
   }
   
 /* Show the scrollbar while scrolling */
-.Armor:hover::-webkit-scrollbar {
+.armor-mod-cont:hover::-webkit-scrollbar {
     display: block;
     transition: all 0.5s;
 }
 
 /* Hide the scrollbar again after a few seconds */
-.Armor:hover::-webkit-scrollbar {
+.armor-mod-cont:hover::-webkit-scrollbar {
     display: block; 
 }
 
-.Armor::-webkit-scrollbar-thumb {
+.armor-mod-cont::-webkit-scrollbar-thumb {
     background-color: #999;
     border-radius: 5px;
     transition: all 0.5s;
 }
 
-.Armor:hover::-webkit-scrollbar-thumb {
+.armor-mod-cont:hover::-webkit-scrollbar-thumb {
     background-color: #333;
 }

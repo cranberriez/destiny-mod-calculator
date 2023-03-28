@@ -17,6 +17,9 @@ main {
 
 .breakdown {
     grid-column: 3;
+
+    padding-top: 50px;
+    padding-right: min(1vw, 50px);
 }
 
 .dashboard-header {
@@ -43,7 +46,7 @@ main {
     }
 
     .Armor {
-        padding: 60px 15px 80px 10px;
+        padding: 0 15px 80px 10px;
     }
 
     main {

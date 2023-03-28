@@ -51,15 +51,6 @@ function Navbar(props) {
                 </NavLink>
             ))}
 
-            <NavLink to='/settings' className='basic-nav'>
-                <div className='nav-label'>
-                    <div className='nav-icon'>
-                        {React.createElement(SettingsIcon)}
-                    </div>
-                    <p>Settings</p>
-                </div>
-            </NavLink>
-
             <div className='small-cont'> 
                 <a  className='small'
                     target="_blank"
@@ -76,6 +67,15 @@ function Navbar(props) {
                         Github
                 </a>
             </div>
+
+            <NavLink to='/settings' className='basic-nav'>
+                <div className='nav-label'>
+                    <div className='nav-icon'>
+                        {React.createElement(SettingsIcon)}
+                    </div>
+                    <p>Settings</p>
+                </div>
+            </NavLink>
 
         </nav>
     )
