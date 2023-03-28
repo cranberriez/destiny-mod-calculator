@@ -275,9 +275,9 @@
 			"count": 0,
 			"stacks": [
 				0,
-				0.4,
-				0.7,
-				0.7
+				0.04,
+				0.07,
+				0.07
 			],
 			"type": "class-use",
 			"generates": "all",
