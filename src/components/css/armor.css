@@ -6,9 +6,11 @@
 }
 
 .armor-mod-cont {
+    height: 100%;
     display: grid;
+
     grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(fit-content, 320px));
     grid-gap: 20px;
 
     overflow-y: auto;
@@ -17,8 +19,9 @@
 
 .armor-chips-bar {
     width: 100%;
-    min-height: 50px;
+    height: 50px;
     padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 .armor-chip {
@@ -26,7 +29,7 @@
     background-color: transparent;
     border: 1px solid #d0d0d0;
     border-radius: 5px;
-    padding: 6px 10px;
+    padding: 5px 15px;
     font-size: 16px;
     cursor: pointer;
     transition: 200ms;
@@ -52,14 +55,14 @@
 .armor-mod-cont::-webkit-scrollbar {
     display: none;
   }
-  
-/* Show the scrollbar while scrolling */
+
+/*   
 .armor-mod-cont:hover::-webkit-scrollbar {
     display: block;
     transition: all 0.5s;
 }
 
-/* Hide the scrollbar again after a few seconds */
+
 .armor-mod-cont:hover::-webkit-scrollbar {
     display: block; 
 }
@@ -72,4 +75,4 @@
 
 .armor-mod-cont:hover::-webkit-scrollbar-thumb {
     background-color: #333;
-}
+} */

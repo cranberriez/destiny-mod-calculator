@@ -6,9 +6,11 @@
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
 
-    padding: 14px;
+    padding: 10px;
+    padding-bottom: 15px;
     grid-column: span 2;
 
+    height: fit-content;
     max-width: 480px;
     color: #d0d0d0;
 }
@@ -52,7 +54,7 @@ span {font-weight: bold;}
     display: flex;
     flex-direction: column;
     color: #d0d0d0;
-    margin-bottom: 1vh;
+    margin-bottom: 15px;
 }
 
 .mod-stacks {
@@ -62,7 +64,6 @@ span {font-weight: bold;}
 
     background: rgba(63, 63, 63, 0.3);
     border-radius: 10px;
-    padding: 6px 8px;
 }
 
 .mod-stacks li {
@@ -76,7 +77,6 @@ span {font-weight: bold;}
     flex-grow: 1;
     padding: 8px 0;
 
-    width: 70px;
     border-radius: 5px;
 }
 

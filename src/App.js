@@ -29,60 +29,84 @@ function App() {
         'class': [classMods, setClassMods],
     }
 
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
     return (
-        <div className="App">
-            <Navbar slottedStates={slottedStates} />
+        <ViewportProvider>
+            <div className="App">
+                <Navbar slottedStates={slottedStates} />
 
-            <main>
-                <Routes>
-                    <Route path='/destiny-mod-calculator'element={ 
-                        <div className='dashboard-header'>
-                            <h3>Dashboard not available yet!</h3>
-                            <h2>{'<--'} Select an Armor Piece to Continue.</h2>
-                            <p>For PVP, Generally the values are halved.</p>
-                        </div>
-                    }></Route >
-
-                    {Object.entries(armorPages).map(([name, data]) => (
-                        <Route path={`${name}`} key={`${name}-route`} element={
-                            <div>
-                                <Armor
-                                    key={`${name}-armor`}
-                                    armorName={name}
-                                    modData={data[0]}
-                                    setModData={data[1]}
-                                    armorCharge={armorCharge.charge}
-                                    slotted={slottedStates[name]}
-                                    setSlotted={(newSlotted) => setSlottedStates({...slottedStates, [name]: newSlotted})}
-                                />
+                <main>
+                    <Routes>
+                        <Route path='/destiny-mod-calculator'element={ 
+                            <div className='dashboard-header'>
+                                <h3>Dashboard not available yet!</h3>
+                                <h2>{'<--'} Select an Armor Piece to Continue.</h2>
+                                <p>For PVP, Generally the values are halved.</p>
                             </div>
-                        }/>
-                    ))}
+                        }></Route >
 
-                    <Route path='/settings' element={ 
-                        <div className='dashboard-header'>
-                            <h3>Settings</h3>
-                        </div>
-                    }></Route >
-                </Routes>
-            </main>
-            {   useLocation().pathname !== '/settings' &&
-            <div className="breakdown">
-                    <ArmorCharge
-                        armorCharge={armorCharge}
-                        setArmorCharge={setArmorCharge}
-                    />
-                    <Breakdown
-                        helmetMods={helmetMods}
-                        armMods={armMods}
-                        legMods={legMods}
-                        classMods={classMods}
-                        armorCharge={armorCharge}
-                    />
+                        {Object.entries(armorPages).map(([name, data]) => (
+                            <Route path={`${name}`} key={`${name}-route`} element={
+                                <div>
+                                    <Armor
+                                        key={`${name}-armor`}
+                                        armorName={name}
+                                        modData={data[0]}
+                                        setModData={data[1]}
+                                        armorCharge={armorCharge.charge}
+                                        slotted={slottedStates[name]}
+                                        setSlotted={(newSlotted) => setSlottedStates({...slottedStates, [name]: newSlotted})}
+                                    />
+                                </div>
+                            }/>
+                        ))}
+
+                        <Route path='/settings' element={ 
+                            <div className='dashboard-header'>
+                                <h3>Settings</h3>
+                            </div>
+                        }></Route >
+                    </Routes>
+                </main>
+                {   useLocation().pathname !== '/settings' &&
+                <div className="breakdown">
+                        <ArmorCharge
+                            armorCharge={armorCharge}
+                            setArmorCharge={setArmorCharge}
+                        />
+                        <Breakdown
+                            helmetMods={helmetMods}
+                            armMods={armMods}
+                            legMods={legMods}
+                            classMods={classMods}
+                            armorCharge={armorCharge}
+                        />
+                </div>
+                }
             </div>
-            }
-        </div>
+        </ViewportProvider>
     );
+}
+
+const viewportContext = React.createContext({});
+const ViewportProvider = ({ children }) => {
+    const handleWindowResize = () => {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`)
+    }
+
+    React.useEffect(() => {
+        window.addEventListener("resize", handleWindowResize);
+        return () => window.removeEventListener("resize", handleWindowResize);
+    })
+
+    return (
+        <viewportContext.Provider value={{}}>
+            {children}
+        </viewportContext.Provider>
+    )
 }
 
 export default App;

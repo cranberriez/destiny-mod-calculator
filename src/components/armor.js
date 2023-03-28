@@ -21,7 +21,6 @@ function Armor(props) {
 
     function clearMods() {
         Object.keys(modData).forEach((mod) => {
-            console.log(mod)
             if (modData[mod].count !== 0) {
                 setModCount(mod, 0)
             }
