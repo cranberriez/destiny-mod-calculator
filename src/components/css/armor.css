@@ -1,58 +1,52 @@
 .Armor {
+    display: flex;
+    flex-direction: column;   
+}
+
+.armor-mod-cont {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(280px, 1fr));
     grid-gap: 20px;
 
-    padding-top: 5vh;
-    padding-right: 0.5vw;
-    padding-left: 0.2vw;
     overflow-y: auto;
     overflow-x: hidden;
 
-    max-height: 100vh;
     position: relative;
 }
 
-.mod-clear-button {
-    position: absolute;
-    color: #E74C3C;
+.armor-chips-bar {
+    width: 100%;
+    min-height: 50px;
+    padding-top: 10px;
+}
+
+.armor-chip {
+    color: #d0d0d0;
     background-color: transparent;
-    border: 1px solid #E74C3C;
+    border: 1px solid #d0d0d0;
     border-radius: 5px;
     padding: 6px 10px;
     font-size: 16px;
-    top: 18px;
-    left: 1vw;
     cursor: pointer;
     transition: 200ms;
+
+    margin-right: 10px;
 }
 
-.mod-clear-button:hover {
+#mod-clear-button {
+    color: #E74C3C;
+    border: 1px solid #E74C3C;
+}
+
+#mod-clear-button:hover {
     background-color: #E74C3C;
     color: #d0d0d0;
 }
 
-.mod-clear-button.hidden {
+#mod-clear-button.hidden {
     display: none;
 }
-
-.mod-clear-button:hover ~ .Mod .mod-buttons button.slotted {
-    border-color: #E74C3C !important;
-}
-
-
-.mod-clear-button:hover ~ .Mod .mod-buttons button.slotted img {
-    opacity: 0.2;
-}
-
-.mod-clear-button:hover ~ .Mod .mod-buttons button.slotted svg {
-    color: #E74C3C;
-}
-
-
-
-
 
 /* Hide the scrollbar initially */
 .Armor::-webkit-scrollbar {

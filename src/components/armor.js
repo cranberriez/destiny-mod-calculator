@@ -38,19 +38,23 @@ function Armor(props) {
 
     return (
         <div className={armorName + " Armor"}>
-            <button className={`mod-clear-button ${isModSlotted(slotted) ? '': 'hidden'}`} onClick={clearMods}>Clear Mods</button>
-
-            {Object.entries(modData).map(([mod, modData]) => (
-                 <Mod
-                    key={mod}
-                    modID={mod}
-                    modData={modData}
-                    handleModCountChange={handleModCountChange}
-                    armorCharge={armorCharge}
-                    slotted={slotted}
-                    setSlotted={setSlotted}
-                 />
-            ))}
+            <div className='armor-chips-bar'>
+                {/* <button id='mod-filter-button' className={`armor-chip`}>Filter</button> */}
+                <button id='mod-clear-button' className={`armor-chip ${isModSlotted(slotted) ? '': 'hidden'}`} onClick={clearMods}>Clear Mods</button>
+            </div>
+            <div className='armor-mod-cont'>
+                {Object.entries(modData).map(([mod, modData]) => (
+                    <Mod
+                        key={mod}
+                        modID={mod}
+                        modData={modData}
+                        handleModCountChange={handleModCountChange}
+                        armorCharge={armorCharge}
+                        slotted={slotted}
+                        setSlotted={setSlotted}
+                    />
+                ))}
+            </div>
         </div>
     );
 }
