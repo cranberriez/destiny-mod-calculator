@@ -6,11 +6,12 @@
 }
 
 .armor-mod-cont {
-    height: 100%;
     display: grid;
 
+    height: 100%;
+
     grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(fit-content, 320px));
+    grid-template-rows: repeat(auto-fit, minmax(200px, 300px));
     grid-gap: 20px;
 
     overflow-y: auto;
