@@ -1,5 +1,41 @@
 import {React, useState, useEffect} from 'react';
+import Totals from './models/breakdownTotals.js';
 import './css/breakdown.css';
+
+function createData() {
+    return {
+        kill: {
+            grenade: 0,
+            melee: 0,
+            class: 0,
+            super: 0,
+        },
+        hit: {
+            grenade: 0,
+            melee: 0,
+            class: 0,
+            super: 0,
+        },
+        throw: {
+            grenade: 0,
+            melee: 0,
+            class: 0,
+            super: 0,
+        },
+        class: {
+            grenade: 0,
+            melee: 0,
+            class: 0,
+            super: 0,
+        },
+        orb: {
+            grenade: 0,
+            melee: 0,
+            class: 0,
+            super: 0,
+        }
+    };
+}
 
 function Ability(props) {
     const { data, type } = props;
@@ -20,78 +56,41 @@ function Ability(props) {
     )
 }
 
-function Orb(props) {
-    const {data} = props;
-
-    return (
-        <div className="OrbBreakdown">
-            <div>
-                <h4>On Orb Pickup</h4>
-                {Object.keys(data.pickup).map(subkey => (
-                <div key={subkey}>
-                    <p>{subkey}: %{(data.pickup[subkey] * 100).toFixed(2)}</p>
-                </div>
-                ))}
-            </div>
-        </div>
-    )
-}
-
 function Breakdown(props) {
     const { helmetMods, legMods, armMods, classMods, armorCharge } = props;
-
-    const [breakdown, setBreakdown] = useState({
-        grenade: {
-            kill: {},
-            hit: {},
-            use: {},
-        },
-        melee: {
-            kill: {},
-            hit: {},
-            use: {},
-        },
-        class: {
-            use: {},
-        },
-        orb: {
-            pickup: {}
-        }
-    })
+    const [ grenadeTotals, setGrenadeTotals ] = useState(new Totals(createData()))
 
     useEffect(() => {
         const checkData = (data) => {
             for (const key in data) {
-                if (typeof data[key] === "object") {
-                    addToBreakdown(data[key])
-                }
+                addToBreakdown(data[key])
             }
+        }
+
+        // assign temporary values to a new instance of totals class
+        // in an array to iterate over it / direct access
+        let tempTotals = {
+            'grenade': new Totals(createData()),
+            'melee': new Totals(createData()),
+            'super': new Totals(createData()),
+            'class': new Totals(createData()),
         }
 
         const addToBreakdown = (data) => {
             const count = data.count
             const stacks = data.stacks
-            const [ability, type] = data.type.split('-')
+            const [ability, use] = data.type.split('-')
             const kickstart = data.kickstart ?? false
             const generates = data.generates
-    
-            if (count === undefined || count < 0 || count >= stacks.length) {
-                console.log('Invalid count:', count)
-                return
-            }
-    
-            setBreakdown(prevBreakdown => {
-                const updatedBreakdown = { ...prevBreakdown }
 
-                if (kickstart && stacks[count] > 0) {
-                    updatedBreakdown[ability][type][generates] = stacks[count + armorCharge.charge]
-                }
-                else {
-                    updatedBreakdown[ability][type][generates] = stacks[count]
-                }
-                
-                return updatedBreakdown
-            })
+            if (ability === 'orb') return
+
+            let tempGeneratesTotals = tempTotals[ability]
+            let generateAmount = kickstart ? stacks[count + armorCharge.charge] : stacks[count]
+
+            tempGeneratesTotals.updateValue(use, generates, generateAmount)
+
+            console.table(tempGeneratesTotals)
         }
 
         checkData(helmetMods)
@@ -102,10 +101,7 @@ function Breakdown(props) {
 
     return (
         <div className='Breakdown'>
-            <Ability data={breakdown.grenade} type="Grenade"/>
-            <Ability data={breakdown.melee} type="Melee"/>
-            <Ability data={breakdown.class} type="Class Ability"/>
-            <Orb data={breakdown.orb}/>
+            
         </div>
     )
 }
