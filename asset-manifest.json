@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/destiny-mod-calculator/static/css/main.b1af3cef.css",
-    "main.js": "/destiny-mod-calculator/static/js/main.27ca1411.js",
+    "main.css": "/destiny-mod-calculator/static/css/main.227076aa.css",
+    "main.js": "/destiny-mod-calculator/static/js/main.c8de8d10.js",
     "static/media/arm.svg": "/destiny-mod-calculator/static/media/arm.9ddac975a4c4d2b811e4a631fb06de43.svg",
     "static/media/class.svg": "/destiny-mod-calculator/static/media/class.672b8f8fd240a9d19a67a02b3b1acd8b.svg",
     "static/media/settings.svg": "/destiny-mod-calculator/static/media/settings.6f0dcc66bfd7e037efc26ae083aec4dc.svg",
     "index.html": "/destiny-mod-calculator/index.html",
     "static/media/helmet.svg": "/destiny-mod-calculator/static/media/helmet.7421f5b5930fbf65a72f143c1ed52e37.svg",
     "static/media/leg.svg": "/destiny-mod-calculator/static/media/leg.39b77a54387ac36e72591a65c3c65ca5.svg",
-    "main.b1af3cef.css.map": "/destiny-mod-calculator/static/css/main.b1af3cef.css.map",
-    "main.27ca1411.js.map": "/destiny-mod-calculator/static/js/main.27ca1411.js.map"
+    "main.227076aa.css.map": "/destiny-mod-calculator/static/css/main.227076aa.css.map",
+    "main.c8de8d10.js.map": "/destiny-mod-calculator/static/js/main.c8de8d10.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1af3cef.css",
-    "static/js/main.27ca1411.js"
+    "static/css/main.227076aa.css",
+    "static/js/main.c8de8d10.js"
   ]
 }
