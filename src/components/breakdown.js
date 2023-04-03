@@ -59,6 +59,9 @@ function Ability(props) {
 function Breakdown(props) {
     const { helmetMods, legMods, armMods, classMods, armorCharge } = props;
     const [ grenadeTotals, setGrenadeTotals ] = useState(new Totals(createData()))
+    const [ meleeTotals, setMeleeTotals ] = useState(new Totals(createData()))
+    const [ classTotals, setClassTotals ] = useState(new Totals(createData()))
+    const [ superTotals, setSuperTotals ] = useState(new Totals(createData()))
 
     useEffect(() => {
         const checkData = (data) => {
@@ -78,6 +81,9 @@ function Breakdown(props) {
 
         const addToBreakdown = (data) => {
             const count = data.count
+
+            if (count === 0) return
+
             const stacks = data.stacks
             const [ability, use] = data.type.split('-')
             const kickstart = data.kickstart ?? false
@@ -85,11 +91,15 @@ function Breakdown(props) {
 
             if (ability === 'orb') return
 
+            // Pull tempdata for current ability
             let tempGeneratesTotals = tempTotals[ability]
+
+            // Gets the total generated % of ability from current mod
+            // If its a kickstart mod, add armor charge to stacks (should only work if count != 0)
             let generateAmount = kickstart ? stacks[count + armorCharge.charge] : stacks[count]
 
             tempGeneratesTotals.updateValue(use, generates, generateAmount)
-
+            console.log(`On ${ability} : Generates ${generates}`)
             console.table(tempGeneratesTotals)
         }
 
