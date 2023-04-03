@@ -10,7 +10,10 @@ class Totals {
     isEqual(otherTotals) {
         return JSON.stringify(this.data) === JSON.stringify(otherTotals.getData());
     }
-  
+
+    getValue(use, key) {
+        return this.data[use][key]
+    }
     updateValue(use, key, value) {
         this.data[use][key] = value;
     }

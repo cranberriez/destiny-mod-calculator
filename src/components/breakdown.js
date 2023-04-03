@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import Totals from './models/breakdownTotals.js';
+// import Tabs from './modules/breakdownTabs.js';
 import './css/breakdown.css';
+import TabsComponent from "./modules/breakdownTabs";
 
 function createData() {
     return {
@@ -16,7 +18,7 @@ function createData() {
             class: 0,
             super: 0,
         },
-        throw: {
+        use: {
             grenade: 0,
             melee: 0,
             class: 0,
@@ -37,28 +39,8 @@ function createData() {
     };
 }
 
-function Ability(props) {
-    const { data, type } = props;
-
-    return (
-        <div className="AbilityBreakdown">
-            {Object.keys(data).map(key => (
-            <div key={key}>
-                <h4>On {type} {key}</h4>
-                {Object.keys(data[key]).map(subkey => (
-                <div key={subkey}>
-                    <p>{subkey}: %{(data[key][subkey] * 100).toFixed(2)}</p>
-                </div>
-                ))}
-            </div>
-            ))}
-        </div>
-    )
-}
-
 function Breakdown(props) {
     const { helmetMods, legMods, armMods, classMods, armorCharge } = props;
-    const [ selectedPage, setSelectedPage ] = useState(0)
     const [ grenadeTotals, setGrenadeTotals ] = useState(new Totals(createData()))
     const [ meleeTotals, setMeleeTotals ] = useState(new Totals(createData()))
     const [ classTotals, setClassTotals ] = useState(new Totals(createData()))
@@ -66,7 +48,7 @@ function Breakdown(props) {
 
     const allMods = useMemo(() => {
         return { ...helmetMods, ...legMods, ...armMods, ...classMods };
-    }, [helmetMods, legMods, armMods, classMods, armorCharge])
+    }, [helmetMods, legMods, armMods, classMods])
 
     useEffect(() => {
         const checkData = (data) => {
@@ -93,24 +75,55 @@ function Breakdown(props) {
 
             if (ability === 'orb') return
 
-            // Pull tempdata for current ability
+            // Pull tempData for current ability
             let tempGeneratesTotals = tempTotals[ability]
 
             // Gets the total generated % of ability from current mod
             // If its a kickstart mod, add armor charge to stacks (should only work if count != 0)
-            let generateAmount = kickstart ? stacks[count + armorCharge.charge] : stacks[count]
+            let generatedAmount = kickstart ? stacks[count + armorCharge.charge] : stacks[count]
 
-            tempGeneratesTotals.updateValue(use, generates, generateAmount)
-            console.log(`On ${ability} : Generates ${generates}`)
-            console.table(tempGeneratesTotals)
+            let newGeneratedValue = tempGeneratesTotals.getValue(use, generates)
+            newGeneratedValue += generatedAmount
+            // Update the temp value
+            tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
         }
 
         checkData(allMods)
-    }, [allMods, armorCharge])
+
+        const stateSetters = {
+            'grenade': setGrenadeTotals,
+            'melee': setMeleeTotals,
+            'class': setClassTotals,
+            'super': setSuperTotals,
+        };
+
+        const stateValues = {
+            'grenade': grenadeTotals,
+            'melee': meleeTotals,
+            'class': classTotals,
+            'super': superTotals,
+        };
+
+        // Update the corresponding states
+        for (let ability in tempTotals) {
+            const stateSetter = stateSetters[ability];
+            let newTotal = tempTotals[ability]
+
+            if (stateSetter && !stateValues[ability].isEqual(newTotal)) {
+                stateSetter(newTotal);
+            }
+        }
+
+    }, [ allMods, armorCharge ])
 
     return (
         <div className='Breakdown'>
-            
+            <TabsComponent
+                grenadeTotals={grenadeTotals}
+                meleeTotals={meleeTotals}
+                classTotals={classTotals}
+                superTotals={superTotals}
+            />
         </div>
     )
 }

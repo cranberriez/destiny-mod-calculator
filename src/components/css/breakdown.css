@@ -8,12 +8,6 @@
     position: relative;
 }
 
-.Breakdown::before {
-    content: 'Work in Progress';
-    font-weight: bold;
-    color: yellow;
-}
-
 .AbilityBreakdown {
     margin-top: 25px;
 }
