@@ -114,7 +114,7 @@ function Breakdown(props) {
             }
         }
 
-    }, [ allMods, armorCharge ])
+    }, [allMods, armorCharge ])
 
     return (
         <div className='Breakdown'>
