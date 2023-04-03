@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import Totals from './models/breakdownTotals.js';
 import './css/breakdown.css';
 
@@ -58,10 +58,15 @@ function Ability(props) {
 
 function Breakdown(props) {
     const { helmetMods, legMods, armMods, classMods, armorCharge } = props;
+    const [ selectedPage, setSelectedPage ] = useState(0)
     const [ grenadeTotals, setGrenadeTotals ] = useState(new Totals(createData()))
     const [ meleeTotals, setMeleeTotals ] = useState(new Totals(createData()))
     const [ classTotals, setClassTotals ] = useState(new Totals(createData()))
     const [ superTotals, setSuperTotals ] = useState(new Totals(createData()))
+
+    const allMods = useMemo(() => {
+        return { ...helmetMods, ...legMods, ...armMods, ...classMods };
+    }, [helmetMods, legMods, armMods, classMods, armorCharge])
 
     useEffect(() => {
         const checkData = (data) => {
@@ -81,9 +86,6 @@ function Breakdown(props) {
 
         const addToBreakdown = (data) => {
             const count = data.count
-
-            if (count === 0) return
-
             const stacks = data.stacks
             const [ability, use] = data.type.split('-')
             const kickstart = data.kickstart ?? false
@@ -103,11 +105,8 @@ function Breakdown(props) {
             console.table(tempGeneratesTotals)
         }
 
-        checkData(helmetMods)
-        checkData(legMods)
-        checkData(armMods)
-        checkData(classMods)
-    }, [helmetMods, legMods, armMods, classMods, armorCharge])
+        checkData(allMods)
+    }, [allMods, armorCharge])
 
     return (
         <div className='Breakdown'>
