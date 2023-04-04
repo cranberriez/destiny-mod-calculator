@@ -241,6 +241,12 @@ nav a.active .nav-mod-count div:not(.active) div {
         display: none;
     }
 
+    nav .basic-nav {
+        display: flex;
+        justify-content: center;
+        aspect-ratio: 1/1;
+    }
+
     nav .basic-nav .nav-icon {
         width: 36px;
         height: 36px;
