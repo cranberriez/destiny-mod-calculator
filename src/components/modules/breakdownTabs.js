@@ -22,6 +22,16 @@ function sumObjects(objects) {
 	return result;
 }
 
+function sumValues(object) {
+	let resultSum = 0
+
+	for (const [key, value] of Object.entries(object)) {
+		resultSum += value
+	}
+
+	return resultSum
+}
+
 function TabsComponent(props) {
 	const { grenadeTotals, meleeTotals, classTotals, superTotals } = props;
 	const [activeTab, setActiveTab] = useState(0);
@@ -67,50 +77,47 @@ function TabContent(props) {
 	const abilityName = dataNames[index]
 	return (
 		<div className="tab-content">
-			{/* Render your layout using the received data */}
-			<div>
+			{sumValues(kill) > 0 &&
+			<div className="ability-section">
 				<h3>{capitalizeFirstLetter(abilityName)} Kill</h3>
 				<ul>
 					{Object.entries(kill).map(([prop, value]) => (
-						value > 0 ? (
-						<li key={prop}>
-							%{(value * 100).toFixed(1)} {prop}
-						</li>) : ''
+						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
+							<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
+						</li>
 					))}
 				</ul>
-			</div>
+			</div>}
 
-			<div>
+			<div className="ability-section">
 				<h3>{capitalizeFirstLetter(abilityName)} Hit</h3>
 				<ul>
 					{Object.entries(hit).map(([prop, value]) => (
-						value > 0 ? (
-						<li key={prop}>
-							%{(value * 100).toFixed(1)} {prop}
-						</li>) : ''
+						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
+							<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
+						</li>
 					))}
 				</ul>
 			</div>
 
-			<div>
+			<div className="ability-section">
 				<h3>{capitalizeFirstLetter(abilityName)} Use</h3>
 				<ul>
 					{Object.entries(use).map(([prop, value]) => (
-						value > 0 ? (
-						<li key={prop}>
-							%{(value * 100).toFixed(1)} {prop}
-						</li>) : ''
+						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
+							<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
+						</li>
 					))}
 				</ul>
 			</div>
 
-			<div>
+			<div className="ability-section">
 				<h3>Class Use</h3>
 				<ul>
 					{Object.entries(classData).map(([prop, value]) => (
 						value > 0 ? (
 							<li key={prop}>
-								%{(value * 100).toFixed(1)} {prop}
+								<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
 							</li>) : ''
 					))}
 				</ul>
