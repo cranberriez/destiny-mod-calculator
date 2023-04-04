@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 // USING HASHROUTER instead of BrowserRouter so app works with github pages static host
-import Armor from './components/armor.js'
+import Armor from './components/armor.js';
 import ArmorCharge from './components/armorCharge.js';
-import Breakdown from './components/breakdown.js'
-import Navbar from './components/navbar.js'
+import Breakdown from './components/breakdown.js';
+import Navbar from './components/navbar.js';
+import Settings from './components/settings.js';
 import './App.css';
-import data from './data/data.json'
+import data from './data/data.json';
 
 function App() {
     const [helmetMods, setHelmetMods] = useState(data.helmet);
@@ -15,6 +16,7 @@ function App() {
     const [classMods, setClassMods] = useState(data.class);
     const [armorCharge, setArmorCharge] = useState({ charge: 0 })
     const [breakdownVisible, setBreakdownVisibile] = useState(false)
+    const [charClass, setCharClass] = useState('warlock')
 
     const [slottedStates, setSlottedStates] = useState({
         'helmet': ['','',''],
@@ -40,7 +42,11 @@ function App() {
 
                 <main>
                     <Routes>
-                        <Route path='/destiny-mod-calculator'element={ 
+                        <Route exact path="/" element={
+                            <Navigate to="/helmet" />
+                        }/>
+
+                        <Route path='/destiny-mod-calculator' element={
                             <div className='dashboard-header'>
                                 <h3>Dashboard not available yet!</h3>
                                 <h2>{'<--'} Select an Armor Piece to Continue.</h2>
@@ -67,10 +73,8 @@ function App() {
                         ))}
 
                         <Route path='/settings' element={ 
-                            <div className='dashboard-header'>
-                                <h3>Settings</h3>
-                            </div>
-                        }></Route >
+                            <Settings />
+                        }/>
                     </Routes>
                 </main>
                 {   useLocation().pathname !== '/settings' &&
