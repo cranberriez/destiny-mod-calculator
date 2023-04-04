@@ -1,22 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 // USING HASHROUTER instead of BrowserRouter so app works with github pages static host
-import Armor from './components/armor.js';
-import ArmorCharge from './components/armorCharge.js';
-import Breakdown from './components/breakdown.js';
-import Navbar from './components/navbar.js';
-import Settings from './components/settings.js';
+import Armor from './components/armor';
+import ArmorCharge from './components/armorCharge';
+import Breakdown from './components/breakdown';
+import Navbar from './components/navbar';
+import Settings from './components/settings';
+import { changeBackgroundGradient } from './components/utils/changeGradient';
 import './App.css';
 import data from './data/data.json';
 
 function App() {
+    const initialGradientIndex = () => {
+        const storedIndex = localStorage.getItem("destinyModCalculatorGradientIndex");
+        return storedIndex ? parseInt(storedIndex, 10) : 0;
+    };
+
     const [helmetMods, setHelmetMods] = useState(data.helmet);
     const [armMods, setArmMods] = useState(data.arm);
     const [legMods, setLegMods] = useState(data.leg);
     const [classMods, setClassMods] = useState(data.class);
-    const [armorCharge, setArmorCharge] = useState({ charge: 0 })
-    const [breakdownVisible, setBreakdownVisibile] = useState(false)
-    const [charClass, setCharClass] = useState('warlock')
+    const [armorCharge, setArmorCharge] = useState({ charge: 0 });
+    const [breakdownVisible, setBreakdownVisible] = useState(false);
+    const [gradientIndex, setGradientIndex] = useState(initialGradientIndex());
+    const [charClass, setCharClass] = useState('warlock');
+
+    useEffect(() => {
+        localStorage.setItem("destinyModCalculatorGradientIndex", gradientIndex.toString());
+        changeBackgroundGradient(gradientIndex)
+    }, [gradientIndex]);
 
     const [slottedStates, setSlottedStates] = useState({
         'helmet': ['','',''],
@@ -40,7 +52,7 @@ function App() {
             <div className={`App ${breakdownVisible ? 'bd-visible' : 'bd-hidden'}`}>
                 <Navbar slottedStates={slottedStates} />
 
-                <main>
+                <main style={{gridColumnEnd: useLocation().pathname === '/settings' ? '4' : '2'}}>
                     <Routes>
                         <Route exact path="/" element={
                             <Navigate to="/helmet" />
@@ -66,21 +78,24 @@ function App() {
                                         slotted={slottedStates[name]}
                                         setSlotted={(newSlotted) => setSlottedStates({...slottedStates, [name]: newSlotted})}
                                         breakdownVisible={breakdownVisible}
-                                        setBreakdownVisibile={setBreakdownVisibile}
+                                        setBreakdownVisibile={setBreakdownVisible}
                                     />
                                 </div>
                             }/>
                         ))}
 
-                        <Route path='/settings' element={ 
-                            <Settings />
+                        <Route path='/settings' element={
+                            <Settings
+                                gradientIndex={gradientIndex}
+                                setGradientIndex={setGradientIndex}
+                            />
                         }/>
                     </Routes>
                 </main>
-                {   useLocation().pathname !== '/settings' &&
+                { useLocation().pathname !== '/settings' &&
                 <div className={`breakdown`}>
                         <div className='showHideButton'>
-                            <button onClick={() => setBreakdownVisibile(!breakdownVisible)}>Hide Breakdown</button>
+                            <button onClick={() => setBreakdownVisible(!breakdownVisible)}>Hide Breakdown</button>
                         </div>
                         <ArmorCharge
                             armorCharge={armorCharge}

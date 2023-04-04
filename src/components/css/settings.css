@@ -1,0 +1,45 @@
+main {
+    overflow-y: auto;
+}
+
+h1 {
+    color: #D0D0D0;
+    margin-bottom: 20px;
+}
+
+.Settings {
+    padding: 10px;
+}
+
+.Settings p {
+    color: #D0D0D0;
+}
+
+.settings-gradient-cont {
+    border: 1px solid #D0D0D0;
+    display: inline-block;
+    background-color: #111111;
+    margin: 0 5px;
+}
+
+.divider {
+    height: 1px;
+    margin: 20px 0;
+    background-color: #D0D0D0;
+}
+
+.Settings .settings-button-cont {
+    display: flex;
+}
+
+@media screen and (max-width: 800px) {
+    .Settings {
+        padding-bottom: 80px;
+    }
+}
+
+/*@media screen and (max-width: 600px) {*/
+/*    .Armor {*/
+/*        padding: 0 10px 120px 10px;*/
+/*    }*/
+/*}*/

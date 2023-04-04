@@ -197,10 +197,6 @@ nav a.active .nav-mod-count div:not(.active) div {
 }
 
 @media (max-width: 600px) {
-    .Armor {
-        padding-bottom: 100px;
-    }
-
     nav {
         display: flex;
         flex-direction: row;
