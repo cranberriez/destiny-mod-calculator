@@ -1,10 +1,12 @@
+.Settings {
+    padding: 10px;
+
+    overflow-y: auto;
+}
+
 .Settings h1 {
     color: #D0D0D0;
     margin-bottom: 20px;
-}
-
-.Settings {
-    padding: 10px;
 }
 
 .Settings p {
