@@ -72,10 +72,10 @@ function TabContent(props) {
 	// console.log(AbilityData)
 	// console.log(kill)
 	// return (<p>Nopes</p>)
-	console.log(classData.data.use)
+	const onClassUse = classData.data.use[dataNames[index]]
 
 	const abilityName = dataNames[index]
-	return (
+	if (index === 0 || index === 1) return (
 		<div className="tab-content">
 			{sumValues(kill) > 0 &&
 			<div className="ability-section">
@@ -114,16 +114,30 @@ function TabContent(props) {
 			<div className="ability-section">
 				<h3>Class Use</h3>
 				<ul>
-					{Object.entries(classData).map(([prop, value]) => (
-						value > 0 ? (
-							<li key={prop}>
-								<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
-							</li>) : ''
+					<li className={onClassUse <= 0 ? 'disabled' : ''}>
+						<span className='bd-pct'>%</span><span className='bd-val'>{(onClassUse * 100).toFixed(1)}</span> {dataNames[index]}
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	)
+	else return (
+		<div className="tab-content">
+
+			<div className="ability-section">
+				<h3>Class Use</h3>
+				<ul>
+					{Object.entries(use).map(([prop, value]) => (
+						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
+							<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
+						</li>
 					))}
 				</ul>
 			</div>
+
 		</div>
-	);
+	)
 }
 
 export default TabsComponent;
