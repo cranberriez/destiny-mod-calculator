@@ -150,11 +150,11 @@ span {font-weight: bold;}
     background: #3f3f3f;
 }
 
-.mod-buttons button.slotted:hover img {
+.mod-buttons button.slotted.hover img {
     opacity: 0.2;
 }
 
-.mod-buttons button.open:hover {
+.mod-buttons button.open.hover {
     color: #d0d0d0;
     border-color: #888;
 }
@@ -164,11 +164,11 @@ span {font-weight: bold;}
     transform: rotate(-45deg);
 }
 
-.mod-buttons button.slotted:hover {
+.mod-buttons button.slotted.hover {
     border-color: #E74C3C !important;
 }
 
-.mod-buttons button.slotted:hover svg {
+.mod-buttons button.slotted.hover svg {
     color: #E74C3C;
 }
 
