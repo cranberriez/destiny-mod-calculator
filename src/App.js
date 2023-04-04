@@ -14,6 +14,7 @@ function App() {
     const [legMods, setLegMods] = useState(data.leg);
     const [classMods, setClassMods] = useState(data.class);
     const [armorCharge, setArmorCharge] = useState({ charge: 0 })
+    const [breakdownVisible, setBreakdownVisibile] = useState(false)
 
     const [slottedStates, setSlottedStates] = useState({
         'helmet': ['','',''],
@@ -34,7 +35,7 @@ function App() {
 
     return (
         <ViewportProvider>
-            <div className="App">
+            <div className={`App ${breakdownVisible ? 'bd-visible' : 'bd-hidden'}`}>
                 <Navbar slottedStates={slottedStates} />
 
                 <main>
@@ -58,6 +59,8 @@ function App() {
                                         armorCharge={armorCharge.charge}
                                         slotted={slottedStates[name]}
                                         setSlotted={(newSlotted) => setSlottedStates({...slottedStates, [name]: newSlotted})}
+                                        breakdownVisible={breakdownVisible}
+                                        setBreakdownVisibile={setBreakdownVisibile}
                                     />
                                 </div>
                             }/>
@@ -71,7 +74,10 @@ function App() {
                     </Routes>
                 </main>
                 {   useLocation().pathname !== '/settings' &&
-                <div className="breakdown">
+                <div className={`breakdown`}>
+                        <div className='showHideButton'>
+                            <button onClick={() => setBreakdownVisibile(!breakdownVisible)}>Hide Breakdown</button>
+                        </div>
                         <ArmorCharge
                             armorCharge={armorCharge}
                             setArmorCharge={setArmorCharge}

@@ -80,7 +80,14 @@ function Breakdown(props) {
 
             // Gets the total generated % of ability from current mod
             // If its a kickstart mod, add armor charge to stacks (should only work if count != 0)
-            let generatedAmount = kickstart ? stacks[count + armorCharge.charge] : stacks[count]
+            let generatedAmount = 0;
+            if (kickstart && count > 0) {
+                generatedAmount = stacks[count + armorCharge.charge]
+            }
+            else {
+                generatedAmount = stacks[count]
+            }
+
 
             let newGeneratedValue = tempGeneratesTotals.getValue(use, generates)
             newGeneratedValue += generatedAmount

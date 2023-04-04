@@ -3,7 +3,7 @@ import Mod from './mod.js'
 import './css/armor.css';
 
 function Armor(props) {
-    const { armorName, modData, setModData, slotted, setSlotted, armorCharge } = props;
+    const { armorName, modData, setModData, slotted, setSlotted, armorCharge, breakdownVisible, setBreakdownVisibile } = props;
 
     const setModCount = (modID, count) => {
         setModData((prevMods) => ({
@@ -38,7 +38,7 @@ function Armor(props) {
     return (
         <div className={armorName + " Armor"}>
             <div className='armor-chips-bar'>
-                {/* <button id='mod-filter-button' className={`armor-chip`}>Filter</button> */}
+                <button id='mod-breakdown-button' className={`armor-chip`} onClick={() => setBreakdownVisibile(!breakdownVisible) }>Show Breakdown</button>
                 <button id='mod-clear-button' className={`armor-chip ${isModSlotted(slotted) ? '': 'hidden'}`} onClick={clearMods}>Clear Mods</button>
             </div>
             <div className='armor-mod-cont'>

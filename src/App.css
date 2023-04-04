@@ -27,16 +27,45 @@ main {
     margin-top: 5vh;
 }
 
+.showHideButton {
+    display: none;
+}
+
+.showHideButton button {
+    background-color: transparent;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 200ms;
+    color: #D0D0D0;
+    margin-bottom: 10px;
+}
 
 @media screen and (max-width: 800px) {
     .App {
         grid-template-columns: 120px 1fr;
     }
-    .Armor {
-        padding-right: 20px;
-    }
     .breakdown {
       display: none;
+    }
+
+    .App.bd-visible main {
+        display: none;
+    }
+
+    .App.bd-visible .breakdown {
+        display: inline;
+        grid-column: 2/3;
+    }
+
+    .App.bd-visible .breakdown .showHideButton {
+        display: inline;
+    }
+
+    .breakdown .ArmorCharge {
+        padding: 2vh 20px   ;
     }
 }
 
@@ -45,11 +74,25 @@ main {
         grid-template-columns: 1fr;
     }
 
-    .Armor {
-        padding: 0 15px 120px 10px;
-    }
-
     main {
         grid-column: auto;
+    }
+
+    .App.bd-visible main {
+        display: none;
+    }
+
+    .App.bd-visible .breakdown {
+        display: inline;
+        grid-column: auto;
+        padding: 10px 10px;
+    }
+
+    .App.bd-visible .Breakdown {
+        border-left: 0;
+    }
+
+    .App.bd-visible .breakdown .showHideButton {
+        display: inline;
     }
 }

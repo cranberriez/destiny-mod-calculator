@@ -8,18 +8,14 @@
     position: relative;
 }
 
-.AbilityBreakdown {
-    margin-top: 25px;
+.Breakdown .ability-section {
+
 }
 
-.AbilityBreakdown h4 {
-    margin-top: 10px;
+.Breakdown .ability-section ul {
+    list-style: none;
 }
 
-.OrbBreakdown {
-    margin-top: 25px;
-}
-
-.OrbBreakdown h4 {
-    margin-top: 10px;
+.Breakdown .ability-section li.disabled {
+    opacity: 0.6;
 }
