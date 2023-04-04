@@ -8,8 +8,9 @@ function capFirst(word) {
 }
 
 function Mod(props) {
-    const { modID, modData, handleModCountChange, slotted, setSlotted, armorCharge } = props;
+    const { modID, modData, handleModCountChange, slotted, setSlotted, armorCharge, charClass } = props;
     const [ability, activation] = modData.type.split('-')
+    const stacks = modData.stacks[charClass]
     const generates = modData.generates;
     const cooldown = modData.cooldown || null
 
@@ -53,7 +54,7 @@ function Mod(props) {
             <div className='mod-stacks-cont'>
                 <Stacks
                     modName={modData.name}
-                    stacks={modData.stacks}
+                    stacks={stacks}
                     count={modData.count}
                     armorCharge={armorCharge}
                     kickstart={kickstart}

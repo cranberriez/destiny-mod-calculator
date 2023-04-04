@@ -3,7 +3,7 @@ import Mod from './mod.js'
 import './css/armor.css';
 
 function Armor(props) {
-    const { armorName, modData, setModData, slotted, setSlotted, armorCharge, breakdownVisible, setBreakdownVisibile } = props;
+    const { armorName, modData, setModData, slotted, setSlotted, armorCharge, charClass, breakdownVisible, setBreakdownVisibile } = props;
 
     const setModCount = (modID, count) => {
         setModData((prevMods) => ({
@@ -48,6 +48,7 @@ function Armor(props) {
                         modID={mod}
                         modData={modData}
                         handleModCountChange={handleModCountChange}
+                        charClass={charClass}
                         armorCharge={armorCharge}
                         slotted={slotted}
                         setSlotted={setSlotted}

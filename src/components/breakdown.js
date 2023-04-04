@@ -37,7 +37,7 @@ function createData() {
 }
 
 function Breakdown(props) {
-    const { helmetMods, legMods, armMods, classMods, armorCharge } = props;
+    const { helmetMods, legMods, armMods, classMods, armorCharge, charClass } = props;
     const [ grenadeTotals, setGrenadeTotals ] = useState(new Totals(createData()))
     const [ meleeTotals, setMeleeTotals ] = useState(new Totals(createData()))
     const [ classTotals, setClassTotals ] = useState(new Totals(createData()))
@@ -65,7 +65,7 @@ function Breakdown(props) {
 
         const addToBreakdown = (data) => {
             const count = data.count
-            const stacks = data.stacks
+            const stacks = data.stacks[charClass]
             const [ability, use] = data.type.split('-')
             const kickstart = data.kickstart ?? false
             const generates = data.generates

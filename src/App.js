@@ -8,7 +8,7 @@ import Navbar from './components/navbar';
 import Settings from './components/settings';
 import { changeBackgroundGradient } from './components/utils/changeGradient';
 import './App.css';
-import data from './data/data.json';
+import data from './data/modifiedData.json';
 
 function App() {
     const initialGradientIndex = () => {
@@ -76,11 +76,14 @@ function App() {
                                     <Armor
                                         key={`${name}-armor`}
                                         armorName={name}
+                                        charClass={charClass}
                                         modData={data[0]}
                                         setModData={data[1]}
                                         armorCharge={armorCharge.charge}
+
                                         slotted={slottedStates[name]}
                                         setSlotted={(newSlotted) => setSlottedStates({...slottedStates, [name]: newSlotted})}
+
                                         breakdownVisible={breakdownVisible}
                                         setBreakdownVisibile={setBreakdownVisible}
                                     />
@@ -106,6 +109,7 @@ function App() {
                             setArmorCharge={setArmorCharge}
                         />
                         <Breakdown
+                            charClass={charClass}
                             helmetMods={helmetMods}
                             armMods={armMods}
                             legMods={legMods}
