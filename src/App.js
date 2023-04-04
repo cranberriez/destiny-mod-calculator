@@ -52,7 +52,11 @@ function App() {
             <div className={`App ${breakdownVisible ? 'bd-visible' : 'bd-hidden'}`}>
                 <Navbar slottedStates={slottedStates} />
 
-                <main style={{gridColumnEnd: useLocation().pathname === '/settings' ? '4' : '2'}}>
+                <main
+                    style={{
+                        gridColumnEnd: useLocation().pathname === '/settings' ? '4' : '2',
+                        overflowY: 'auto',
+                    }}>
                     <Routes>
                         <Route exact path="/" element={
                             <Navigate to="/helmet" />
