@@ -43,6 +43,11 @@ main {
     margin-bottom: 10px;
 }
 
+.showHideButton button:hover {
+    background-color: #D0D0D0;
+    color: #000000;
+}
+
 @media screen and (max-width: 800px) {
     .App {
         grid-template-columns: 120px 1fr;
