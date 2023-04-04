@@ -31,10 +31,7 @@ function createData() {
             super: 0,
         },
         orb: {
-            grenade: 0,
-            melee: 0,
-            class: 0,
-            super: 0,
+            pickup: 0,
         }
     };
 }
@@ -73,7 +70,10 @@ function Breakdown(props) {
             const kickstart = data.kickstart ?? false
             const generates = data.generates
 
-            if (ability === 'orb') return
+            if (ability === 'orb') {
+                // console.log(`Ability: ${ability}  Generates ${generates}  Use ${use}`)
+                return
+            }
 
             // Pull tempData for current ability
             let tempGeneratesTotals = tempTotals[ability]
@@ -92,7 +92,17 @@ function Breakdown(props) {
             let newGeneratedValue = tempGeneratesTotals.getValue(use, generates)
             newGeneratedValue += generatedAmount
             // Update the temp value
-            tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
+
+            if (generates === 'all') {
+                // console.log(generates)
+                // console.log(data.name)
+                // tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
+                // tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
+                // tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
+            }
+            else {
+                tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
+            }
         }
 
         checkData(allMods)
