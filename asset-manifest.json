@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/destiny-mod-calculator/static/css/main.c6315e34.css",
-    "main.js": "/destiny-mod-calculator/static/js/main.49e22a58.js",
+    "main.css": "/destiny-mod-calculator/static/css/main.ad08c313.css",
+    "main.js": "/destiny-mod-calculator/static/js/main.8b857eae.js",
+    "static/media/class-hunter.svg": "/destiny-mod-calculator/static/media/class-hunter.b3bc4419e581a6b7b8b7fcda9f664cdb.svg",
+    "static/media/class-titan.svg": "/destiny-mod-calculator/static/media/class-titan.347d7bf125d0235996a8c67b60215ff4.svg",
     "static/media/arm.svg": "/destiny-mod-calculator/static/media/arm.9ddac975a4c4d2b811e4a631fb06de43.svg",
+    "static/media/class-warlock.svg": "/destiny-mod-calculator/static/media/class-warlock.8f27fedb633354f5e09548cd5d5a4187.svg",
     "static/media/class.svg": "/destiny-mod-calculator/static/media/class.672b8f8fd240a9d19a67a02b3b1acd8b.svg",
     "static/media/settings.svg": "/destiny-mod-calculator/static/media/settings.6f0dcc66bfd7e037efc26ae083aec4dc.svg",
     "index.html": "/destiny-mod-calculator/index.html",
     "static/media/helmet.svg": "/destiny-mod-calculator/static/media/helmet.7421f5b5930fbf65a72f143c1ed52e37.svg",
     "static/media/leg.svg": "/destiny-mod-calculator/static/media/leg.39b77a54387ac36e72591a65c3c65ca5.svg",
-    "main.c6315e34.css.map": "/destiny-mod-calculator/static/css/main.c6315e34.css.map",
-    "main.49e22a58.js.map": "/destiny-mod-calculator/static/js/main.49e22a58.js.map"
+    "main.ad08c313.css.map": "/destiny-mod-calculator/static/css/main.ad08c313.css.map",
+    "main.8b857eae.js.map": "/destiny-mod-calculator/static/js/main.8b857eae.js.map"
   },
   "entrypoints": [
-    "static/css/main.c6315e34.css",
-    "static/js/main.49e22a58.js"
+    "static/css/main.ad08c313.css",
+    "static/js/main.8b857eae.js"
   ]
 }
