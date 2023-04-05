@@ -50,7 +50,11 @@ function App() {
     return (
         <ViewportProvider>
             <div className={`App ${breakdownVisible ? 'bd-visible' : 'bd-hidden'}`}>
-                <Navbar slottedStates={slottedStates} />
+                <Navbar
+                    slottedStates={slottedStates}
+                    charClass={charClass}
+                    setCharClass={setCharClass}
+                />
 
                 <main
                     style={{

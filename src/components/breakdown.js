@@ -94,8 +94,6 @@ function Breakdown(props) {
             // Update the temp value
 
             if (generates === 'all') {
-                // console.log(generates)
-                // console.log(data.name)
                 // tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
                 // tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
                 // tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)

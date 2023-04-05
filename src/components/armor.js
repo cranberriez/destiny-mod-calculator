@@ -1,6 +1,7 @@
 import React from 'react';
 import Mod from './mod.js'
 import './css/armor.css';
+import { capitalizeFirstLetter } from "./utils/capitilizeFirst";
 
 function Armor(props) {
     const { armorName, modData, setModData, slotted, setSlotted, armorCharge, charClass, breakdownVisible, setBreakdownVisibile } = props;
@@ -37,6 +38,7 @@ function Armor(props) {
 
     return (
         <div className={armorName + " Armor"}>
+            <h1>{capitalizeFirstLetter(armorName)} Mods</h1>
             <div className='armor-chips-bar'>
                 <button id='mod-breakdown-button' className={`armor-chip`} onClick={() => setBreakdownVisibile(!breakdownVisible) }>Show Breakdown</button>
                 <button id='mod-clear-button' className={`armor-chip ${isModSlotted(slotted) ? '': 'hidden'}`} onClick={clearMods}>Clear Mods</button>

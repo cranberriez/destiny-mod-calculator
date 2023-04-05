@@ -5,6 +5,11 @@
     height: 100vh;
 }
 
+.Armor h1 {
+    color: #D0D0D0;
+    margin-top: 5px;
+}
+
 .armor-mod-cont {
     display: grid;
 

@@ -5,8 +5,6 @@ function Stacks(props) {
     const listItems = [];
     const charge = count && kickstart ? armorCharge : 0
 
-    console.log(stacks)
-
     for (let i = 0; i < stacks.length; i++) {
         if (stacks[i] === 0) continue
 

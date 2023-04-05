@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-
-function capitalizeFirstLetter(str) {
-	return str.charAt(0).toUpperCase() + str.slice(1);
-}
+import { capitalizeFirstLetter } from "../utils/capitilizeFirst";
+import '../css/breakdown.css';
 
 function sumObjects(objects) {
 	const result = {
@@ -43,11 +41,11 @@ function TabsComponent(props) {
 	const tabData = [grenadeTotals, meleeTotals, classTotals, superTotals];
 
 	return (
-		<div>
+		<>
 			<div className="tab-buttons">
-				<button onClick={() => handleTabChange(0)}>Grenade</button>
-				<button onClick={() => handleTabChange(1)}>Melee</button>
-				<button onClick={() => handleTabChange(2)}>Class</button>
+				<button className={`${activeTab === 0 ? 'active' : ''}`} onClick={() => handleTabChange(0)}>Grenade</button>
+				<button className={`${activeTab === 1 ? 'active' : ''}`} onClick={() => handleTabChange(1)}>Melee</button>
+				<button className={`${activeTab === 2 ? 'active' : ''}`} onClick={() => handleTabChange(2)}>Class</button>
 			</div>
 
 			<TabContent
@@ -55,7 +53,7 @@ function TabsComponent(props) {
 				classData={classTotals}
 				index={activeTab}
 			/>
-		</div>
+		</>
 	);
 }
 
@@ -83,7 +81,8 @@ function TabContent(props) {
 				<ul>
 					{Object.entries(kill).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(0)}</span></p>
+							<p>{prop}</p>
 						</li>
 					))}
 				</ul>
@@ -94,7 +93,8 @@ function TabContent(props) {
 				<ul>
 					{Object.entries(hit).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(0)}</span></p>
+							<p>{prop}</p>
 						</li>
 					))}
 				</ul>
@@ -105,7 +105,8 @@ function TabContent(props) {
 				<ul>
 					{Object.entries(use).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(0)}</span></p>
+							<p>{prop}</p>
 						</li>
 					))}
 				</ul>
@@ -115,7 +116,8 @@ function TabContent(props) {
 				<h3>Class Use</h3>
 				<ul>
 					<li className={onClassUse <= 0 ? 'disabled' : ''}>
-						<span className='bd-pct'>%</span><span className='bd-val'>{(onClassUse * 100).toFixed(1)}</span> {dataNames[index]}
+						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onClassUse * 100).toFixed(0)}</span></p>
+						<p>{dataNames[index]}</p>
 					</li>
 				</ul>
 			</div>
@@ -130,7 +132,8 @@ function TabContent(props) {
 				<ul>
 					{Object.entries(use).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span> {prop}
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(0)}</span></p>
+							<p>{prop}</p>
 						</li>
 					))}
 				</ul>
