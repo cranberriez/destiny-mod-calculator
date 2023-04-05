@@ -31,14 +31,14 @@ function sumValues(object) {
 }
 
 function TabsComponent(props) {
-	const { grenadeTotals, meleeTotals, classTotals, superTotals } = props;
+	const { grenadeTotals, meleeTotals, classTotals, orbTotals } = props;
 	const [activeTab, setActiveTab] = useState(0);
 
 	const handleTabChange = (tabIndex) => {
 		setActiveTab(tabIndex);
 	};
 
-	const tabData = [grenadeTotals, meleeTotals, classTotals, superTotals];
+	const tabData = [grenadeTotals, meleeTotals, classTotals, orbTotals];
 
 	return (
 		<>
@@ -51,6 +51,7 @@ function TabsComponent(props) {
 			<TabContent
 				data={tabData[activeTab]}
 				classData={classTotals}
+				orbData={orbTotals}
 				index={activeTab}
 			/>
 		</>
@@ -58,8 +59,8 @@ function TabsComponent(props) {
 }
 
 function TabContent(props) {
-	const { data, classData, index } = props
-	const dataNames = ['grenade', 'melee', 'class', 'super']
+	const { data, classData, orbData, index } = props
+	const dataNames = ['grenade', 'melee', 'class', 'orb']
 
 	const AbilityData = data.data
 
@@ -67,10 +68,8 @@ function TabContent(props) {
 	const hit = sumObjects([AbilityData.hit, AbilityData.use])
 	const use = AbilityData.use // technically throw but throw keyword is already defined
 
-	// console.log(AbilityData)
-	// console.log(kill)
-	// return (<p>Nopes</p>)
 	const onClassUse = classData.data.use[dataNames[index]]
+	const onOrbPickup = orbData.data.pickup[dataNames[index]]
 
 	const abilityName = dataNames[index]
 	if (index === 0 || index === 1) return (
@@ -117,6 +116,16 @@ function TabContent(props) {
 				<ul>
 					<li className={onClassUse <= 0 ? 'disabled' : ''}>
 						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onClassUse * 100).toFixed(1)}</span></p>
+						<p>{dataNames[index]}</p>
+					</li>
+				</ul>
+			</div>
+
+			<div className="ability-section">
+				<h3>Orb Pickup</h3>
+				<ul>
+					<li className={onOrbPickup <= 0 ? 'disabled' : ''}>
+						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onOrbPickup * 100).toFixed(1)}</span></p>
 						<p>{dataNames[index]}</p>
 					</li>
 				</ul>

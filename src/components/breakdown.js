@@ -29,11 +29,19 @@ function createData() {
             melee: 0,
             class: 0,
             super: 0,
-        },
-        orb: {
-            pickup: 0,
         }
     };
+}
+
+function createOrbData() {
+    return {
+        pickup: {
+            grenade: 0,
+            melee: 0,
+            class: 0,
+            super: 0,
+        }
+    }
 }
 
 function Breakdown(props) {
@@ -41,7 +49,7 @@ function Breakdown(props) {
     const [ grenadeTotals, setGrenadeTotals ] = useState(new Totals(createData()))
     const [ meleeTotals, setMeleeTotals ] = useState(new Totals(createData()))
     const [ classTotals, setClassTotals ] = useState(new Totals(createData()))
-    const [ superTotals, setSuperTotals ] = useState(new Totals(createData()))
+    const [ orbTotals, setOrbTotals ] = useState(new Totals(createOrbData()))
 
     const allMods = useMemo(() => {
         return { ...helmetMods, ...legMods, ...armMods, ...classMods };
@@ -56,11 +64,12 @@ function Breakdown(props) {
 
         // assign temporary values to a new instance of totals class
         // in an array to iterate over it / direct access
+        // these are the 'sources' of ability energy, caused by ability, or picking up orb
         let tempTotals = {
             'grenade': new Totals(createData()),
             'melee': new Totals(createData()),
-            'super': new Totals(createData()),
             'class': new Totals(createData()),
+            'orb': new Totals(createOrbData()),
         }
 
         const addToBreakdown = (data) => {
@@ -69,11 +78,6 @@ function Breakdown(props) {
             const [ability, use] = data.type.split('-')
             const kickstart = data.kickstart ?? false
             const generates = data.generates
-
-            if (ability === 'orb') {
-                // console.log(`Ability: ${ability}  Generates ${generates}  Use ${use}`)
-                return
-            }
 
             // Pull tempData for current ability
             let tempGeneratesTotals = tempTotals[ability]
@@ -88,15 +92,31 @@ function Breakdown(props) {
                 generatedAmount = stacks[count]
             }
 
+            let newGeneratedValue = 0
+            if (ability === 'orb') {
+                if (use !== 'pickup') console.log(use)
+                newGeneratedValue = tempGeneratesTotals.getValue('pickup', generates) || 0
+            }
+            else {
+                newGeneratedValue = tempGeneratesTotals.getValue(use, generates) || 0
+            }
 
-            let newGeneratedValue = tempGeneratesTotals.getValue(use, generates)
             newGeneratedValue += generatedAmount
             // Update the temp value
 
+            if (ability === 'orb') {
+                // console.log(newGeneratedValue)
+                // console.log(generates)
+                // console.log(`Ability: ${ability}  Generates ${generates}  Use ${use}`)
+                // return
+            }
+
+            if (generates === 'least-charged') return
+
             if (generates === 'all') {
-                // tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
-                // tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
-                // tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
+                tempGeneratesTotals.updateValue(use, 'grenade', newGeneratedValue)
+                tempGeneratesTotals.updateValue(use, 'melee', newGeneratedValue)
+                tempGeneratesTotals.updateValue(use, 'class', newGeneratedValue)
             }
             else {
                 tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
@@ -109,21 +129,20 @@ function Breakdown(props) {
             'grenade': setGrenadeTotals,
             'melee': setMeleeTotals,
             'class': setClassTotals,
-            'super': setSuperTotals,
+            'orb': setOrbTotals,
         };
 
         const stateValues = {
             'grenade': grenadeTotals,
             'melee': meleeTotals,
             'class': classTotals,
-            'super': superTotals,
+            'orb': orbTotals,
         };
 
         // Update the corresponding states
         for (let ability in tempTotals) {
             const stateSetter = stateSetters[ability];
             let newTotal = tempTotals[ability]
-
             if (stateSetter && !stateValues[ability].isEqual(newTotal)) {
                 stateSetter(newTotal);
             }
@@ -137,7 +156,7 @@ function Breakdown(props) {
                 grenadeTotals={grenadeTotals}
                 meleeTotals={meleeTotals}
                 classTotals={classTotals}
-                superTotals={superTotals}
+                orbTotals={orbTotals}
             />
         </div>
     )
