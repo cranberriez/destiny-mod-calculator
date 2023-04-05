@@ -68,6 +68,9 @@
 
 .Breakdown .ability-section li p:first-child {
     width: 20%;
+    max-width: 70px;
+    min-width: fit-content;
+    margin-right: 3px;
 }
 
 .Breakdown .ability-section li .bd-pct {
