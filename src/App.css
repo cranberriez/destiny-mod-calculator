@@ -16,6 +16,8 @@ main {
     overscroll-behavior-y: contain;
     overflow-scrolling: touch;
     -webkit-overflow-scrolling: touch;
+
+    overflow-y: hidden;
 }
 
 .breakdown {
