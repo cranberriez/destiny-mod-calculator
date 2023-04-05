@@ -8,6 +8,17 @@ import { faMinus } from '@fortawesome/free-solid-svg-icons'
 function ChargeBoxes(props) {
     const {armorCharge, setCharge, hoveredButtonIndex, setHoveredButtonIndex} = props;
     const boxList = []
+    let timer = null;
+    function handleMouseEnter(i) {
+        clearTimeout(timer);
+        setHoveredButtonIndex(i)
+    }
+
+    function handleMouseLeave() {
+        timer = setTimeout(() => {
+            setHoveredButtonIndex(null);
+        }, 200);
+    }
 
     for (let i = 0; i < 6; i++) {
         let buttonState = (
@@ -28,8 +39,8 @@ function ChargeBoxes(props) {
                     ${buttonState}`
                 }
                 onClick={() => setCharge(i + 1)}
-                onMouseOver={() => setHoveredButtonIndex(i)}
-                onMouseOut={() => setHoveredButtonIndex(null)}>
+                onMouseOver={() => handleMouseEnter(i)}
+                onMouseOut={() => handleMouseLeave(null)}>
                     <div>
                         {buttonState === 'active' ? (
                         <FontAwesomeIcon icon={faPlus} />
