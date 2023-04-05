@@ -6,7 +6,7 @@ function Stacks(props) {
     const charge = count && kickstart ? armorCharge : 0
 
     for (let i = 0; i < stacks.length; i++) {
-        if (stacks[i] === 0) continue
+        // if (stacks[i] === 0) continue
 
         listItems.push(
             <li  className={(i === count + charge ? 'active' : '')} key={modName + '-' + i}>
