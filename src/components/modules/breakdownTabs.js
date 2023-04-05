@@ -81,7 +81,7 @@ function TabContent(props) {
 				<ul>
 					{Object.entries(kill).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(0)}</span></p>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
 							<p>{prop}</p>
 						</li>
 					))}
@@ -93,7 +93,7 @@ function TabContent(props) {
 				<ul>
 					{Object.entries(hit).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(0)}</span></p>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
 							<p>{prop}</p>
 						</li>
 					))}
@@ -105,7 +105,7 @@ function TabContent(props) {
 				<ul>
 					{Object.entries(use).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(0)}</span></p>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
 							<p>{prop}</p>
 						</li>
 					))}
@@ -116,7 +116,7 @@ function TabContent(props) {
 				<h3>Class Use</h3>
 				<ul>
 					<li className={onClassUse <= 0 ? 'disabled' : ''}>
-						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onClassUse * 100).toFixed(0)}</span></p>
+						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onClassUse * 100).toFixed(1)}</span></p>
 						<p>{dataNames[index]}</p>
 					</li>
 				</ul>
@@ -132,7 +132,7 @@ function TabContent(props) {
 				<ul>
 					{Object.entries(use).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(0)}</span></p>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
 							<p>{prop}</p>
 						</li>
 					))}

@@ -16,6 +16,11 @@ function App() {
         return storedIndex ? parseInt(storedIndex, 10) : 0;
     };
 
+    const initialCharClass = () => {
+        const storedIndex = localStorage.getItem("destinyModCalculatorCharClass");
+        return storedIndex ? storedIndex : 'warlock';
+    };
+
     const [helmetMods, setHelmetMods] = useState(data.helmet);
     const [armMods, setArmMods] = useState(data.arm);
     const [legMods, setLegMods] = useState(data.leg);
@@ -23,12 +28,16 @@ function App() {
     const [armorCharge, setArmorCharge] = useState({ charge: 0 });
     const [breakdownVisible, setBreakdownVisible] = useState(false);
     const [gradientIndex, setGradientIndex] = useState(initialGradientIndex());
-    const [charClass, setCharClass] = useState('warlock');
+    const [charClass, setCharClass] = useState(initialCharClass());
 
     useEffect(() => {
         localStorage.setItem("destinyModCalculatorGradientIndex", gradientIndex.toString());
         changeBackgroundGradient(gradientIndex)
     }, [gradientIndex]);
+
+    useEffect(() => {
+        localStorage.setItem("destinyModCalculatorCharClass", charClass);
+    }, [charClass]);
 
     const [slottedStates, setSlottedStates] = useState({
         'helmet': ['','',''],
