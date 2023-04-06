@@ -26,17 +26,25 @@
 
 .Breakdown .tab-buttons button {
     padding: 10px 6px;
-    border: 1px solid white;
+    border: 1px solid #D0D0D0;
     background-color: transparent;
     color: #D0D0D0;
     margin: 0 5px 0 0;
     cursor: pointer;
     border-radius: 3px;
+
+    transition: 200ms;
 }
 
 .Breakdown .tab-buttons button.active {
     background-color: #ffffff;
+    border-color: #ffffff;
     color: black;
+}
+
+.Breakdown .tab-buttons button:not(.active):hover {
+    border: 1px solid #ffffff;
+    color: #ffffff;
 }
 
 .Breakdown .tab-content {
@@ -47,6 +55,7 @@
 
 .Breakdown .ability-section {
     flex-grow: 1;
+    max-height: 240px;
 }
 
 .Breakdown .ability-section h3 {
@@ -105,6 +114,10 @@
 
 .Breakdown .ability-section li .bd-val {
     font-size: 20px;
+}
+
+.Breakdown .aspect-fragment-link {
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 800px) {

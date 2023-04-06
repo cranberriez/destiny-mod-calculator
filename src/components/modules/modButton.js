@@ -52,8 +52,6 @@ function ModButton(props) {
             <button
                 onClick={() => placeMod(1)}
                 className={`${slotStatus} ${hovered ? 'hover' : ''}`}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
             >
                 {<FontAwesomeIcon icon={faPlus} />}
             </button>

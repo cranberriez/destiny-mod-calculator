@@ -160,7 +160,9 @@ function TabContent(props) {
 					</ul>
 				</div>
 
-				<p onClick={() => (setPopupStatus(true))}>{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments </p>
+				<p onClick={() => (setPopupStatus(true))} className='aspect-fragment-link'>
+					{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments
+				</p>
 			</div>
 		</>
 	)
@@ -170,6 +172,18 @@ function TabContent(props) {
 
 			<div className="ability-section">
 				<h3>Class Use</h3>
+				{ (onOrbPickup > 0 || onOrbPickupLeastCharged > 0) &&
+					<li className='kill-total-orb'>
+						<div className='kill-total'>
+							<p>+Orb Pickup</p>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{((onOrbPickup + use[dataNames[index]]) * 100).toFixed(1)}</span></p>
+						</div>
+						{ (onOrbPickupLeastCharged + onOrbPickup > onOrbPickup) &&
+							<div className='kill-total'>
+								<p>+If Least-Charged</p>
+								<p><span className='bd-pct'>%</span><span className='bd-val'>{((onOrbPickupLeastCharged + onOrbPickup + use[dataNames[index]]) * 100).toFixed(1)}</span></p>
+							</div>}
+					</li>}
 				<ul>
 					{Object.entries(use).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
@@ -194,7 +208,9 @@ function TabContent(props) {
 				</ul>
 			</div>
 
-			<p onClick={() => (setPopupStatus(true))}>{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments </p>
+			<p onClick={() => (setPopupStatus(true))} className='aspect-fragment-link'>
+				{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments
+			</p>
 
 		</div>
 	)}
