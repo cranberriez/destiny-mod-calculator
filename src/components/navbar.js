@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './css/navbar.css';
 import { NavLink } from 'react-router-dom';
 import { capitalizeFirstLetter } from "./utils/capitilizeFirst";
+import Popup from "./popup";
 
 import { ReactComponent as HelmetIcon } from './svgs/helmet.svg';
 import { ReactComponent as ArmIcon } from './svgs/arm.svg';
@@ -46,27 +47,25 @@ function Navbar(props) {
 
     return (
         <>
-            <div className={`popup-container ${popupStatus ? '' : 'hidden'}`} onClick={() => (setPopupStatus(false))}>
-                <div className={`class-picker-popup`} onClick={(e) => (e.stopPropagation())}>
-                    <div className={'close-popup'} onClick={() => (setPopupStatus(false))}>
-                        x
-                    </div>
-
-                    <div className={'popup-label'}>
-                        Select Character Class
-                    </div>
-
-                    <div onClick={() => handleCharClassSelect('warlock')} className={'class-picker-char warlock'}>
-                        {React.createElement(classIcons['warlock']) }
-                    </div>
-                    <div onClick={() => handleCharClassSelect('titan')} className={'class-picker-char titan'}>
-                        {React.createElement(classIcons['titan'])}
-                    </div>
-                    <div onClick={() => handleCharClassSelect('hunter')} className={'class-picker-char hunter'}>
-                        {React.createElement(classIcons['hunter'])}
-                    </div>
+            <Popup
+                popupStatus={popupStatus}
+                setPopupStatus={setPopupStatus}
+            >
+                <div className={'popup-label'}>
+                    Select Character Class
                 </div>
-            </div>
+
+                <div onClick={() => handleCharClassSelect('warlock')} className={'class-picker-char warlock'}>
+                    {React.createElement(classIcons['warlock']) }
+                </div>
+                <div onClick={() => handleCharClassSelect('titan')} className={'class-picker-char titan'}>
+                    {React.createElement(classIcons['titan'])}
+                </div>
+                <div onClick={() => handleCharClassSelect('hunter')} className={'class-picker-char hunter'}>
+                    {React.createElement(classIcons['hunter'])}
+                </div>
+            </Popup>
+
             <nav>
                 {/* <NavLink to='/' className='basic-nav'>
                     <p>Home</p>

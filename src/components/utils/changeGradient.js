@@ -7,6 +7,7 @@ const gradients = [
 	'linear-gradient(111.45deg, rgba(253, 187, 45, 0.4), rgba(178, 31, 31, 0.6), rgba(26, 42, 108, 0.8)',
 ]
 
+
 const primaryColors = [
 	'67, 198, 172',
 	'191, 233, 255',

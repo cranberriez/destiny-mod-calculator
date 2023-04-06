@@ -57,9 +57,6 @@ function Breakdown(props) {
     const [ classTotals, setClassTotals ] = useState(createClassData())
     const [ orbTotals, setOrbTotals ] = useState(createOrbData())
 
-    // console.log('Class Totals')
-    // console.table(classTotals)
-
     const allMods = useMemo(() => {
         return { ...helmetMods, ...legMods, ...armMods, ...classMods };
     }, [helmetMods, legMods, armMods, classMods])
@@ -111,7 +108,6 @@ function Breakdown(props) {
             // if (generates === 'least-charged') return
 
             if (generates === 'all') {
-                console.log(ability)
                 tempGeneratesTotals[use]['grenade'] += newGeneratedValue
                 tempGeneratesTotals[use]['melee'] += newGeneratedValue
                 tempGeneratesTotals[use]['class'] += newGeneratedValue

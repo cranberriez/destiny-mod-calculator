@@ -71,7 +71,6 @@ function TabContent(props) {
 	const onClassUse = classData.use[dataNames[index]]
 	const onOrbPickup = orbData.pickup[dataNames[index]]
 	const onOrbPickupLeastCharged = orbData.pickup['least-charged']
-	console.log(orbData.pickup["least-charged"])
 
 	const abilityName = dataNames[index]
 	if (index === 0 || index === 1) return (

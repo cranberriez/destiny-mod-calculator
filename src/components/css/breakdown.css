@@ -58,7 +58,7 @@
 
 .Breakdown .ability-section li.kill-total-orb {
     /*background-color: rgba(0,0,0,0.2);*/
-    background: linear-gradient(111.45deg, rgba(var(--primary-color), 0.2) 7.7%, rgba(0, 0, 0, 0.2) 100.74%);
+    background: linear-gradient(111.45deg, rgba(var(--primary-color), 0.2) 7.7%, rgba(0, 0, 0, 0) 100.74%);
     border-left: 2px solid rgba(var(--primary-color), 1);
 
     margin-left: -10px;
@@ -72,6 +72,7 @@
 }
 
 .Breakdown .ability-section li.kill-total-orb .kill-total p {
+    color: #fff;
     width: 100%;
 }
 

@@ -4,6 +4,7 @@ nav {
     color: #fff;
     list-style: none;
     background: rgba(17, 17, 17, 0.5);
+
     box-shadow: 4px 0px 16px rgba(0, 0, 0, 0.25);
     padding-top: 40px;
 
@@ -230,86 +231,6 @@ nav a.active .nav-mod-count div:not(.active) div {
     color: #fff;
 }
 
-.popup-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    backdrop-filter: blur(10px);
-    z-index: 2;
-}
-
-.popup-container.hidden {
-    display: none;
-}
-
-.popup-label {
-    color: #D0D0D0;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-.class-picker-popup {
-    background-color: rgba(0,0,0,0.6);
-    border: 1px solid #D0D0D0;
-    padding: 50px 40px 30px 40px;
-
-    position: relative;
-    display: flex;
-}
-
-.close-popup {
-    color: #D0D0D0;
-    font-size: 24px;
-    line-height: 20px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-
-    width: 20px;
-    height: 20px;
-
-    text-align: center;
-
-    cursor: pointer;
-}
-
-.close-popup:hover {
-    color: #E74C3C;
-}
-
-.class-picker-popup .class-picker-char {
-    margin: 0 25px;
-    color: #D0D0D0;
-    cursor: pointer;
-    position: relative;
-}
-
-/*.class-picker-popup .class-picker-char:hover svg path {*/
-/*    stroke: #2ECC71;*/
-/*}*/
-
-.class-picker-popup .class-picker-char svg {
-    width: 80px;
-    height: 80px;
-    aspect-ratio: 1/1;
-    stroke: transparent;
-}
-
-.class-picker-popup .class-picker-char svg path {
-    stroke: #878787;
-    fill: transparent;
-}
-
-.class-picker-popup .class-picker-char:hover svg path {
-    stroke: #D0D0D0;
-}
-
 @media (max-width: 600px) {
     nav {
         display: flex;
@@ -326,7 +247,8 @@ nav a.active .nav-mod-count div:not(.active) div {
 
         z-index: 1;
 
-        background-color: #111;
+        /*background-color: #111;*/
+        backdrop-filter: blur(10px);
     }
 
     nav a.armor-nav, nav a.basic-nav {
@@ -391,18 +313,5 @@ nav a.active .nav-mod-count div:not(.active) div {
     nav .custom-nav svg {
         width: 40px;
         height: 100%;
-    }
-
-    .class-picker-popup {
-        width: 90%;
-        padding: 30px 0 0 0;
-
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .class-picker-popup .class-picker-char {
-        margin: 0;
     }
 }
