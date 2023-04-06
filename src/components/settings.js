@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/settings.css';
+import { gradients } from './utils/changeGradient';
 
 function GradientViewer(props) {
 	const { gradients, gradientIndex, setGradientIndex } = props;
@@ -25,16 +26,7 @@ function GradientViewer(props) {
 }
 
 function Settings(props) {
-	const { gradientIndex, setGradientIndex } = props;
-	const gradients = [
-		'linear-gradient(111.45deg, rgba(67, 198, 172, 0.4) 7.7%, rgba(25, 22, 84, 0.4) 93.74%)',
-		'linear-gradient(111.45deg, rgba(191, 233, 255, 0.4) 7.7%, rgba(255, 110, 127, 0.4) 93.74%)',
-		'linear-gradient(111.45deg, rgba(204, 43, 94, 0.4) 7.7%, rgba(117, 58, 136, 0.4) 93.74%)',
-		'linear-gradient(111.45deg, rgba(20, 20, 20, 1) 7.7%, rgba(236, 0, 140, 1) 193.74%)',
-		'linear-gradient(111.45deg, rgba(0, 0, 0, 1) 7.7%, rgba(43, 43, 43, 1) 193.74%)',
-		'linear-gradient(111.45deg, rgba(253, 187, 45, 0.4), rgba(178, 31, 31, 0.6), rgba(26, 42, 108, 0.8)',
-
-	]
+	const { gradientIndex, setGradientIndex, showCharSelector, setShowCharSelector } = props;
 
 	return (
 		<div className='Settings'>
@@ -44,6 +36,18 @@ function Settings(props) {
 				gradientIndex={gradientIndex}
 				setGradientIndex={setGradientIndex}
 			/>
+			<div className='divider'></div>
+			<h1>Show/Hide Class Selector</h1>
+			<button
+				className={showCharSelector ? 'active' : ''}
+				onClick={() => setShowCharSelector(true)}>
+				Show
+			</button>
+			<button
+				className={showCharSelector ? '' : 'active'}
+				onClick={() => setShowCharSelector(false)}>
+				Hide
+			</button>
 			<div className='divider'></div>
 		</div>
 	)

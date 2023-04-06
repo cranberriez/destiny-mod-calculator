@@ -1,9 +1,9 @@
 .Mod {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     border-width: 1px;
     border-style: solid;
-    border-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(100, 100, 100, 0.75);
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
 

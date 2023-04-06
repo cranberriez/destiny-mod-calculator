@@ -5,6 +5,7 @@ const gradients = [
 	'linear-gradient(111.45deg, rgba(20, 20, 20, 1) 7.7%, rgba(236, 0, 140, 0.6) 193.74%)',
 	'linear-gradient(111.45deg, rgba(0, 0, 0, 1) 7.7%, rgba(43, 43, 43, 1) 93.74%)',
 	'linear-gradient(111.45deg, rgba(253, 187, 45, 0.4), rgba(178, 31, 31, 0.6), rgba(26, 42, 108, 0.8)',
+	'linear-gradient(220deg, rgba(0, 0, 0, 0.6), rgba(169, 245, 243, 0.4) 75%, rgba(169, 245, 243, 0.9) 130%',
 ]
 
 
@@ -15,16 +16,22 @@ const primaryColors = [
 	'20, 20, 20',
 	'0, 0, 0',
 	'253, 187, 45',
+	'169, 245, 243',
 ]
 
-export function changeBackgroundGradient(i) {
-	document.documentElement.style.setProperty(
-		"--background-gradient",
-		gradients[i]
-	);
+module.exports = {
+	changeBackgroundGradient: function changeBackgroundGradient(i) {
+		document.documentElement.style.setProperty(
+			"--background-gradient",
+			gradients[i]
+		);
 
-	document.documentElement.style.setProperty(
-		"--primary-color",
-		primaryColors[i]
-	);
+		document.documentElement.style.setProperty(
+			"--primary-color",
+			primaryColors[i]
+		);
+
+	},
+	primaryColors: primaryColors,
+	gradients: gradients,
 }

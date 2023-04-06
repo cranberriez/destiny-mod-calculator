@@ -30,6 +30,24 @@
     display: flex;
 }
 
+.Settings Button {
+    background-color: transparent;
+    border: 1px solid #D0D0D0;
+    color: #D0D0D0;
+    cursor: pointer;
+
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+
+    margin: 0 5px;
+}
+
+.Settings Button.active {
+    color: black;
+    background-color: #D0D0D0;
+}
+
 @media screen and (max-width: 800px) {
     .Settings {
         padding-bottom: 80px;
