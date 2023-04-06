@@ -62,14 +62,16 @@ function TabContent(props) {
 	const { data, classData, orbData, index } = props
 	const dataNames = ['grenade', 'melee', 'class', 'orb']
 
-	const AbilityData = data.data
+	const AbilityData = data
 
-	const kill = sumObjects([AbilityData.kill, AbilityData.hit, AbilityData.use])
-	const hit = sumObjects([AbilityData.hit, AbilityData.use])
-	const use = AbilityData.use // technically throw but throw keyword is already defined
+	const kill = index < 2 ? sumObjects([AbilityData.kill, AbilityData.hit, AbilityData.use]) : {}
+	const hit = index < 2 ? sumObjects([AbilityData.hit, AbilityData.use]) : {}
+	const use = AbilityData.use // technically throw but throw keyword is already defined const pickup = AbilityData.pickup || null
 
-	const onClassUse = classData.data.use[dataNames[index]]
-	const onOrbPickup = orbData.data.pickup[dataNames[index]]
+	const onClassUse = classData.use[dataNames[index]]
+	const onOrbPickup = orbData.pickup[dataNames[index]]
+	const onOrbPickupLeastCharged = orbData.pickup['least-charged']
+	console.log(orbData.pickup["least-charged"])
 
 	const abilityName = dataNames[index]
 	if (index === 0 || index === 1) return (
@@ -78,6 +80,18 @@ function TabContent(props) {
 			<div className="ability-section">
 				<h3>{capitalizeFirstLetter(abilityName)} Kill</h3>
 				<ul>
+					{ (onOrbPickup > 0 || onOrbPickupLeastCharged > 0) &&
+						<li className='kill-total-orb'>
+						<div className='kill-total'>
+							<p>+Orb Pickup</p>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{((onOrbPickup + kill[dataNames[index]]) * 100).toFixed(1)}</span></p>
+						</div>
+						{ (onOrbPickupLeastCharged + onOrbPickup > onOrbPickup) &&
+						<div className='kill-total'>
+							<p>+If Least-Charged</p>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{((onOrbPickupLeastCharged + onOrbPickup + kill[dataNames[index]]) * 100).toFixed(1)}</span></p>
+						</div>}
+					</li>}
 					{Object.entries(kill).map(([prop, value]) => (
 						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
 							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
@@ -128,12 +142,17 @@ function TabContent(props) {
 						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onOrbPickup * 100).toFixed(1)}</span></p>
 						<p>{dataNames[index]}</p>
 					</li>
+					<li className={onOrbPickupLeastCharged <= 0 ? 'disabled' : ''}>
+						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onOrbPickupLeastCharged * 100).toFixed(1)}</span></p>
+						<p>if least-charged</p>
+					</li>
 				</ul>
 			</div>
 
 		</div>
 	)
-	else return (
+	else {
+		return (
 		<div className="tab-content">
 
 			<div className="ability-section">
@@ -148,8 +167,22 @@ function TabContent(props) {
 				</ul>
 			</div>
 
+			<div className="ability-section">
+				<h3>Orb Pickup</h3>
+				<ul>
+					<li className={onOrbPickup <= 0 ? 'disabled' : ''}>
+						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onOrbPickup * 100).toFixed(1)}</span></p>
+						<p>{dataNames[index]}</p>
+					</li>
+					<li className={onOrbPickupLeastCharged <= 0 ? 'disabled' : ''}>
+						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onOrbPickupLeastCharged * 100).toFixed(1)}</span></p>
+						<p>if least-charged</p>
+					</li>
+				</ul>
+			</div>
+
 		</div>
-	)
+	)}
 }
 
 export default TabsComponent;

@@ -45,7 +45,6 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
 }
 
 .Breakdown .ability-section {
@@ -53,8 +52,35 @@
 }
 
 .Breakdown .ability-section h3 {
-    margin-bottom: 15px;
-    font-size: 16px;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.Breakdown .ability-section li.kill-total-orb {
+    /*background-color: rgba(0,0,0,0.2);*/
+    background: linear-gradient(111.45deg, rgba(var(--primary-color), 0.2) 7.7%, rgba(0, 0, 0, 0.2) 100.74%);
+    border-left: 2px solid rgba(var(--primary-color), 1);
+
+    margin-left: -10px;
+    padding: 10px;
+
+    display: flex;
+}
+
+.Breakdown .ability-section li.kill-total-orb .kill-total {
+    width: 50%;
+}
+
+.Breakdown .ability-section li.kill-total-orb .kill-total p {
+    width: 100%;
+}
+
+.Breakdown .ability-section li.kill-total-orb .kill-total p:first-child {
+    font-size: 12px;
+}
+
+.Breakdown .ability-section li.kill-total-orb .kill-total p {
+    width: 100%;
 }
 
 .Breakdown .ability-section li {

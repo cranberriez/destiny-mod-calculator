@@ -24,12 +24,6 @@ function createData() {
             class: 0,
             super: 0,
         },
-        class: {
-            grenade: 0,
-            melee: 0,
-            class: 0,
-            super: 0,
-        }
     };
 }
 
@@ -40,16 +34,31 @@ function createOrbData() {
             melee: 0,
             class: 0,
             super: 0,
+            'least-charged': 0,
+        }
+    }
+}
+
+function createClassData() {
+    return {
+        use: {
+            grenade: 0,
+            melee: 0,
+            class: 0,
+            super: 0,
         }
     }
 }
 
 function Breakdown(props) {
     const { helmetMods, legMods, armMods, classMods, armorCharge, charClass } = props;
-    const [ grenadeTotals, setGrenadeTotals ] = useState(new Totals(createData()))
-    const [ meleeTotals, setMeleeTotals ] = useState(new Totals(createData()))
-    const [ classTotals, setClassTotals ] = useState(new Totals(createData()))
-    const [ orbTotals, setOrbTotals ] = useState(new Totals(createOrbData()))
+    const [ grenadeTotals, setGrenadeTotals ] = useState(createData())
+    const [ meleeTotals, setMeleeTotals ] = useState(createData())
+    const [ classTotals, setClassTotals ] = useState(createClassData())
+    const [ orbTotals, setOrbTotals ] = useState(createOrbData())
+
+    // console.log('Class Totals')
+    // console.table(classTotals)
 
     const allMods = useMemo(() => {
         return { ...helmetMods, ...legMods, ...armMods, ...classMods };
@@ -66,10 +75,10 @@ function Breakdown(props) {
         // in an array to iterate over it / direct access
         // these are the 'sources' of ability energy, caused by ability, or picking up orb
         let tempTotals = {
-            'grenade': new Totals(createData()),
-            'melee': new Totals(createData()),
-            'class': new Totals(createData()),
-            'orb': new Totals(createOrbData()),
+            'grenade': createData(),
+            'melee': createData(),
+            'class': createClassData(),
+            'orb': createOrbData(),
         }
 
         const addToBreakdown = (data) => {
@@ -83,7 +92,7 @@ function Breakdown(props) {
             let tempGeneratesTotals = tempTotals[ability]
 
             // Gets the total generated % of ability from current mod
-            // If its a kickstart mod, add armor charge to stacks (should only work if count != 0)
+            // If it's a kickstart mod, add armor charge to stacks (should only work if count != 0)
             let generatedAmount;
             if (kickstart && count > 0) {
                 generatedAmount = stacks[count + armorCharge.charge]
@@ -92,34 +101,24 @@ function Breakdown(props) {
                 generatedAmount = stacks[count]
             }
 
-            let newGeneratedValue
-            if (ability === 'orb') {
-                if (use !== 'pickup') console.log(use)
-                newGeneratedValue = tempGeneratesTotals.getValue('pickup', generates) || 0
-            }
-            else {
-                newGeneratedValue = tempGeneratesTotals.getValue(use, generates) || 0
-            }
+            let newGeneratedValue = 0;
+            if (!(generates === 'all'))
+                newGeneratedValue = tempGeneratesTotals[use][generates]
 
             newGeneratedValue += generatedAmount
+
             // Update the temp value
-
-            if (ability === 'orb') {
-                // console.log(newGeneratedValue)
-                // console.log(generates)
-                // console.log(`Ability: ${ability}  Generates ${generates}  Use ${use}`)
-                // return
-            }
-
-            if (generates === 'least-charged') return
+            // if (generates === 'least-charged') return
 
             if (generates === 'all') {
-                tempGeneratesTotals.updateValue(use, 'grenade', newGeneratedValue)
-                tempGeneratesTotals.updateValue(use, 'melee', newGeneratedValue)
-                tempGeneratesTotals.updateValue(use, 'class', newGeneratedValue)
+                console.log(ability)
+                tempGeneratesTotals[use]['grenade'] += newGeneratedValue
+                tempGeneratesTotals[use]['melee'] += newGeneratedValue
+                tempGeneratesTotals[use]['class'] += newGeneratedValue
+                tempGeneratesTotals[use]['super'] += newGeneratedValue
             }
             else {
-                tempGeneratesTotals.updateValue(use, generates, newGeneratedValue)
+                tempGeneratesTotals[use][generates] += newGeneratedValue
             }
         }
 
@@ -143,12 +142,10 @@ function Breakdown(props) {
         for (let ability in tempTotals) {
             const stateSetter = stateSetters[ability];
             let newTotal = tempTotals[ability]
-            if (stateSetter && !stateValues[ability].isEqual(newTotal)) {
-                stateSetter(newTotal);
-            }
+            stateSetter(newTotal);
         }
 
-    }, [allMods, armorCharge ])
+    }, [ allMods, armorCharge ])
 
     return (
         <div className='Breakdown'>

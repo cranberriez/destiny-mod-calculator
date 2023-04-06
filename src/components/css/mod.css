@@ -204,6 +204,33 @@ span {font-weight: bold;}
 .grenade { color: #e67e22; border-color: #e67e22 !important;}
 .class { color: #9b59b6; border-color: #9b59b6 !important;}
 .orb { color: #1abc9c; border-color: #1abc9c !important;}
+span.least-charged, span.all {
+    background-image: linear-gradient(to bottom right,
+        #9b59b6 0%,
+        #9b59b6 30%,
+        #3498db 36%,
+        #3498db 63%,
+        #e67e22 69%,
+        #e67e22 100%
+    );
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: rgba(255,255,255,0.1);
+}
+
+button.least-charged, button.all {
+    border-width: 4px;
+    border-image: linear-gradient(to bottom right,
+        #9b59b6 0%,
+        #9b59b6 30%,
+        #3498db 36%,
+        #3498db 63%,
+        #e67e22 69%,
+        #e67e22 100%
+    ) 2;
+    padding: 10px;
+}
 
 @media screen and (max-width: 600px) {
     .kickstart .mod-stacks li p:first-child {
