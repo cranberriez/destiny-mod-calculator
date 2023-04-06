@@ -160,9 +160,9 @@ function TabContent(props) {
 					</ul>
 				</div>
 
-				<p onClick={() => (setPopupStatus(true))} className='aspect-fragment-link'>
-					{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments
-				</p>
+				{/*<p onClick={() => (setPopupStatus(true))} className='aspect-fragment-link'>*/}
+				{/*	{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments*/}
+				{/*</p>*/}
 			</div>
 		</>
 	)
@@ -208,9 +208,9 @@ function TabContent(props) {
 				</ul>
 			</div>
 
-			<p onClick={() => (setPopupStatus(true))} className='aspect-fragment-link'>
-				{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments
-			</p>
+			{/*<p onClick={() => (setPopupStatus(true))} className='aspect-fragment-link'>*/}
+			{/*	{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments*/}
+			{/*</p>*/}
 
 		</div>
 	)}
