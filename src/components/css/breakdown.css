@@ -5,8 +5,6 @@
 
     color: #d0d0d0;
 
-    position: relative;
-
     display: flex;
     flex-direction: column;
     flex-grow: 1;

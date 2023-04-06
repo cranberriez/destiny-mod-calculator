@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './css/popup.css';
+import React from 'react';
+import '../css/popup.css';
 
 function Popup({ popupStatus, setPopupStatus, children }) {
 	return (

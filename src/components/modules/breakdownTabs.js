@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { capitalizeFirstLetter } from "../utils/capitilizeFirst";
 import '../css/breakdown.css';
+import Popup from "./popup";
 
 function sumObjects(objects) {
 	const result = {
@@ -33,6 +34,7 @@ function sumValues(object) {
 function TabsComponent(props) {
 	const { grenadeTotals, meleeTotals, classTotals, orbTotals } = props;
 	const [activeTab, setActiveTab] = useState(0);
+	const [popupStatus, setPopupStatus] = useState(false)
 
 	const handleTabChange = (tabIndex) => {
 		setActiveTab(tabIndex);
@@ -53,13 +55,22 @@ function TabsComponent(props) {
 				classData={classTotals}
 				orbData={orbTotals}
 				index={activeTab}
+				popupStatus={popupStatus}
+				setPopupStatus={setPopupStatus}
 			/>
+
+			<Popup
+				popupStatus={popupStatus}
+				setPopupStatus={setPopupStatus}
+			>
+
+			</Popup>
 		</>
 	);
 }
 
 function TabContent(props) {
-	const { data, classData, orbData, index } = props
+	const { data, classData, orbData, index, popupStatus, setPopupStatus } = props
 	const dataNames = ['grenade', 'melee', 'class', 'orb']
 
 	const AbilityData = data
@@ -74,81 +85,84 @@ function TabContent(props) {
 
 	const abilityName = dataNames[index]
 	if (index === 0 || index === 1) return (
-		<div className="tab-content">
-			{sumValues(kill) > 0 &&
-			<div className="ability-section">
-				<h3>{capitalizeFirstLetter(abilityName)} Kill</h3>
-				<ul>
-					{ (onOrbPickup > 0 || onOrbPickupLeastCharged > 0) &&
-						<li className='kill-total-orb'>
-						<div className='kill-total'>
-							<p>+Orb Pickup</p>
-							<p><span className='bd-pct'>%</span><span className='bd-val'>{((onOrbPickup + kill[dataNames[index]]) * 100).toFixed(1)}</span></p>
-						</div>
-						{ (onOrbPickupLeastCharged + onOrbPickup > onOrbPickup) &&
-						<div className='kill-total'>
-							<p>+If Least-Charged</p>
-							<p><span className='bd-pct'>%</span><span className='bd-val'>{((onOrbPickupLeastCharged + onOrbPickup + kill[dataNames[index]]) * 100).toFixed(1)}</span></p>
-						</div>}
-					</li>}
-					{Object.entries(kill).map(([prop, value]) => (
-						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
-							<p>{prop}</p>
+		<>
+			<div className="tab-content">
+				{sumValues(kill) > 0 &&
+				<div className="ability-section">
+					<h3>{capitalizeFirstLetter(abilityName)} Kill</h3>
+					<ul>
+						{ (onOrbPickup > 0 || onOrbPickupLeastCharged > 0) &&
+							<li className='kill-total-orb'>
+							<div className='kill-total'>
+								<p>+Orb Pickup</p>
+								<p><span className='bd-pct'>%</span><span className='bd-val'>{((onOrbPickup + kill[dataNames[index]]) * 100).toFixed(1)}</span></p>
+							</div>
+							{ (onOrbPickupLeastCharged + onOrbPickup > onOrbPickup) &&
+							<div className='kill-total'>
+								<p>+If Least-Charged</p>
+								<p><span className='bd-pct'>%</span><span className='bd-val'>{((onOrbPickupLeastCharged + onOrbPickup + kill[dataNames[index]]) * 100).toFixed(1)}</span></p>
+							</div>}
+						</li>}
+						{Object.entries(kill).map(([prop, value]) => (
+							<li key={prop} className={value <= 0 ? 'disabled' : ''}>
+								<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
+								<p>{prop}</p>
+							</li>
+						))}
+					</ul>
+				</div>}
+
+				<div className="ability-section">
+					<h3>{capitalizeFirstLetter(abilityName)} Hit</h3>
+					<ul>
+						{Object.entries(hit).map(([prop, value]) => (
+							<li key={prop} className={value <= 0 ? 'disabled' : ''}>
+								<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
+								<p>{prop}</p>
+							</li>
+						))}
+					</ul>
+				</div>
+
+				<div className="ability-section">
+					<h3>{capitalizeFirstLetter(abilityName)} Use</h3>
+					<ul>
+						{Object.entries(use).map(([prop, value]) => (
+							<li key={prop} className={value <= 0 ? 'disabled' : ''}>
+								<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
+								<p>{prop}</p>
+							</li>
+						))}
+					</ul>
+				</div>
+
+				<div className="ability-section">
+					<h3>Class Use</h3>
+					<ul>
+						<li className={onClassUse <= 0 ? 'disabled' : ''}>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(onClassUse * 100).toFixed(1)}</span></p>
+							<p>{dataNames[index]}</p>
 						</li>
-					))}
-				</ul>
-			</div>}
+					</ul>
+				</div>
 
-			<div className="ability-section">
-				<h3>{capitalizeFirstLetter(abilityName)} Hit</h3>
-				<ul>
-					{Object.entries(hit).map(([prop, value]) => (
-						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
-							<p>{prop}</p>
+				<div className="ability-section">
+					<h3>Orb Pickup</h3>
+					<ul>
+						<li className={onOrbPickup <= 0 ? 'disabled' : ''}>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(onOrbPickup * 100).toFixed(1)}</span></p>
+							<p>{dataNames[index]}</p>
 						</li>
-					))}
-				</ul>
-			</div>
-
-			<div className="ability-section">
-				<h3>{capitalizeFirstLetter(abilityName)} Use</h3>
-				<ul>
-					{Object.entries(use).map(([prop, value]) => (
-						<li key={prop} className={value <= 0 ? 'disabled' : ''}>
-							<p><span className='bd-pct'>%</span><span className='bd-val'>{(value * 100).toFixed(1)}</span></p>
-							<p>{prop}</p>
+						<li className={onOrbPickupLeastCharged <= 0 ? 'disabled' : ''}>
+							<p><span className='bd-pct'>%</span><span className='bd-val'>{(onOrbPickupLeastCharged * 100).toFixed(1)}</span></p>
+							<p>if least-charged</p>
 						</li>
-					))}
-				</ul>
-			</div>
+					</ul>
+				</div>
 
-			<div className="ability-section">
-				<h3>Class Use</h3>
-				<ul>
-					<li className={onClassUse <= 0 ? 'disabled' : ''}>
-						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onClassUse * 100).toFixed(1)}</span></p>
-						<p>{dataNames[index]}</p>
-					</li>
-				</ul>
+				<p onClick={() => (setPopupStatus(true))}>{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments </p>
 			</div>
-
-			<div className="ability-section">
-				<h3>Orb Pickup</h3>
-				<ul>
-					<li className={onOrbPickup <= 0 ? 'disabled' : ''}>
-						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onOrbPickup * 100).toFixed(1)}</span></p>
-						<p>{dataNames[index]}</p>
-					</li>
-					<li className={onOrbPickupLeastCharged <= 0 ? 'disabled' : ''}>
-						<p><span className='bd-pct'>%</span><span className='bd-val'>{(onOrbPickupLeastCharged * 100).toFixed(1)}</span></p>
-						<p>if least-charged</p>
-					</li>
-				</ul>
-			</div>
-
-		</div>
+		</>
 	)
 	else {
 		return (
@@ -179,6 +193,8 @@ function TabContent(props) {
 					</li>
 				</ul>
 			</div>
+
+			<p onClick={() => (setPopupStatus(true))}>{capitalizeFirstLetter(dataNames[index])} Aspects & Fragments </p>
 
 		</div>
 	)}

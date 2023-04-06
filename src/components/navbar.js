@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './css/navbar.css';
 import { NavLink } from 'react-router-dom';
 import { capitalizeFirstLetter } from "./utils/capitilizeFirst";
-import Popup from "./popup";
+import Popup from "./modules/popup";
 
 import { ReactComponent as HelmetIcon } from './svgs/helmet.svg';
 import { ReactComponent as ArmIcon } from './svgs/arm.svg';
