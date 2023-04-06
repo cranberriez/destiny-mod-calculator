@@ -231,6 +231,10 @@ nav a.active .nav-mod-count div:not(.active) div {
     color: #fff;
 }
 
+/*.class-selector-button {*/
+/*    background-color: rgba(0,0,0,0.2);*/
+/*}*/
+
 @media (max-width: 600px) {
     nav {
         display: flex;

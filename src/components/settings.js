@@ -39,14 +39,9 @@ function Settings(props) {
 			<div className='divider'></div>
 			<h1>Show/Hide Class Selector</h1>
 			<button
-				className={showCharSelector ? 'active' : ''}
-				onClick={() => setShowCharSelector(true)}>
-				Show
-			</button>
-			<button
 				className={showCharSelector ? '' : 'active'}
-				onClick={() => setShowCharSelector(false)}>
-				Hide
+				onClick={() => setShowCharSelector((prev) => !prev)}>
+				Toggle Visibility
 			</button>
 			<div className='divider'></div>
 		</div>

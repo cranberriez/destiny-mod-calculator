@@ -12,13 +12,18 @@ import data from './data/modifiedData.json';
 
 function App() {
     const initialGradientIndex = () => {
-        const storedIndex = localStorage.getItem("destinyModCalculatorGradientIndex");
+        const storedIndex = localStorage.getItem("destinyModCalculator-GradientIndex");
         return storedIndex ? parseInt(storedIndex, 10) : 0;
     };
 
     const initialCharClass = () => {
-        const storedIndex = localStorage.getItem("destinyModCalculatorCharClass");
+        const storedIndex = localStorage.getItem("destinyModCalculator-CharClass");
         return storedIndex ? storedIndex : 'warlock';
+    };
+
+    const initialCharSelector = () => {
+        const storedIndex = localStorage.getItem("destinyModCalculator-ShowCharClass");
+        return storedIndex !== 'false';
     };
 
     const [helmetMods, setHelmetMods] = useState(data.helmet);
@@ -29,15 +34,22 @@ function App() {
     const [breakdownVisible, setBreakdownVisible] = useState(false);
     const [gradientIndex, setGradientIndex] = useState(initialGradientIndex());
     const [charClass, setCharClass] = useState(initialCharClass());
+    const [showCharSelector, setShowCharSelector] = useState(initialCharSelector());
 
     useEffect(() => {
-        localStorage.setItem("destinyModCalculatorGradientIndex", gradientIndex.toString());
+        localStorage.setItem("destinyModCalculator-GradientIndex", gradientIndex.toString());
         changeBackgroundGradient(gradientIndex)
     }, [gradientIndex]);
 
     useEffect(() => {
-        localStorage.setItem("destinyModCalculatorCharClass", charClass);
+        if (initialCharClass() === charClass) return
+        localStorage.setItem("destinyModCalculator-CharClass", charClass);
     }, [charClass]);
+
+    useEffect(() => {
+        if (initialCharSelector() === showCharSelector) return
+        localStorage.setItem("destinyModCalculator-ShowCharClass", showCharSelector);
+    }, [showCharSelector]);
 
     const [slottedStates, setSlottedStates] = useState({
         'helmet': ['','',''],
@@ -59,10 +71,13 @@ function App() {
     return (
         <ViewportProvider>
             <div className={`App ${breakdownVisible ? 'bd-visible' : 'bd-hidden'}`}>
+                <h1 style={{display: 'none'}}>Destiny 2 Mod Calculator</h1>
+
                 <Navbar
                     slottedStates={slottedStates}
                     charClass={charClass}
                     setCharClass={setCharClass}
+                    showCharSelector={showCharSelector}
                 />
 
                 <main
@@ -108,6 +123,8 @@ function App() {
                             <Settings
                                 gradientIndex={gradientIndex}
                                 setGradientIndex={setGradientIndex}
+                                showCharSelector={showCharSelector}
+                                setShowCharSelector={setShowCharSelector}
                             />
                         }/>
                     </Routes>

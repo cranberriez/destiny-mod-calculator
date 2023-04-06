@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './css/navbar.css';
 import { NavLink } from 'react-router-dom';
-import { capitalizeFirstLetter } from "./utils/capitilizeFirst";
 import Popup from "./modules/popup";
 
 import { ReactComponent as HelmetIcon } from './svgs/helmet.svg';
@@ -37,7 +36,7 @@ function getSlottedCount(slottedStates) {
 
 
 function Navbar(props) {
-    const { slottedStates, charClass, setCharClass } = props;
+    const { slottedStates, charClass, setCharClass, showCharSelector } = props;
     const [popupStatus, setPopupStatus] = useState(false)
 
     const handleCharClassSelect = (newCharClass) => {
@@ -71,16 +70,17 @@ function Navbar(props) {
                     <p>Home</p>
                 </NavLink> */}
 
-                <div className='custom-nav' onClick={() => (setPopupStatus(true))}>
+                {showCharSelector &&
+                <div className='custom-nav class-selector-button' onClick={() => (setPopupStatus(true))}>
                     <div className='custom-nav-label'>
                         <div className='custom-nav-icon'>
                             {React.createElement(classIcons[charClass])}
                         </div>
-                        <p>
-                            {capitalizeFirstLetter(charClass)}
-                        </p>
+                        {/*<p>*/}
+                        {/*    {capitalizeFirstLetter(charClass)}*/}
+                        {/*</p>*/}
                     </div>
-                </div>
+                </div>}
 
                 {Object.keys(slottedStates).map(key => (
                     <NavLink to={key} className='armor-nav'  id={key + '-link'} key={key + '-link'}>
