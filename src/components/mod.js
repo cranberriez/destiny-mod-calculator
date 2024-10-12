@@ -10,7 +10,8 @@ function capFirst(word) {
 function Mod(props) {
     const { modID, modData, handleModCountChange, slotted, setSlotted, armorCharge, charClass } = props;
     const [ability, activation] = modData.type.split('-')
-    const stacks = modData.stacks[charClass]
+    const stacks = modData.stacks
+    const classMultiplier = modData.classMultipliers[charClass]
     const generates = modData.generates;
     const cooldown = modData.cooldown || null
 
@@ -19,7 +20,7 @@ function Mod(props) {
     }
 
     let kickstart = ""
-    if (modData.kickstart) {kickstart = 'kickstart'}
+    if (modData.kickstart) { kickstart = 'kickstart' }
 
     const buttonList = Array(3)
         .fill()
@@ -55,6 +56,7 @@ function Mod(props) {
                 <Stacks
                     modName={modData.name}
                     stacks={stacks}
+                    classMultiplier={classMultiplier}
                     count={modData.count}
                     armorCharge={armorCharge}
                     kickstart={kickstart}
@@ -62,7 +64,7 @@ function Mod(props) {
                 {/* <p>Mods Allocated (Stacks)</p> */}
             </div>
             <div className='mod-buttons'>
-                { buttonList }
+                {buttonList}
                 {modData.kickstart &&
                     <p className='kickstart-info'>
                         Mod Count is added to total amount of Armor Charges to determine 'stacks' when using this ability.

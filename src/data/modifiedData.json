@@ -1,575 +1,378 @@
 {
-  "helmet": {
-    "ho": {
-      "name": "Hands On",
-      "description": "Gain bonus Super energy on melee kills.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0.0075,
-          0.025,
-          0.029,
-          0.029
-        ],
-        "titan": [
-          0.0075,
-          0.025,
-          0.029,
-          0.029
-        ],
-        "hunter": [
-          0.0075,
-          0.025,
-          0.029,
-          0.029
-        ]
-      },
-      "type": "melee-kill",
-      "generates": "super",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/f47540dc70a9aad624a8936c7e82fcbd.png"
+    "helmet": {
+        "ho": {
+            "name": "Hands On",
+            "description": "Gain bonus Super energy on melee kills.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.0075,
+                0.025,
+                0.029,
+                0.029
+            ],
+            "classMultipliers": {
+                "warlock": 2,
+                "titan": 1.2,
+                "hunter": 1
+            },
+            "type": "melee-kill",
+            "generates": "super",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/0abfcdf8c4c447ad5a1ec31cd1774ef5.png"
+        },
+        "aa": {
+            "name": "Ashes To Assets",
+            "description": "Gain bonus Super energy on grenade kills.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.0075,
+                0.048,
+                0.052,
+                0.048
+            ],
+            "classMultipliers": {
+                "warlock": 2,
+                "titan": 1.2,
+                "hunter": 1
+            },
+            "type": "grenade-kill",
+            "generates": "super",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/5abbb67240545dc76f646d603da90020.png"
+        },
+        "dy": {
+            "name": "Dynamo",
+            "description": "Gain bonus Super energy when using your class ability near enemies (15m).",
+            "count": 0,
+            "stacks": [
+                0,
+                0.025,
+                0.04
+            ],
+            "classMultipliers": {
+                "warlock": 2,
+                "titan": 1.2,
+                "hunter": 1
+            },
+            "type": "class-use",
+            "generates": "super",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/5abbb67240545dc76f646d603da90020.png"
+        }
     },
-    "aa": {
-      "name": "Ashes To Assets",
-      "description": "Gain bonus Super energy on grenade kills.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0.0075,
-          0.048,
-          0.052,
-          0.048
-        ],
-        "titan": [
-          0.0075,
-          0.048,
-          0.052,
-          0.048
-        ],
-        "hunter": [
-          0.0075,
-          0.048,
-          0.052,
-          0.048
-        ]
-      },
-      "type": "grenade-kill",
-      "generates": "super",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/ba29cbcb4fa6f32b18fc1c9a27593f8b.png"
+    "arm": {
+        "gk": {
+            "name": "Grenade Kickstart",
+            "description": "Grenade-Kickstart refunds cooldown whenever your grenade energy is fully depleted.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.162,
+                0.217,
+                0.284,
+                0.344,
+                0.384,
+                0.413,
+                0.434,
+                0.45,
+                0.45
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "grenade-use",
+            "generates": "grenade",
+            "kickstart": true,
+            "url": "https://www.bungie.net/common/destiny2_content/icons/ec798418c7f516ed308a9dfc91aff036.png"
+        },
+        "ii": {
+            "name": "Impact Induction",
+            "description": "Causing damage with a melee attack reduces your grenade cooldown. (7 Second Cooldown)",
+            "count": 0,
+            "stacks": [
+                0,
+                0.12,
+                0.17,
+                0.20
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "melee-hit",
+            "generates": "grenade",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/23cbf44bc856199a216f76d92ce3079c.png",
+            "cooldown": "7 sec"
+        },
+        "bd": {
+            "name": "Bolstering Detonation",
+            "description": "Grants class ability energy when you cause damage with a grenade. (7 Second Cooldown)",
+            "count": 0,
+            "stacks": [
+                0,
+                0.12,
+                0.17,
+                0.20
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "grenade-hit",
+            "generates": "class",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/c0ed84b669c9ac2bf4c128f4ef177f11.png",
+            "cooldown": "7 sec"
+        },
+        "mk": {
+            "name": "Melee Kickstart",
+            "description": "Melee-Kickstart refunds cooldown whenever your melee energy is fully depleted.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.162,
+                0.217,
+                0.284,
+                0.344,
+                0.384,
+                0.413,
+                0.434,
+                0.45,
+                0.45
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "melee-use",
+            "generates": "melee",
+            "kickstart": true,
+            "url": "https://www.bungie.net/common/destiny2_content/icons/574425b9621b95a0720f6f664828d414.png"
+        },
+        "mt": {
+            "name": "Momentum Transfer",
+            "description": "Causing damage with a grenade reduces your melee cooldown. (7 Second Cooldown)",
+            "count": 0,
+            "stacks": [
+                0,
+                0.12,
+                0.17,
+                0.20
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "grenade-hit",
+            "generates": "melee",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/a365e31b95c9f8c81bad7ff13bd8fdb9.png",
+            "cooldown": "7 sec"
+        },
+        "fs": {
+            "name": "Focusing Strike",
+            "description": "Grants class ability energy when you cause damage with a melee attack. (7 Second Cooldown)",
+            "count": 0,
+            "stacks": [
+                0,
+                0.12,
+                0.17,
+                0.20
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "melee-hit",
+            "generates": "class",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/ece0654ecd4b16e5011903f03eee8c74.png",
+            "cooldown": "7 sec"
+        }
     },
-    "dy": {
-      "name": "Dynamo (No Data)",
-      "description": "Gain bonus Super energy when using your class ability near enemies. (NO DATA)",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "titan": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "hunter": [
-          0,
-          0,
-          0,
-          0
-        ]
-      },
-      "type": "class-use",
-      "generates": "super",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/8f2bffcbe752a6c8c39cfebe38db6ad1.png"
+    "leg": {
+        "iv": {
+            "name": "Invigoration",
+            "description": "Reduces melee cooldown each time you pick up an Orb of Power.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.1,
+                0.13,
+                0.15
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "orb-pickup",
+            "generates": "melee",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/fd264ad719a5844812a94347fc5986c9.png"
+        },
+        "in": {
+            "name": "Innervation",
+            "description": "Reduces grenade cooldown each time you pick up an Orb of Power.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.1,
+                0.13,
+                0.15
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "orb-pickup",
+            "generates": "grenade",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/57db346edee222d0866ed0fe14aadde6.png"
+        },
+        "is": {
+            "name": "Insulation",
+            "description": "Reduces class ability cooldown each time you pick up an Orb of Power.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.04,
+                0.05,
+                0.06
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "orb-pickup",
+            "generates": "class",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/73c469225035f5854a044aa5c052a6f4.png"
+        },
+        "ab": {
+            "name": "Absolution",
+            "description": "Reduces all ability cooldowns each time you pick up an Orb of Power.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.05,
+                0.075,
+                0.1
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "orb-pickup",
+            "generates": "all",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/f50374ce34ec6ee52a5af06eb0fa5605.png"
+        },
+        "of": {
+            "name": "Orbs Of Restoration",
+            "description": "Picking up an Orb of Power grants a small amount of energy to your ability with the least energy.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.1,
+                0.13,
+                0.15
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "orb-pickup",
+            "generates": "least-charged",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/e530fca583fed1ed2a95e8e2f1c6606e.png"
+        }
+    },
+    "class": {
+        "uk": {
+            "name": "Utility Kickstart",
+            "description": "When your class ability energy is fully expended, you gain class ability energy.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.162,
+                0.217,
+                0.284,
+                0.344,
+                0.384,
+                0.413,
+                0.434,
+                0.45,
+                0.45
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "class-use",
+            "generates": "class",
+            "kickstart": true,
+            "url": "https://www.bungie.net/common/destiny2_content/icons/e61338971f390d8187d36bf3649ad5c3.png"
+        },
+        "or": {
+            "name": "Outreach",
+            "description": "Reduces melee cooldown when using your class ability.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.12,
+                0.17,
+                0.20
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "class-use",
+            "generates": "melee",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/937ab8f203bfc29918f9aa07d349cbb8.png"
+        },
+        "bo": {
+            "name": "Bomber",
+            "description": "Reduces grenade cooldown when using your class ability.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.12,
+                0.17,
+                0.20
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "class-use",
+            "generates": "grenade",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/50c475e2cfd57472dc9426cc9f3d4233.png"
+        },
+        "ds": {
+            "name": "Distribution",
+            "description": "Reduces all cooldown when using your class ability near targets.",
+            "count": 0,
+            "stacks": [
+                0,
+                0.04,
+                0.06,
+                0.07
+            ],
+            "classMultipliers": {
+                "warlock": 1,
+                "titan": 1,
+                "hunter": 1
+            },
+            "type": "class-use",
+            "generates": "all",
+            "url": "https://www.bungie.net/common/destiny2_content/icons/7feccda2bcb49a1667e206d53616931c.png"
+        }
     }
-  },
-  "arm": {
-    "gk": {
-      "name": "Grenade Kickstart",
-      "description": "Grenade-Kickstart refunds cooldown whenever your grenade energy is fully depleted. (Works with multiple charges)",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.127,
-          0.17,
-          0.232,
-          0.308,
-          0.375,
-          0.422,
-          0.454,
-          0.478,
-          0.496
-        ],
-        "titan": [
-          0,
-          0.127,
-          0.17,
-          0.232,
-          0.308,
-          0.375,
-          0.422,
-          0.454,
-          0.478,
-          0.496
-        ],
-        "hunter": [
-          0,
-          0.127,
-          0.17,
-          0.232,
-          0.308,
-          0.375,
-          0.422,
-          0.454,
-          0.478,
-          0.496
-        ]
-      },
-      "type": "grenade-use",
-      "generates": "grenade",
-      "kickstart": true,
-      "url": "https://www.bungie.net/common/destiny2_content/icons/172aec971d8f1de939453cc428288c88.png"
-    },
-    "ii": {
-      "name": "Impact Induction",
-      "description": "Causing damage with a melee attack reduces your grenade cooldown. (7 Second Cooldown)",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ],
-        "titan": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ],
-        "hunter": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ]
-      },
-      "type": "melee-hit",
-      "generates": "grenade",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/e00ae3014d71f672690e493cb814e9bf.png",
-      "cooldown": "7 sec"
-    },
-    "bd": {
-      "name": "Bolstering Detonation",
-      "description": "Grants class ability energy when you cause damage with a grenade. (7 Second Cooldown)",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ],
-        "titan": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ],
-        "hunter": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ]
-      },
-      "type": "grenade-hit",
-      "generates": "class",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/4799aa0b650494b79dc8c3d8941cdc03.png",
-      "cooldown": "7 sec"
-    },
-    "mk": {
-      "name": "Melee Kickstart",
-      "description": "Melee-Kickstart refunds cooldown whenever your melee energy is fully depleted. (DOESN'T works with multiple charges)",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.127,
-          0.17,
-          0.232,
-          0.308,
-          0.375,
-          0.422,
-          0.454,
-          0.478,
-          0.496
-        ],
-        "titan": [
-          0,
-          0.127,
-          0.17,
-          0.232,
-          0.308,
-          0.375,
-          0.422,
-          0.454,
-          0.478,
-          0.496
-        ],
-        "hunter": [
-          0,
-          0.127,
-          0.17,
-          0.232,
-          0.308,
-          0.375,
-          0.422,
-          0.454,
-          0.478,
-          0.496
-        ]
-      },
-      "type": "melee-use",
-      "generates": "melee",
-      "kickstart": true,
-      "url": "https://www.bungie.net/common/destiny2_content/icons/f0cb5ce01930086ab623fc7854641669.png"
-    },
-    "mt": {
-      "name": "Momentum Transfer",
-      "description": "Causing damage with a grenade reduces your melee cooldown. (7 Second Cooldown)",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ],
-        "titan": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ],
-        "hunter": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ]
-      },
-      "type": "grenade-hit",
-      "generates": "melee",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/496016b33c0c21d64e75a53d0358a7eb.png",
-      "cooldown": "7 sec"
-    },
-    "fs": {
-      "name": "Focusing Strike",
-      "description": "Grants class ability energy when you cause damage with a melee attack. (7 Second Cooldown)",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ],
-        "titan": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ],
-        "hunter": [
-          0,
-          0.2,
-          0.25,
-          0.25
-        ]
-      },
-      "type": "melee-hit",
-      "generates": "class",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/314d87945335ccf56c5e128e72a497a4.png",
-      "cooldown": "7 sec"
-    }
-  },
-  "leg": {
-    "iv": {
-      "name": "Invigoration",
-      "description": "Reduces melee cooldown each time you pick up an Orb of Power.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.1,
-          0.13,
-          0.15
-        ],
-        "titan": [
-          0,
-          0.1,
-          0.13,
-          0.15
-        ],
-        "hunter": [
-          0,
-          0.1,
-          0.13,
-          0.15
-        ]
-      },
-      "type": "orb-pickup",
-      "generates": "melee",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/fbd50803fc86f3b60c62fa9a37760186.png"
-    },
-    "in": {
-      "name": "Innervation",
-      "description": "Reduces grenade cooldown each time you pick up an Orb of Power.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.1,
-          0.13,
-          0.15
-        ],
-        "titan": [
-          0,
-          0.1,
-          0.13,
-          0.15
-        ],
-        "hunter": [
-          0,
-          0.1,
-          0.13,
-          0.15
-        ]
-      },
-      "type": "orb-pickup",
-      "generates": "grenade",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/8d4ff6be1e86ffb1af2a61c987c027b5.png"
-    },
-    "is": {
-      "name": "Insulation",
-      "description": "Reduces class ability cooldown each time you pick up an Orb of Power.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.04,
-          0.056,
-          0.056
-        ],
-        "titan": [
-          0,
-          0.04,
-          0.056,
-          0.056
-        ],
-        "hunter": [
-          0,
-          0.04,
-          0.056,
-          0.056
-        ]
-      },
-      "type": "orb-pickup",
-      "generates": "class",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/bf91aa03df6599cb3fd7eac78ecf778f.png"
-    },
-    "ab": {
-      "name": "Absolution",
-      "description": "Reduces all ability cooldowns each time you pick up an Orb of Power.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.05,
-          0.075,
-          0.1
-        ],
-        "titan": [
-          0,
-          0.05,
-          0.075,
-          0.1
-        ],
-        "hunter": [
-          0,
-          0.05,
-          0.075,
-          0.1
-        ]
-      },
-      "type": "orb-pickup",
-      "generates": "all",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/a3cd4b61619a426bd5787a9aa5e8e4b4.png"
-    },
-    "of": {
-      "name": "Orbs Of Restoration",
-      "description": "Picking up an Orb of Power grants a small amount of energy to your ability with the least energy.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.05,
-          0.125,
-          0.15
-        ],
-        "titan": [
-          0,
-          0.05,
-          0.125,
-          0.15
-        ],
-        "hunter": [
-          0,
-          0.05,
-          0.125,
-          0.15
-        ]
-      },
-      "type": "orb-pickup",
-      "generates": "least-charged",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/3da4a26eca77c94bfcb0907fe12d8b6a.png"
-    }
-  },
-  "class": {
-    "uk": {
-      "name": "Utility Kickstart",
-      "description": "When your class ability energy is fully expended, you gain class ability energy.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.127,
-          0.17,
-          0.232,
-          0.308,
-          0.375,
-          0.422,
-          0.454,
-          0.478,
-          0.496
-        ],
-        "titan": [
-          0,
-          0.127,
-          0.17,
-          0.232,
-          0.308,
-          0.375,
-          0.422,
-          0.454,
-          0.478,
-          0.496
-        ],
-        "hunter": [
-          0,
-          0.127,
-          0.17,
-          0.232,
-          0.308,
-          0.375,
-          0.422,
-          0.454,
-          0.478,
-          0.496
-        ]
-      },
-      "type": "class-use",
-      "generates": "class",
-      "kickstart": true,
-      "url": "https://www.bungie.net/common/destiny2_content/icons/4a90f8bea82933593483bd469975249a.png"
-    },
-    "or": {
-      "name": "Outreach",
-      "description": "Reduces melee cooldown when using your class ability.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.20,
-          0.25,
-          0.25
-        ],
-        "titan": [
-          0,
-          0.12,
-          0.15,
-          0.15
-        ],
-        "hunter": [
-          0,
-          0.10,
-          0.125,
-          0.125
-        ]
-      },
-      "type": "class-use",
-      "generates": "melee",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/9af796ceac99cec4ee91044fe727d596.png"
-    },
-    "bo": {
-      "name": "Bomber",
-      "description": "Reduces grenade cooldown when using your class ability.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.20,
-          0.25,
-          0.25
-        ],
-        "titan": [
-          0,
-          0.12,
-          0.15,
-          0.15
-        ],
-        "hunter": [
-          0,
-          0.10,
-          0.125,
-          0.125
-        ]
-      },
-      "type": "class-use",
-      "generates": "grenade",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/25c877c27b991ac3980891f1ecc2e385.png"
-    },
-    "ds": {
-      "name": "Distribution",
-      "description": "Reduces all cooldown when using your class ability near targets.",
-      "count": 0,
-      "stacks": {
-        "warlock": [
-          0,
-          0.07,
-          0.12,
-          0.12
-        ],
-        "titan": [
-          0,
-          0.04,
-          0.072,
-          0.072
-        ],
-        "hunter": [
-          0,
-          0.035,
-          0.06,
-          0.06
-        ]
-      },
-      "type": "class-use",
-      "generates": "all",
-      "url": "https://www.bungie.net/common/destiny2_content/icons/a116725dc6ebe6a35866ecc7c681cef4.png"
-    }
-  }
 }

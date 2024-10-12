@@ -8,11 +8,11 @@ function Armor(props) {
 
     const setModCount = (modID, count) => {
         setModData((prevMods) => ({
-          ...prevMods,
-          [modID]: {
-            ...prevMods[modID],
-            count: count,
-          }
+            ...prevMods,
+            [modID]: {
+                ...prevMods[modID],
+                count: count,
+            }
         }));
     }
 
@@ -25,7 +25,7 @@ function Armor(props) {
             if (modData[mod].count !== 0) {
                 setModCount(mod, 0)
             }
-            setSlotted(['','',''])
+            setSlotted(['', '', ''])
         })
     }
 
@@ -40,8 +40,8 @@ function Armor(props) {
         <div className={armorName + " Armor"}>
             <h1>{capitalizeFirstLetter(armorName)} Mods</h1>
             <div className='armor-chips-bar'>
-                <button id='mod-breakdown-button' className={`armor-chip`} onClick={() => setBreakdownVisibile(!breakdownVisible) }>Show Breakdown</button>
-                <button id='mod-clear-button' className={`armor-chip ${isModSlotted(slotted) ? '': 'hidden'}`} onClick={clearMods}>Clear Mods</button>
+                <button id='mod-breakdown-button' className={`armor-chip`} onClick={() => setBreakdownVisibile(!breakdownVisible)}>Show Breakdown</button>
+                <button id='mod-clear-button' className={`armor-chip ${isModSlotted(slotted) ? '' : 'hidden'}`} onClick={clearMods}>Clear Mods</button>
             </div>
             <div className='armor-mod-cont'>
                 {Object.entries(modData).map(([mod, modData]) => (
@@ -60,5 +60,5 @@ function Armor(props) {
         </div>
     );
 }
-  
+
 export default Armor;

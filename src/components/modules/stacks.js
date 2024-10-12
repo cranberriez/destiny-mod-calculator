@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Stacks(props) {
-    const { modName, stacks, count, armorCharge, kickstart } = props;
+    const { modName, stacks, classMultiplier, count, armorCharge, kickstart } = props;
     const listItems = [];
     const charge = count && kickstart ? armorCharge : 0
 
@@ -9,8 +9,8 @@ function Stacks(props) {
         // if (stacks[i] === 0) continue
 
         listItems.push(
-            <li  className={(i === count + charge ? 'active' : '')} key={modName + '-' + i}>
-                <p><span>%</span>{(stacks[i] * 100).toFixed(1)}</p>
+            <li className={(i === count + charge ? 'active' : '')} key={modName + '-' + i}>
+                <p><span>%</span>{(stacks[i] * 100 * classMultiplier).toFixed(1)}</p>
                 <p>{i}</p>
             </li>
         )

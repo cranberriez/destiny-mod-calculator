@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Totals from './models/breakdownTotals.js';
 // import Tabs from './modules/breakdownTabs.js';
 import './css/breakdown.css';
@@ -52,10 +52,10 @@ function createClassData() {
 
 function Breakdown(props) {
     const { helmetMods, legMods, armMods, classMods, armorCharge, charClass } = props;
-    const [ grenadeTotals, setGrenadeTotals ] = useState(createData())
-    const [ meleeTotals, setMeleeTotals ] = useState(createData())
-    const [ classTotals, setClassTotals ] = useState(createClassData())
-    const [ orbTotals, setOrbTotals ] = useState(createOrbData())
+    const [grenadeTotals, setGrenadeTotals] = useState(createData())
+    const [meleeTotals, setMeleeTotals] = useState(createData())
+    const [classTotals, setClassTotals] = useState(createClassData())
+    const [orbTotals, setOrbTotals] = useState(createOrbData())
 
     const allMods = useMemo(() => {
         return { ...helmetMods, ...legMods, ...armMods, ...classMods };
@@ -80,7 +80,8 @@ function Breakdown(props) {
 
         const addToBreakdown = (data) => {
             const count = data.count
-            const stacks = data.stacks[charClass]
+            const stacks = data.stacks
+            const classMultipliers = data.classMultipliers[charClass]
             const [ability, use] = data.type.split('-')
             const kickstart = data.kickstart ?? false
             const generates = data.generates
@@ -92,10 +93,10 @@ function Breakdown(props) {
             // If it's a kickstart mod, add armor charge to stacks (should only work if count != 0)
             let generatedAmount;
             if (kickstart && count > 0) {
-                generatedAmount = stacks[count + armorCharge.charge]
+                generatedAmount = stacks[count + armorCharge.charge] * classMultipliers
             }
             else {
-                generatedAmount = stacks[count]
+                generatedAmount = stacks[count] * classMultipliers
             }
 
             let newGeneratedValue = 0;
@@ -141,7 +142,7 @@ function Breakdown(props) {
             stateSetter(newTotal);
         }
 
-    }, [ allMods, armorCharge ])
+    }, [allMods, armorCharge])
 
     return (
         <div className='Breakdown'>
